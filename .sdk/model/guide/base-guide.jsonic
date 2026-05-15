@@ -1,0 +1,56 @@
+# Guide
+
+guide: {
+  metrics: count: entity: 6
+  metrics: count: path: 10
+  metrics: count: method: 10
+
+  entity: annotation: {
+    path: "/annotations": {
+      op: load: method: *GET
+    }
+  }
+
+  entity: article: {
+    path: "/articles": {
+      op: load: method: *GET
+    }
+    path: "/articles/{id}": {
+      op: load: method: *GET
+    }
+  }
+
+  entity: collection: {
+    path: "/collections": {
+      op: load: method: *GET
+    }
+    path: "/collections/{id}": {
+      op: load: method: *GET
+    }
+  }
+
+  entity: person: {
+    path: "/people": {
+      op: load: method: *GET
+    }
+    path: "/people/{id}": {
+      op: load: method: *GET
+    }
+  }
+
+  entity: search: {
+    path: "/search": {
+      op: load: method: *GET
+    }
+  }
+
+  entity: subject: {
+    path: "/subjects": {
+      op: load: method: *GET
+    }
+    path: "/subjects/{id}": {
+      op: load: method: *GET
+    }
+  }
+
+}

@@ -1,0 +1,72 @@
+# Entity: annotation
+
+main: kit: entity: annotation: {
+
+  alias: field: {}
+
+  name: "annotation"
+  op: {
+    load: {
+      name: "load"
+      points: [
+        {
+          args: {
+            query: [
+              {
+                kind: "query"
+                name: "by"
+                orig: "by"
+                reqd: false
+                type: "`$STRING`"
+              }
+              {
+                example: "desc"
+                kind: "query"
+                name: "order"
+                orig: "order"
+                reqd: false
+                type: "`$STRING`"
+              }
+              {
+                example: 1
+                kind: "query"
+                name: "page"
+                orig: "page"
+                reqd: false
+                type: "`$INTEGER`"
+              }
+              {
+                example: 20
+                kind: "query"
+                name: "per_page"
+                orig: "per_page"
+                reqd: false
+                type: "`$INTEGER`"
+              }
+            ]
+          }
+          method: "GET"
+          orig: "/annotations"
+          parts: [
+            "annotations"
+          ]
+          select: {
+            exist: [
+              "by"
+              "order"
+              "page"
+              "per_page"
+            ]
+          }
+          transform: {
+            req: "`reqdata`"
+            res: "`body`"
+          }
+        }
+      ]
+    }
+  }
+
+
+
+}

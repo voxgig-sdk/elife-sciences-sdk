@@ -1,0 +1,28 @@
+# API Information
+
+
+main: {
+  kit: {
+    info: {
+      contact: {
+        name: "eLife Sciences"
+        url: "https://elifesciences.org"
+      }
+      description: "The eLife Sciences API provides access to various resources related to scientific articles, annotations, reports, and more. It allows users to retrieve, search, and manage scholarly content, emphasizing open access and public data sharing."
+      license: {
+        name: "Creative Commons Attribution 4.0"
+        url: "https://creativecommons.org/licenses/by/4.0/"
+      }
+      servers: [
+        {
+          description: "Production server"
+          url: "https://api.elifesciences.org"
+        }
+      ]
+      title: "eLife Sciences API"
+      version: "1.0.0"
+    }
+  }
+}
+
+}

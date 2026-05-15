@@ -1,0 +1,97 @@
+# Entity: search
+
+main: kit: entity: search: {
+
+  alias: field: {}
+
+  name: "search"
+  op: {
+    load: {
+      name: "load"
+      points: [
+        {
+          args: {
+            query: [
+              {
+                kind: "query"
+                name: "for"
+                orig: "for"
+                reqd: true
+                type: "`$STRING`"
+              }
+              {
+                example: "desc"
+                kind: "query"
+                name: "order"
+                orig: "order"
+                reqd: false
+                type: "`$STRING`"
+              }
+              {
+                example: 1
+                kind: "query"
+                name: "page"
+                orig: "page"
+                reqd: false
+                type: "`$INTEGER`"
+              }
+              {
+                example: 10
+                kind: "query"
+                name: "per_page"
+                orig: "per_page"
+                reqd: false
+                type: "`$INTEGER`"
+              }
+              {
+                example: "relevance"
+                kind: "query"
+                name: "sort"
+                orig: "sort"
+                reqd: false
+                type: "`$STRING`"
+              }
+              {
+                kind: "query"
+                name: "subject"
+                orig: "subject"
+                reqd: false
+                type: "`$ARRAY`"
+              }
+              {
+                kind: "query"
+                name: "type"
+                orig: "type"
+                reqd: false
+                type: "`$ARRAY`"
+              }
+            ]
+          }
+          method: "GET"
+          orig: "/search"
+          parts: [
+            "search"
+          ]
+          select: {
+            exist: [
+              "for"
+              "order"
+              "page"
+              "per_page"
+              "sort"
+              "subject"
+              "type"
+            ]
+          }
+          transform: {
+            req: "`reqdata`"
+            res: "`body`"
+          }
+        }
+      ]
+    }
+  }
+
+
+
+}

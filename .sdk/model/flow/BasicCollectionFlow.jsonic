@@ -1,0 +1,32 @@
+# BasicCollectionFlow
+
+main: kit: flow: BasicCollectionFlow:
+{
+  entity: "collection",
+  kind: "basic",
+  name: "BasicCollectionFlow",
+  step: [
+    {
+      input: {
+        ref: "collection_ref01",
+        srcdatavar: "collection_ref01_data",
+        suffix: "_dt0"
+      }
+
+      match: {
+        id: "collection01"
+      }
+
+      op: "load",
+      valid: [
+        {
+          apply: "TextFieldMark",
+          def: {
+            mark: "Mark01-collection_ref01"
+          }
+        }
+      ]
+    }
+  ],
+  "key$": "BasicCollectionFlow"
+}

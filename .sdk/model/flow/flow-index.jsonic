@@ -1,0 +1,8 @@
+# Flows
+
+@"BasicAnnotationFlow.jsonic"
+@"BasicArticleFlow.jsonic"
+@"BasicCollectionFlow.jsonic"
+@"BasicPersonFlow.jsonic"
+@"BasicSearchFlow.jsonic"
+@"BasicSubjectFlow.jsonic"

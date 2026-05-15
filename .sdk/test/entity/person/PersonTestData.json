@@ -1,0 +1,14 @@
+{
+  "existing": {
+    "person": {
+      "PERSON00": {},
+      "PERSON01": {},
+      "PERSON02": {}
+    }
+  },
+  "new": {
+    "person": {
+      "person_ref01": {}
+    }
+  }
+}

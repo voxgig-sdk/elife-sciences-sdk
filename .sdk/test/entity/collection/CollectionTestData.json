@@ -1,0 +1,14 @@
+{
+  "existing": {
+    "collection": {
+      "COLLECTION00": {},
+      "COLLECTION01": {},
+      "COLLECTION02": {}
+    }
+  },
+  "new": {
+    "collection": {
+      "collection_ref01": {}
+    }
+  }
+}

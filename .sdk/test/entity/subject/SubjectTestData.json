@@ -1,0 +1,14 @@
+{
+  "existing": {
+    "subject": {
+      "SUBJECT00": {},
+      "SUBJECT01": {},
+      "SUBJECT02": {}
+    }
+  },
+  "new": {
+    "subject": {
+      "subject_ref01": {}
+    }
+  }
+}

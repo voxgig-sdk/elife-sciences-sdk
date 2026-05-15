@@ -1,0 +1,14 @@
+{
+  "existing": {
+    "annotation": {
+      "ANNOTATION00": {},
+      "ANNOTATION01": {},
+      "ANNOTATION02": {}
+    }
+  },
+  "new": {
+    "annotation": {
+      "annotation_ref01": {}
+    }
+  }
+}

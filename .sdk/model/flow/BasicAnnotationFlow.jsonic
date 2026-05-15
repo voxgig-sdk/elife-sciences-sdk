@@ -1,0 +1,28 @@
+# BasicAnnotationFlow
+
+main: kit: flow: BasicAnnotationFlow:
+{
+  entity: "annotation",
+  kind: "basic",
+  name: "BasicAnnotationFlow",
+  step: [
+    {
+      input: {
+        ref: "annotation_ref01",
+        srcdatavar: "annotation_ref01_data",
+        suffix: "_dt0"
+      }
+
+      op: "load",
+      valid: [
+        {
+          apply: "TextFieldMark",
+          def: {
+            mark: "Mark01-annotation_ref01"
+          }
+        }
+      ]
+    }
+  ],
+  "key$": "BasicAnnotationFlow"
+}

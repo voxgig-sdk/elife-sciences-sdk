@@ -1,0 +1,1131 @@
+{
+  "openapi": "3.0.3",
+  "info": {
+    "title": "eLife Sciences API",
+    "description": "The eLife Sciences API provides access to various resources related to scientific articles, annotations, reports, and more. It allows users to retrieve, search, and manage scholarly content, emphasizing open access and public data sharing.",
+    "version": "1.0.0",
+    "contact": {
+      "name": "eLife Sciences",
+      "url": "https://elifesciences.org"
+    },
+    "license": {
+      "name": "Creative Commons Attribution 4.0",
+      "url": "https://creativecommons.org/licenses/by/4.0/"
+    }
+  },
+  "servers": [
+    {
+      "url": "https://api.elifesciences.org",
+      "description": "Production server"
+    }
+  ],
+  "paths": {
+    "/articles": {
+      "get": {
+        "summary": "List articles",
+        "description": "Retrieve a list of scientific articles published in eLife",
+        "operationId": "listArticles",
+        "tags": [
+          "Articles"
+        ],
+        "parameters": [
+          {
+            "name": "page",
+            "in": "query",
+            "description": "Page number for pagination",
+            "required": false,
+            "schema": {
+              "type": "integer",
+              "minimum": 1,
+              "default": 1
+            }
+          },
+          {
+            "name": "per-page",
+            "in": "query",
+            "description": "Number of results per page",
+            "required": false,
+            "schema": {
+              "type": "integer",
+              "minimum": 1,
+              "maximum": 100,
+              "default": 20
+            }
+          },
+          {
+            "name": "order",
+            "in": "query",
+            "description": "Sort order of results",
+            "required": false,
+            "schema": {
+              "type": "string",
+              "enum": [
+                "asc",
+                "desc"
+              ],
+              "default": "desc"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful response with list of articles",
+            "content": {
+              "application/vnd.elife.article-list+json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ArticleList"
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Bad request",
+            "content": {
+              "application/problem+json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Not found",
+            "content": {
+              "application/problem+json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/articles/{id}": {
+      "get": {
+        "summary": "Get article by ID",
+        "description": "Retrieve a specific scientific article by its unique identifier",
+        "operationId": "getArticleById",
+        "tags": [
+          "Articles"
+        ],
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "description": "Unique identifier of the article",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful response with article details",
+            "content": {
+              "application/vnd.elife.article-poa+json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Article"
+                }
+              },
+              "application/vnd.elife.article-vor+json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Article"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Article not found",
+            "content": {
+              "application/problem+json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/search": {
+      "get": {
+        "summary": "Search content",
+        "description": "Search for articles and other content across the eLife platform",
+        "operationId": "searchContent",
+        "tags": [
+          "Search"
+        ],
+        "parameters": [
+          {
+            "name": "for",
+            "in": "query",
+            "description": "Search query string",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "page",
+            "in": "query",
+            "description": "Page number for pagination",
+            "required": false,
+            "schema": {
+              "type": "integer",
+              "minimum": 1,
+              "default": 1
+            }
+          },
+          {
+            "name": "per-page",
+            "in": "query",
+            "description": "Number of results per page",
+            "required": false,
+            "schema": {
+              "type": "integer",
+              "minimum": 1,
+              "maximum": 100,
+              "default": 10
+            }
+          },
+          {
+            "name": "sort",
+            "in": "query",
+            "description": "Sort order of search results",
+            "required": false,
+            "schema": {
+              "type": "string",
+              "enum": [
+                "relevance",
+                "date"
+              ],
+              "default": "relevance"
+            }
+          },
+          {
+            "name": "order",
+            "in": "query",
+            "description": "Sort direction",
+            "required": false,
+            "schema": {
+              "type": "string",
+              "enum": [
+                "asc",
+                "desc"
+              ],
+              "default": "desc"
+            }
+          },
+          {
+            "name": "type",
+            "in": "query",
+            "description": "Filter by content type",
+            "required": false,
+            "schema": {
+              "type": "array",
+              "items": {
+                "type": "string",
+                "enum": [
+                  "research-article",
+                  "review-article",
+                  "editorial",
+                  "insight",
+                  "research-advance",
+                  "short-report",
+                  "tools-resources",
+                  "correction",
+                  "retraction"
+                ]
+              }
+            }
+          },
+          {
+            "name": "subject",
+            "in": "query",
+            "description": "Filter by subject area",
+            "required": false,
+            "schema": {
+              "type": "array",
+              "items": {
+                "type": "string"
+              }
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful search results",
+            "content": {
+              "application/vnd.elife.search+json": {
+                "schema": {
+                  "$ref": "#/components/schemas/SearchResults"
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Bad request",
+            "content": {
+              "application/problem+json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/subjects": {
+      "get": {
+        "summary": "List subjects",
+        "description": "Retrieve a list of subject areas used to categorize articles",
+        "operationId": "listSubjects",
+        "tags": [
+          "Subjects"
+        ],
+        "parameters": [
+          {
+            "name": "page",
+            "in": "query",
+            "description": "Page number for pagination",
+            "required": false,
+            "schema": {
+              "type": "integer",
+              "minimum": 1,
+              "default": 1
+            }
+          },
+          {
+            "name": "per-page",
+            "in": "query",
+            "description": "Number of results per page",
+            "required": false,
+            "schema": {
+              "type": "integer",
+              "minimum": 1,
+              "maximum": 100,
+              "default": 20
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful response with list of subjects",
+            "content": {
+              "application/vnd.elife.subject-list+json": {
+                "schema": {
+                  "$ref": "#/components/schemas/SubjectList"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/subjects/{id}": {
+      "get": {
+        "summary": "Get subject by ID",
+        "description": "Retrieve a specific subject area by its unique identifier",
+        "operationId": "getSubjectById",
+        "tags": [
+          "Subjects"
+        ],
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "description": "Unique identifier of the subject",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful response with subject details",
+            "content": {
+              "application/vnd.elife.subject+json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Subject"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Subject not found",
+            "content": {
+              "application/problem+json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/annotations": {
+      "get": {
+        "summary": "List annotations",
+        "description": "Retrieve a list of annotations for articles",
+        "operationId": "listAnnotations",
+        "tags": [
+          "Annotations"
+        ],
+        "parameters": [
+          {
+            "name": "by",
+            "in": "query",
+            "description": "Filter by annotation author",
+            "required": false,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "page",
+            "in": "query",
+            "description": "Page number for pagination",
+            "required": false,
+            "schema": {
+              "type": "integer",
+              "minimum": 1,
+              "default": 1
+            }
+          },
+          {
+            "name": "per-page",
+            "in": "query",
+            "description": "Number of results per page",
+            "required": false,
+            "schema": {
+              "type": "integer",
+              "minimum": 1,
+              "maximum": 100,
+              "default": 20
+            }
+          },
+          {
+            "name": "order",
+            "in": "query",
+            "description": "Sort order of results",
+            "required": false,
+            "schema": {
+              "type": "string",
+              "enum": [
+                "asc",
+                "desc"
+              ],
+              "default": "desc"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful response with list of annotations",
+            "content": {
+              "application/vnd.elife.annotation-list+json": {
+                "schema": {
+                  "$ref": "#/components/schemas/AnnotationList"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/people": {
+      "get": {
+        "summary": "List people",
+        "description": "Retrieve a list of people associated with eLife (editors, reviewers, etc.)",
+        "operationId": "listPeople",
+        "tags": [
+          "People"
+        ],
+        "parameters": [
+          {
+            "name": "type",
+            "in": "query",
+            "description": "Filter by person type",
+            "required": false,
+            "schema": {
+              "type": "string",
+              "enum": [
+                "senior-editor",
+                "reviewing-editor",
+                "director",
+                "leadership"
+              ]
+            }
+          },
+          {
+            "name": "page",
+            "in": "query",
+            "description": "Page number for pagination",
+            "required": false,
+            "schema": {
+              "type": "integer",
+              "minimum": 1,
+              "default": 1
+            }
+          },
+          {
+            "name": "per-page",
+            "in": "query",
+            "description": "Number of results per page",
+            "required": false,
+            "schema": {
+              "type": "integer",
+              "minimum": 1,
+              "maximum": 100,
+              "default": 20
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful response with list of people",
+            "content": {
+              "application/vnd.elife.person-list+json": {
+                "schema": {
+                  "$ref": "#/components/schemas/PersonList"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/people/{id}": {
+      "get": {
+        "summary": "Get person by ID",
+        "description": "Retrieve a specific person by their unique identifier",
+        "operationId": "getPersonById",
+        "tags": [
+          "People"
+        ],
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "description": "Unique identifier of the person",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful response with person details",
+            "content": {
+              "application/vnd.elife.person+json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Person"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Person not found",
+            "content": {
+              "application/problem+json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/collections": {
+      "get": {
+        "summary": "List collections",
+        "description": "Retrieve a list of article collections",
+        "operationId": "listCollections",
+        "tags": [
+          "Collections"
+        ],
+        "parameters": [
+          {
+            "name": "page",
+            "in": "query",
+            "description": "Page number for pagination",
+            "required": false,
+            "schema": {
+              "type": "integer",
+              "minimum": 1,
+              "default": 1
+            }
+          },
+          {
+            "name": "per-page",
+            "in": "query",
+            "description": "Number of results per page",
+            "required": false,
+            "schema": {
+              "type": "integer",
+              "minimum": 1,
+              "maximum": 100,
+              "default": 20
+            }
+          },
+          {
+            "name": "order",
+            "in": "query",
+            "description": "Sort order of results",
+            "required": false,
+            "schema": {
+              "type": "string",
+              "enum": [
+                "asc",
+                "desc"
+              ],
+              "default": "desc"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful response with list of collections",
+            "content": {
+              "application/vnd.elife.collection-list+json": {
+                "schema": {
+                  "$ref": "#/components/schemas/CollectionList"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/collections/{id}": {
+      "get": {
+        "summary": "Get collection by ID",
+        "description": "Retrieve a specific collection by its unique identifier",
+        "operationId": "getCollectionById",
+        "tags": [
+          "Collections"
+        ],
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "description": "Unique identifier of the collection",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful response with collection details",
+            "content": {
+              "application/vnd.elife.collection+json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Collection"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Collection not found",
+            "content": {
+              "application/problem+json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  },
+  "components": {
+    "schemas": {
+      "ArticleList": {
+        "type": "object",
+        "properties": {
+          "total": {
+            "type": "integer",
+            "description": "Total number of articles"
+          },
+          "items": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/ArticleSummary"
+            }
+          }
+        }
+      },
+      "ArticleSummary": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "string",
+            "description": "Unique article identifier"
+          },
+          "doi": {
+            "type": "string",
+            "description": "Digital Object Identifier"
+          },
+          "title": {
+            "type": "string",
+            "description": "Article title"
+          },
+          "published": {
+            "type": "string",
+            "format": "date-time",
+            "description": "Publication date"
+          },
+          "type": {
+            "type": "string",
+            "description": "Article type"
+          },
+          "status": {
+            "type": "string",
+            "enum": [
+              "poa",
+              "vor"
+            ],
+            "description": "Publication status (POA: publish on accept, VOR: version of record)"
+          },
+          "volume": {
+            "type": "integer",
+            "description": "Volume number"
+          },
+          "elocationId": {
+            "type": "string",
+            "description": "Electronic location identifier"
+          }
+        }
+      },
+      "Article": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "string",
+            "description": "Unique article identifier"
+          },
+          "doi": {
+            "type": "string",
+            "description": "Digital Object Identifier"
+          },
+          "title": {
+            "type": "string",
+            "description": "Article title"
+          },
+          "abstract": {
+            "type": "object",
+            "description": "Article abstract"
+          },
+          "published": {
+            "type": "string",
+            "format": "date-time",
+            "description": "Publication date"
+          },
+          "versionDate": {
+            "type": "string",
+            "format": "date-time",
+            "description": "Version date"
+          },
+          "statusDate": {
+            "type": "string",
+            "format": "date-time",
+            "description": "Status change date"
+          },
+          "volume": {
+            "type": "integer",
+            "description": "Volume number"
+          },
+          "elocationId": {
+            "type": "string",
+            "description": "Electronic location identifier"
+          },
+          "pdf": {
+            "type": "string",
+            "format": "uri",
+            "description": "URL to PDF version"
+          },
+          "subjects": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/Subject"
+            }
+          },
+          "authors": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/Author"
+            }
+          },
+          "copyright": {
+            "type": "object",
+            "description": "Copyright information"
+          },
+          "type": {
+            "type": "string",
+            "description": "Article type"
+          },
+          "status": {
+            "type": "string",
+            "enum": [
+              "poa",
+              "vor"
+            ],
+            "description": "Publication status"
+          }
+        }
+      },
+      "Author": {
+        "type": "object",
+        "properties": {
+          "type": {
+            "type": "string",
+            "description": "Author type"
+          },
+          "name": {
+            "type": "object",
+            "properties": {
+              "preferred": {
+                "type": "string"
+              },
+              "index": {
+                "type": "string"
+              }
+            }
+          },
+          "orcid": {
+            "type": "string",
+            "description": "ORCID identifier"
+          },
+          "affiliations": {
+            "type": "array",
+            "items": {
+              "type": "object"
+            }
+          }
+        }
+      },
+      "SearchResults": {
+        "type": "object",
+        "properties": {
+          "total": {
+            "type": "integer",
+            "description": "Total number of search results"
+          },
+          "items": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/SearchResult"
+            }
+          },
+          "subjects": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/SubjectFacet"
+            }
+          },
+          "types": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/TypeFacet"
+            }
+          }
+        }
+      },
+      "SearchResult": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "string"
+          },
+          "doi": {
+            "type": "string"
+          },
+          "title": {
+            "type": "string"
+          },
+          "type": {
+            "type": "string"
+          },
+          "published": {
+            "type": "string",
+            "format": "date-time"
+          }
+        }
+      },
+      "SubjectFacet": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "string"
+          },
+          "name": {
+            "type": "string"
+          },
+          "results": {
+            "type": "integer"
+          }
+        }
+      },
+      "TypeFacet": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "string"
+          },
+          "name": {
+            "type": "string"
+          },
+          "results": {
+            "type": "integer"
+          }
+        }
+      },
+      "SubjectList": {
+        "type": "object",
+        "properties": {
+          "total": {
+            "type": "integer"
+          },
+          "items": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/Subject"
+            }
+          }
+        }
+      },
+      "Subject": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "string",
+            "description": "Unique subject identifier"
+          },
+          "name": {
+            "type": "string",
+            "description": "Subject name"
+          },
+          "impact-statement": {
+            "type": "string",
+            "description": "Subject description"
+          }
+        }
+      },
+      "AnnotationList": {
+        "type": "object",
+        "properties": {
+          "total": {
+            "type": "integer"
+          },
+          "items": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/Annotation"
+            }
+          }
+        }
+      },
+      "Annotation": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "string"
+          },
+          "title": {
+            "type": "string"
+          },
+          "content": {
+            "type": "array",
+            "items": {
+              "type": "object"
+            }
+          },
+          "created": {
+            "type": "string",
+            "format": "date-time"
+          },
+          "updated": {
+            "type": "string",
+            "format": "date-time"
+          }
+        }
+      },
+      "PersonList": {
+        "type": "object",
+        "properties": {
+          "total": {
+            "type": "integer"
+          },
+          "items": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/Person"
+            }
+          }
+        }
+      },
+      "Person": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "string"
+          },
+          "type": {
+            "type": "object",
+            "properties": {
+              "id": {
+                "type": "string"
+              },
+              "label": {
+                "type": "string"
+              }
+            }
+          },
+          "name": {
+            "type": "object",
+            "properties": {
+              "preferred": {
+                "type": "string"
+              },
+              "index": {
+                "type": "string"
+              }
+            }
+          },
+          "orcid": {
+            "type": "string"
+          },
+          "profile": {
+            "type": "array",
+            "items": {
+              "type": "object"
+            }
+          },
+          "research": {
+            "type": "object"
+          }
+        }
+      },
+      "CollectionList": {
+        "type": "object",
+        "properties": {
+          "total": {
+            "type": "integer"
+          },
+          "items": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/CollectionSummary"
+            }
+          }
+        }
+      },
+      "CollectionSummary": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "string"
+          },
+          "title": {
+            "type": "string"
+          },
+          "published": {
+            "type": "string",
+            "format": "date-time"
+          },
+          "updated": {
+            "type": "string",
+            "format": "date-time"
+          }
+        }
+      },
+      "Collection": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "string"
+          },
+          "title": {
+            "type": "string"
+          },
+          "impactStatement": {
+            "type": "string"
+          },
+          "published": {
+            "type": "string",
+            "format": "date-time"
+          },
+          "updated": {
+            "type": "string",
+            "format": "date-time"
+          },
+          "content": {
+            "type": "array",
+            "items": {
+              "type": "object"
+            }
+          },
+          "curators": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/Person"
+            }
+          }
+        }
+      },
+      "Error": {
+        "type": "object",
+        "properties": {
+          "title": {
+            "type": "string",
+            "description": "Error title"
+          },
+          "detail": {
+            "type": "string",
+            "description": "Detailed error message"
+          },
+          "status": {
+            "type": "integer",
+            "description": "HTTP status code"
+          }
+        }
+      }
+    }
+  },
+  "tags": [
+    {
+      "name": "Articles",
+      "description": "Operations related to scientific articles"
+    },
+    {
+      "name": "Search",
+      "description": "Search operations across content"
+    },
+    {
+      "name": "Subjects",
+      "description": "Subject area operations"
+    },
+    {
+      "name": "Annotations",
+      "description": "Article annotation operations"
+    },
+    {
+      "name": "People",
+      "description": "Operations related to people (editors, reviewers, etc.)"
+    },
+    {
+      "name": "Collections",
+      "description": "Operations related to article collections"
+    }
+  ]
+}
