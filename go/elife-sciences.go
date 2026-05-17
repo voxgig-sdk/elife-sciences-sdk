@@ -1,10 +1,10 @@
 package voxgigelifesciencessdk
 
 import (
-	"github.com/voxgig-sdk/elife-sciences-sdk/core"
-	"github.com/voxgig-sdk/elife-sciences-sdk/entity"
-	"github.com/voxgig-sdk/elife-sciences-sdk/feature"
-	_ "github.com/voxgig-sdk/elife-sciences-sdk/utility"
+	"github.com/voxgig-sdk/elife-sciences-sdk/go/core"
+	"github.com/voxgig-sdk/elife-sciences-sdk/go/entity"
+	"github.com/voxgig-sdk/elife-sciences-sdk/go/feature"
+	_ "github.com/voxgig-sdk/elife-sciences-sdk/go/utility"
 )
 
 // Type aliases preserve external API.

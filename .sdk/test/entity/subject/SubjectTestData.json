@@ -1,9 +1,15 @@
 {
   "existing": {
     "subject": {
-      "SUBJECT00": {},
-      "SUBJECT01": {},
-      "SUBJECT02": {}
+      "SUBJECT00": {
+        "id": "SUBJECT00"
+      },
+      "SUBJECT01": {
+        "id": "SUBJECT01"
+      },
+      "SUBJECT02": {
+        "id": "SUBJECT02"
+      }
     }
   },
   "new": {

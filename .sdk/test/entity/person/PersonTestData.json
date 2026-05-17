@@ -1,9 +1,15 @@
 {
   "existing": {
     "person": {
-      "PERSON00": {},
-      "PERSON01": {},
-      "PERSON02": {}
+      "PERSON00": {
+        "id": "PERSON00"
+      },
+      "PERSON01": {
+        "id": "PERSON01"
+      },
+      "PERSON02": {
+        "id": "PERSON02"
+      }
     }
   },
   "new": {

@@ -6,8 +6,8 @@ import (
 	"strings"
 	"testing"
 
-	sdk "github.com/voxgig-sdk/elife-sciences-sdk"
-	"github.com/voxgig-sdk/elife-sciences-sdk/core"
+	sdk "github.com/voxgig-sdk/elife-sciences-sdk/go"
+	"github.com/voxgig-sdk/elife-sciences-sdk/go/core"
 )
 
 func TestArticleDirect(t *testing.T) {

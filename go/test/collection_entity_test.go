@@ -9,10 +9,10 @@ import (
 	"testing"
 	"time"
 
-	sdk "github.com/voxgig-sdk/elife-sciences-sdk"
-	"github.com/voxgig-sdk/elife-sciences-sdk/core"
+	sdk "github.com/voxgig-sdk/elife-sciences-sdk/go"
+	"github.com/voxgig-sdk/elife-sciences-sdk/go/core"
 
-	vs "github.com/voxgig/struct"
+	vs "github.com/voxgig-sdk/elife-sciences-sdk/go/utility/struct"
 )
 
 func TestCollectionEntity(t *testing.T) {

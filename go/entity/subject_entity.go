@@ -1,9 +1,9 @@
 package entity
 
 import (
-	"github.com/voxgig-sdk/elife-sciences-sdk/core"
+	"github.com/voxgig-sdk/elife-sciences-sdk/go/core"
 
-	vs "github.com/voxgig/struct"
+	vs "github.com/voxgig-sdk/elife-sciences-sdk/go/utility/struct"
 )
 
 type SubjectEntity struct {

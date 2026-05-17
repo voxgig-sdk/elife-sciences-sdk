@@ -1,9 +1,15 @@
 {
   "existing": {
     "annotation": {
-      "ANNOTATION00": {},
-      "ANNOTATION01": {},
-      "ANNOTATION02": {}
+      "ANNOTATION00": {
+        "id": "ANNOTATION00"
+      },
+      "ANNOTATION01": {
+        "id": "ANNOTATION01"
+      },
+      "ANNOTATION02": {
+        "id": "ANNOTATION02"
+      }
     }
   },
   "new": {

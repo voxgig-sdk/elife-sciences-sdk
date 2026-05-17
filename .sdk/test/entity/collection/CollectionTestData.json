@@ -1,9 +1,15 @@
 {
   "existing": {
     "collection": {
-      "COLLECTION00": {},
-      "COLLECTION01": {},
-      "COLLECTION02": {}
+      "COLLECTION00": {
+        "id": "COLLECTION00"
+      },
+      "COLLECTION01": {
+        "id": "COLLECTION01"
+      },
+      "COLLECTION02": {
+        "id": "COLLECTION02"
+      }
     }
   },
   "new": {

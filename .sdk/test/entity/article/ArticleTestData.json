@@ -1,9 +1,15 @@
 {
   "existing": {
     "article": {
-      "ARTICLE00": {},
-      "ARTICLE01": {},
-      "ARTICLE02": {}
+      "ARTICLE00": {
+        "id": "ARTICLE00"
+      },
+      "ARTICLE01": {
+        "id": "ARTICLE01"
+      },
+      "ARTICLE02": {
+        "id": "ARTICLE02"
+      }
     }
   },
   "new": {
