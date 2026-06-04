@@ -21,7 +21,22 @@
           }
         ],
         "title": "eLife Sciences API",
-        "version": "1.0.0"
+        "version": "1.0.0",
+        "tagline": "Open access to eLife's peer-reviewed research articles, collections, subjects, and author profiles",
+        "homepage": "https://elifesciences.org",
+        "docs_url": "https://api.elifesciences.org/documentation/",
+        "license_short": "Content licensed under Creative Commons Attribution 4.0 (CC BY 4.0)",
+        "license_md": "- Article content and metadata are published under [Creative Commons Attribution 4.0 International (CC BY 4.0)](https://creativecommons.org/licenses/by/4.0/).\n- You may reuse, redistribute, and adapt the material as long as appropriate credit is given to eLife and the original authors.\n- Some third-party figures or supplementary materials may carry their own licence terms — check individual article metadata.\n- The API itself is provided without a separate terms-of-use statement; use is expected to follow scholarly norms.",
+        "about_md": "The [eLife Sciences API](https://api.elifesciences.org) is the public HTTP interface to the open-access journal [eLife](https://elifesciences.org), a non-profit publisher of peer-reviewed research across the life sciences and biomedicine. The same API powers the eLife website and is used by researchers, indexers, and third-party tools to retrieve article content and metadata.\n\nWhat you get from the API:\n\n- Peer-reviewed research articles, including full text, figures, abstracts, authors, and editorial history.\n- Curated collections and special issues grouped by topic or editor.\n- Subject taxonomy describing research areas covered by the journal.\n- Author and editor profiles (people).\n- Cross-resource search across articles, collections, people, and subjects.\n- Annotations attached to article content.\n\nResponses use versioned vendor media types (e.g. `application/vnd.elife.article-list+json`) so clients can request the schema version they support. No authentication is required for public reads, and CORS is enabled for browser-based clients.",
+        "entity_desc": {
+          "annotation": "Reader and editorial annotations attached to article content.",
+          "article": "Peer-reviewed research articles, with metadata, abstracts, figures, and full text, served from `/articles`.",
+          "collection": "Curated groups of articles assembled around a topic, theme, or guest editor, served from `/collections`.",
+          "person": "Profiles of eLife authors, reviewers, and editors, served from `/people`.",
+          "search": "Cross-resource search over articles, collections, people, and subjects, served from `/search`.",
+          "subject": "The eLife subject taxonomy (research areas such as cell biology, neuroscience, immunology), served from `/subjects`."
+        },
+        "auth": false
       },
       "config": {
         "auth": {
@@ -29,7 +44,15 @@
         },
         "headers": {
           "content-type": "application/json"
-        }
+        },
+        "docs_order": [
+          "ts",
+          "py",
+          "php",
+          "go",
+          "rb",
+          "lua"
+        ]
       },
       "entity": {
         "annotation": {

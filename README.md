@@ -1,9 +1,99 @@
 # ElifeSciences SDK
 
+Open access to eLife's peer-reviewed research articles, collections, subjects, and author profiles
 
+> TypeScript, Python, PHP, Golang, Ruby, Lua SDKs, a CLI, an interactive REPL, and an MCP server for AI agents — all generated from one OpenAPI spec by [@voxgig/sdkgen](https://github.com/voxgig/sdkgen).
 
-Available for [Golang](go/) and [Go CLI](go-cli/) and [Go MCP server](go-mcp/) and [Lua](lua/) and [PHP](php/) and [Python](py/) and [Ruby](rb/) and [TypeScript](ts/).
+## About eLife Sciences API
 
+The [eLife Sciences API](https://api.elifesciences.org) is the public HTTP interface to the open-access journal [eLife](https://elifesciences.org), a non-profit publisher of peer-reviewed research across the life sciences and biomedicine. The same API powers the eLife website and is used by researchers, indexers, and third-party tools to retrieve article content and metadata.
+
+What you get from the API:
+
+- Peer-reviewed research articles, including full text, figures, abstracts, authors, and editorial history.
+- Curated collections and special issues grouped by topic or editor.
+- Subject taxonomy describing research areas covered by the journal.
+- Author and editor profiles (people).
+- Cross-resource search across articles, collections, people, and subjects.
+- Annotations attached to article content.
+
+Responses use versioned vendor media types (e.g. `application/vnd.elife.article-list+json`) so clients can request the schema version they support. No authentication is required for public reads, and CORS is enabled for browser-based clients.
+
+## Try it
+
+**TypeScript**
+```bash
+npm install elife-sciences
+```
+
+**Python**
+```bash
+pip install elife-sciences-sdk
+```
+
+**PHP**
+```bash
+composer require voxgig/elife-sciences-sdk
+```
+
+**Golang**
+```bash
+go get github.com/voxgig-sdk/elife-sciences-sdk/go
+```
+
+**Ruby**
+```bash
+gem install elife-sciences-sdk
+```
+
+**Lua**
+```bash
+luarocks install elife-sciences-sdk
+```
+
+## 30-second quickstart
+
+### TypeScript
+
+```ts
+import { ElifeSciencesSDK } from 'elife-sciences'
+
+const client = new ElifeSciencesSDK({})
+
+```
+
+See the [TypeScript README](ts/README.md) for the
+full guide, or scroll down for the same example in other languages.
+
+## What's in the box
+
+| Surface | Use it for | Path |
+| --- | --- | --- |
+| **SDK** (TypeScript, Python, PHP, Golang, Ruby, Lua) | App integration | `ts/` `py/` `php/` `go/` `rb/` `lua/` |
+| **CLI** | Scripts, CI, ops, one-off API calls | `go-cli/` |
+| **MCP server** | AI agents (Claude, Cursor, Cline) | `go-mcp/` |
+
+## Use it from an AI agent (MCP)
+
+The generated MCP server exposes every operation in this SDK as an
+[MCP](https://modelcontextprotocol.io) tool that Claude, Cursor or Cline
+can call directly. Build and register it:
+
+```bash
+cd go-mcp && go build -o elife-sciences-mcp .
+```
+
+Then add it to your agent's MCP config (Claude Desktop, Cursor, etc.):
+
+```json
+{
+  "mcpServers": {
+    "elife-sciences": {
+      "command": "/abs/path/to/elife-sciences-mcp"
+    }
+  }
+}
+```
 
 ## Entities
 
@@ -11,80 +101,29 @@ The API exposes 6 entities:
 
 | Entity | Description | API path |
 | --- | --- | --- |
-| **Annotation** |  | `/annotations` |
-| **Article** |  | `/articles` |
-| **Collection** |  | `/collections` |
-| **Person** |  | `/people` |
-| **Search** |  | `/search` |
-| **Subject** |  | `/subjects` |
+| **Annotation** | Reader and editorial annotations attached to article content. | `/annotations` |
+| **Article** | Peer-reviewed research articles, with metadata, abstracts, figures, and full text, served from `/articles`. | `/articles` |
+| **Collection** | Curated groups of articles assembled around a topic, theme, or guest editor, served from `/collections`. | `/collections` |
+| **Person** | Profiles of eLife authors, reviewers, and editors, served from `/people`. | `/people` |
+| **Search** | Cross-resource search over articles, collections, people, and subjects, served from `/search`. | `/search` |
+| **Subject** | The eLife subject taxonomy (research areas such as cell biology, neuroscience, immunology), served from `/subjects`. | `/subjects` |
 
-Each entity supports the following operations where available: **load**, **list**, **create**,
-**update**, and **remove**.
+Each entity supports the following operations where available: **load**,
+**list**, **create**, **update**, and **remove**.
 
+## Quickstart in other languages
 
-## Architecture
+### Python
 
-### Entity-operation model
+```python
+from elifesciences_sdk import ElifeSciencesSDK
 
-Every SDK call follows the same pipeline:
-
-1. **Point** — resolve the API endpoint from the operation definition.
-2. **Spec** — build the HTTP specification (URL, method, headers, body).
-3. **Request** — send the HTTP request.
-4. **Response** — receive and parse the response.
-5. **Result** — extract the result data for the caller.
-
-At each stage a feature hook fires (e.g. `PrePoint`, `PreSpec`,
-`PreRequest`), allowing features to inspect or modify the pipeline.
-
-### Features
-
-Features are hook-based middleware that extend SDK behaviour.
-
-| Feature | Purpose |
-| --- | --- |
-| **TestFeature** | In-memory mock transport for testing without a live server |
-
-You can add custom features by passing them in the `extend` option at
-construction time.
-
-### Direct and Prepare
-
-For endpoints not covered by the entity model, use the low-level methods:
-
-- **`direct(fetchargs)`** — build and send an HTTP request in one step.
-- **`prepare(fetchargs)`** — build the request without sending it.
-
-Both accept a map with `path`, `method`, `params`, `query`, `headers`,
-and `body`.
+client = ElifeSciencesSDK({})
 
 
-## Quick start
-
-### Golang
-
-```go
-import sdk "github.com/voxgig-sdk/elife-sciences-sdk/go"
-
-client := sdk.NewElifeSciencesSDK(map[string]any{
-    "apikey": os.Getenv("ELIFE-SCIENCES_APIKEY"),
-})
-
-```
-
-### Lua
-
-```lua
-local sdk = require("elife-sciences_sdk")
-
-local client = sdk.new({
-  apikey = os.getenv("ELIFE-SCIENCES_APIKEY"),
-})
-
-
--- Load a specific annotation
-local annotation, err = client:Annotation(nil):load(
-  { id = "example_id" }, nil
+# Load a specific annotation
+annotation, err = client.Annotation(None).load(
+    {"id": "example_id"}, None
 )
 ```
 
@@ -94,9 +133,7 @@ local annotation, err = client:Annotation(nil):load(
 <?php
 require_once 'elifesciences_sdk.php';
 
-$client = new ElifeSciencesSDK([
-    "apikey" => getenv("ELIFE-SCIENCES_APIKEY"),
-]);
+$client = new ElifeSciencesSDK([]);
 
 
 // Load a specific annotation
@@ -105,21 +142,13 @@ $client = new ElifeSciencesSDK([
 );
 ```
 
-### Python
+### Golang
 
-```python
-import os
-from elifesciences_sdk import ElifeSciencesSDK
+```go
+import sdk "github.com/voxgig-sdk/elife-sciences-sdk/go"
 
-client = ElifeSciencesSDK({
-    "apikey": os.environ.get("ELIFE-SCIENCES_APIKEY"),
-})
+client := sdk.NewElifeSciencesSDK(map[string]any{})
 
-
-# Load a specific annotation
-annotation, err = client.Annotation(None).load(
-    {"id": "example_id"}, None
-)
 ```
 
 ### Ruby
@@ -127,9 +156,7 @@ annotation, err = client.Annotation(None).load(
 ```ruby
 require_relative "ElifeSciences_sdk"
 
-client = ElifeSciencesSDK.new({
-  "apikey" => ENV["ELIFE-SCIENCES_APIKEY"],
-})
+client = ElifeSciencesSDK.new({})
 
 
 # Load a specific annotation
@@ -138,38 +165,39 @@ annotation, err = client.Annotation(nil).load(
 )
 ```
 
-### TypeScript
-
-```ts
-import { ElifeSciencesSDK } from 'elife-sciences'
-
-const client = new ElifeSciencesSDK({
-  apikey: process.env.ELIFE-SCIENCES_APIKEY,
-})
-
-```
-
-
-## Testing
-
-Both SDKs provide a test mode that replaces the HTTP transport with an
-in-memory mock, so tests run without a network connection.
-
-### Golang
-
-```go
-client := sdk.TestSDK(nil, nil)
-result, err := client.Annotation(nil).Load(
-    map[string]any{"id": "test01"}, nil,
-)
-```
-
 ### Lua
 
 ```lua
-local client = sdk.test(nil, nil)
-local result, err = client:Annotation(nil):load(
-  { id = "test01" }, nil
+local sdk = require("elife-sciences_sdk")
+
+local client = sdk.new({})
+
+
+-- Load a specific annotation
+local annotation, err = client:Annotation(nil):load(
+  { id = "example_id" }, nil
+)
+```
+
+## Unit testing in offline mode
+
+Every SDK ships a test mode that swaps the HTTP transport for an
+in-memory mock, so unit tests run offline.
+
+### TypeScript
+
+```ts
+const client = ElifeSciencesSDK.test()
+const result = await client.Annotation().load({ id: 'test01' })
+// result.ok === true, result.data contains mock data
+```
+
+### Python
+
+```python
+client = ElifeSciencesSDK.test(None, None)
+result, err = client.Annotation(None).load(
+    {"id": "test01"}, None
 )
 ```
 
@@ -182,12 +210,12 @@ $client = ElifeSciencesSDK::test(null, null);
 );
 ```
 
-### Python
+### Golang
 
-```python
-client = ElifeSciencesSDK.test(None, None)
-result, err = client.Annotation(None).load(
-    {"id": "test01"}, None
+```go
+client := sdk.TestSDK(nil, nil)
+result, err := client.Annotation(nil).Load(
+    map[string]any{"id": "test01"}, nil,
 )
 ```
 
@@ -200,14 +228,46 @@ result, err = client.Annotation(nil).load(
 )
 ```
 
-### TypeScript
+### Lua
 
-```ts
-const client = ElifeSciencesSDK.test()
-const result = await client.Annotation().load({ id: 'test01' })
-// result.ok === true, result.data contains mock data
+```lua
+local client = sdk.test(nil, nil)
+local result, err = client:Annotation(nil):load(
+  { id = "test01" }, nil
+)
 ```
 
+## How it works
+
+Every SDK call runs the same five-stage pipeline:
+
+1. **Point** — resolve the API endpoint from the operation definition.
+2. **Spec** — build the HTTP specification (URL, method, headers, body).
+3. **Request** — send the HTTP request.
+4. **Response** — receive and parse the response.
+5. **Result** — extract the result data for the caller.
+
+A feature hook fires at each stage (e.g. `PrePoint`, `PreSpec`,
+`PreRequest`), so features can inspect or modify the pipeline without
+forking the SDK.
+
+### Features
+
+| Feature | Purpose |
+| --- | --- |
+| **TestFeature** | In-memory mock transport for testing without a live server |
+
+Pass custom features via the `extend` option at construction time.
+
+### Direct and Prepare
+
+For endpoints the entity model doesn't cover, use the low-level methods:
+
+- **`direct(fetchargs)`** — build and send an HTTP request in one step.
+- **`prepare(fetchargs)`** — build the request without sending it.
+
+Both accept a map with `path`, `method`, `params`, `query`,
+`headers`, and `body`. See the [How-to guides](#how-to-guides) below.
 
 ## How-to guides
 
@@ -215,21 +275,22 @@ const result = await client.Annotation().load({ id: 'test01' })
 
 When the entity interface does not cover an endpoint, use `direct`:
 
-**Go:**
-```go
-result, err := client.Direct(map[string]any{
-    "path":   "/api/resource/{id}",
-    "method": "GET",
-    "params": map[string]any{"id": "example"},
+**TypeScript:**
+```ts
+const result = await client.direct({
+  path: '/api/resource/{id}',
+  method: 'GET',
+  params: { id: 'example' },
 })
+console.log(result.data)
 ```
 
-**Lua:**
-```lua
-local result, err = client:direct({
-  path = "/api/resource/{id}",
-  method = "GET",
-  params = { id = "example" },
+**Python:**
+```python
+result, err = client.direct({
+    "path": "/api/resource/{id}",
+    "method": "GET",
+    "params": {"id": "example"},
 })
 ```
 
@@ -242,12 +303,12 @@ local result, err = client:direct({
 ]);
 ```
 
-**Python:**
-```python
-result, err = client.direct({
-    "path": "/api/resource/{id}",
+**Go:**
+```go
+result, err := client.Direct(map[string]any{
+    "path":   "/api/resource/{id}",
     "method": "GET",
-    "params": {"id": "example"},
+    "params": map[string]any{"id": "example"},
 })
 ```
 
@@ -260,25 +321,34 @@ result, err = client.direct({
 })
 ```
 
-**TypeScript:**
-```ts
-const result = await client.direct({
-  path: '/api/resource/{id}',
-  method: 'GET',
-  params: { id: 'example' },
+**Lua:**
+```lua
+local result, err = client:direct({
+  path = "/api/resource/{id}",
+  method = "GET",
+  params = { id = "example" },
 })
-console.log(result.data)
 ```
 
+## Per-language documentation
 
-## Language-specific documentation
+- [TypeScript](ts/README.md)
+- [Python](py/README.md)
+- [PHP](php/README.md)
+- [Golang](go/README.md)
+- [Ruby](rb/README.md)
+- [Lua](lua/README.md)
 
-- [Golang SDK](go/README.md)
-- [Go CLI SDK](go-cli/README.md)
-- [Go MCP server SDK](go-mcp/README.md)
-- [Lua SDK](lua/README.md)
-- [PHP SDK](php/README.md)
-- [Python SDK](py/README.md)
-- [Ruby SDK](rb/README.md)
-- [TypeScript SDK](ts/README.md)
+## Using the eLife Sciences API
 
+- Upstream: [https://elifesciences.org](https://elifesciences.org)
+- API docs: [https://api.elifesciences.org/documentation/](https://api.elifesciences.org/documentation/)
+
+- Article content and metadata are published under [Creative Commons Attribution 4.0 International (CC BY 4.0)](https://creativecommons.org/licenses/by/4.0/).
+- You may reuse, redistribute, and adapt the material as long as appropriate credit is given to eLife and the original authors.
+- Some third-party figures or supplementary materials may carry their own licence terms — check individual article metadata.
+- The API itself is provided without a separate terms-of-use statement; use is expected to follow scholarly norms.
+
+---
+
+Generated from the eLife Sciences API OpenAPI spec by [@voxgig/sdkgen](https://github.com/voxgig/sdkgen).

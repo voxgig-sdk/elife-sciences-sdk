@@ -91,7 +91,6 @@ def _collection_basic_setup(extra):
         "ELIFESCIENCES_TEST_COLLECTION_ENTID": idmap,
         "ELIFESCIENCES_TEST_LIVE": "FALSE",
         "ELIFESCIENCES_TEST_EXPLAIN": "FALSE",
-        "ELIFESCIENCES_APIKEY": "NONE",
     })
 
     idmap_resolved = helpers.to_map(
@@ -102,7 +101,6 @@ def _collection_basic_setup(extra):
     if env.get("ELIFESCIENCES_TEST_LIVE") == "TRUE":
         merged_opts = vs.merge([
             {
-                "apikey": env.get("ELIFESCIENCES_APIKEY"),
             },
             extra or {},
         ])

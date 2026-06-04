@@ -20,9 +20,7 @@ loading a specific record.
 <?php
 require_once 'elifesciences_sdk.php';
 
-$client = new ElifeSciencesSDK([
-    "apikey" => getenv("ELIFE-SCIENCES_APIKEY"),
-]);
+$client = new ElifeSciencesSDK([]);
 ```
 
 ### 3. Load a annotation
@@ -113,7 +111,6 @@ Create a `.env.local` file at the project root:
 
 ```
 ELIFE-SCIENCES_TEST_LIVE=TRUE
-ELIFE-SCIENCES_APIKEY=<your-key>
 ```
 
 Then run:
@@ -136,7 +133,6 @@ Creates a new SDK client.
 
 | Option | Type | Description |
 | --- | --- | --- |
-| `apikey` | `string` | API key for authentication. |
 | `base` | `string` | Base URL of the API server. |
 | `prefix` | `string` | URL path prefix prepended to all requests. |
 | `suffix` | `string` | URL path suffix appended to all requests. |

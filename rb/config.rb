@@ -15,9 +15,6 @@ module ElifeSciencesConfig
       },
       "options" => {
         "base" => "https://api.elifesciences.org",
-        "auth" => {
-          "prefix" => "Bearer",
-        },
         "headers" => {
           "content-type" => "application/json",
         },

@@ -59,14 +59,12 @@ def _search_direct_setup(mockres):
     env = runner.env_override({
         "ELIFESCIENCES_TEST_SEARCH_ENTID": {},
         "ELIFESCIENCES_TEST_LIVE": "FALSE",
-        "ELIFESCIENCES_APIKEY": "NONE",
     })
 
     live = env.get("ELIFESCIENCES_TEST_LIVE") == "TRUE"
 
     if live:
         merged_opts = {
-            "apikey": env.get("ELIFESCIENCES_APIKEY"),
         }
         client = ElifeSciencesSDK(merged_opts)
         return {
