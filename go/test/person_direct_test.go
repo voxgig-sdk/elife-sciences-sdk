@@ -99,12 +99,14 @@ func personDirectSetup(mockres any) *personDirectSetupResult {
 	env := envOverride(map[string]any{
 		"ELIFESCIENCES_TEST_PERSON_ENTID": map[string]any{},
 		"ELIFESCIENCES_TEST_LIVE":    "FALSE",
+		"ELIFESCIENCES_APIKEY":       "NONE",
 	})
 
 	live := env["ELIFESCIENCES_TEST_LIVE"] == "TRUE"
 
 	if live {
 		mergedOpts := map[string]any{
+			"apikey": env["ELIFESCIENCES_APIKEY"],
 		}
 		client := sdk.NewElifeSciencesSDK(mergedOpts)
 

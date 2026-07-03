@@ -113,6 +113,7 @@ function basicSetup(extra?: any) {
     'ELIFE_SCIENCES_TEST_SUBJECT_ENTID': idmap,
     'ELIFE_SCIENCES_TEST_LIVE': 'FALSE',
     'ELIFE_SCIENCES_TEST_EXPLAIN': 'FALSE',
+    'ELIFE_SCIENCES_APIKEY': 'NONE',
   })
 
   idmap = env['ELIFE_SCIENCES_TEST_SUBJECT_ENTID']
@@ -122,6 +123,7 @@ function basicSetup(extra?: any) {
   if (live) {
     client = new ElifeSciencesSDK(merge([
       {
+        apikey: env.ELIFE_SCIENCES_APIKEY,
       },
       extra
     ]))

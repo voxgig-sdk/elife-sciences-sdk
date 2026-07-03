@@ -15,6 +15,9 @@ def make_config():
         },
         "options": {
             "base": "https://api.elifesciences.org",
+            "auth": {
+                "prefix": "Bearer",
+            },
             "headers": {
         "content-type": "application/json",
       },
@@ -33,45 +36,47 @@ def make_config():
         "name": "annotation",
         "op": {
           "load": {
+            "input": "data",
             "name": "load",
             "points": [
               {
+                "active": True,
                 "args": {
                   "query": [
                     {
+                      "active": True,
                       "kind": "query",
                       "name": "by",
                       "orig": "by",
                       "reqd": False,
                       "type": "`$STRING`",
-                      "active": True,
                     },
                     {
+                      "active": True,
                       "example": "desc",
                       "kind": "query",
                       "name": "order",
                       "orig": "order",
                       "reqd": False,
                       "type": "`$STRING`",
-                      "active": True,
                     },
                     {
+                      "active": True,
                       "example": 1,
                       "kind": "query",
                       "name": "page",
                       "orig": "page",
                       "reqd": False,
                       "type": "`$INTEGER`",
-                      "active": True,
                     },
                     {
+                      "active": True,
                       "example": 20,
                       "kind": "query",
                       "name": "per_page",
                       "orig": "per_page",
                       "reqd": False,
                       "type": "`$INTEGER`",
-                      "active": True,
                     },
                   ],
                 },
@@ -92,11 +97,9 @@ def make_config():
                   "req": "`reqdata`",
                   "res": "`body`",
                 },
-                "active": True,
                 "index$": 0,
               },
             ],
-            "input": "data",
             "key$": "load",
           },
         },
@@ -109,37 +112,39 @@ def make_config():
         "name": "article",
         "op": {
           "load": {
+            "input": "data",
             "name": "load",
             "points": [
               {
+                "active": True,
                 "args": {
                   "query": [
                     {
+                      "active": True,
                       "example": "desc",
                       "kind": "query",
                       "name": "order",
                       "orig": "order",
                       "reqd": False,
                       "type": "`$STRING`",
-                      "active": True,
                     },
                     {
+                      "active": True,
                       "example": 1,
                       "kind": "query",
                       "name": "page",
                       "orig": "page",
                       "reqd": False,
                       "type": "`$INTEGER`",
-                      "active": True,
                     },
                     {
+                      "active": True,
                       "example": 20,
                       "kind": "query",
                       "name": "per_page",
                       "orig": "per_page",
                       "reqd": False,
                       "type": "`$INTEGER`",
-                      "active": True,
                     },
                   ],
                 },
@@ -159,19 +164,19 @@ def make_config():
                   "req": "`reqdata`",
                   "res": "`body`",
                 },
-                "active": True,
                 "index$": 0,
               },
               {
+                "active": True,
                 "args": {
                   "params": [
                     {
+                      "active": True,
                       "kind": "param",
                       "name": "id",
                       "orig": "id",
                       "reqd": True,
                       "type": "`$STRING`",
-                      "active": True,
                     },
                   ],
                 },
@@ -190,11 +195,9 @@ def make_config():
                   "req": "`reqdata`",
                   "res": "`body`",
                 },
-                "active": True,
                 "index$": 1,
               },
             ],
-            "input": "data",
             "key$": "load",
           },
         },
@@ -207,37 +210,39 @@ def make_config():
         "name": "collection",
         "op": {
           "load": {
+            "input": "data",
             "name": "load",
             "points": [
               {
+                "active": True,
                 "args": {
                   "query": [
                     {
+                      "active": True,
                       "example": "desc",
                       "kind": "query",
                       "name": "order",
                       "orig": "order",
                       "reqd": False,
                       "type": "`$STRING`",
-                      "active": True,
                     },
                     {
+                      "active": True,
                       "example": 1,
                       "kind": "query",
                       "name": "page",
                       "orig": "page",
                       "reqd": False,
                       "type": "`$INTEGER`",
-                      "active": True,
                     },
                     {
+                      "active": True,
                       "example": 20,
                       "kind": "query",
                       "name": "per_page",
                       "orig": "per_page",
                       "reqd": False,
                       "type": "`$INTEGER`",
-                      "active": True,
                     },
                   ],
                 },
@@ -257,19 +262,19 @@ def make_config():
                   "req": "`reqdata`",
                   "res": "`body`",
                 },
-                "active": True,
                 "index$": 0,
               },
               {
+                "active": True,
                 "args": {
                   "params": [
                     {
+                      "active": True,
                       "kind": "param",
                       "name": "id",
                       "orig": "id",
                       "reqd": True,
                       "type": "`$STRING`",
-                      "active": True,
                     },
                   ],
                 },
@@ -288,11 +293,9 @@ def make_config():
                   "req": "`reqdata`",
                   "res": "`body`",
                 },
-                "active": True,
                 "index$": 1,
               },
             ],
-            "input": "data",
             "key$": "load",
           },
         },
@@ -305,36 +308,38 @@ def make_config():
         "name": "person",
         "op": {
           "load": {
+            "input": "data",
             "name": "load",
             "points": [
               {
+                "active": True,
                 "args": {
                   "query": [
                     {
+                      "active": True,
                       "example": 1,
                       "kind": "query",
                       "name": "page",
                       "orig": "page",
                       "reqd": False,
                       "type": "`$INTEGER`",
-                      "active": True,
                     },
                     {
+                      "active": True,
                       "example": 20,
                       "kind": "query",
                       "name": "per_page",
                       "orig": "per_page",
                       "reqd": False,
                       "type": "`$INTEGER`",
-                      "active": True,
                     },
                     {
+                      "active": True,
                       "kind": "query",
                       "name": "type",
                       "orig": "type",
                       "reqd": False,
                       "type": "`$STRING`",
-                      "active": True,
                     },
                   ],
                 },
@@ -354,19 +359,19 @@ def make_config():
                   "req": "`reqdata`",
                   "res": "`body`",
                 },
-                "active": True,
                 "index$": 0,
               },
               {
+                "active": True,
                 "args": {
                   "params": [
                     {
+                      "active": True,
                       "kind": "param",
                       "name": "id",
                       "orig": "id",
                       "reqd": True,
                       "type": "`$STRING`",
-                      "active": True,
                     },
                   ],
                 },
@@ -385,11 +390,9 @@ def make_config():
                   "req": "`reqdata`",
                   "res": "`body`",
                 },
-                "active": True,
                 "index$": 1,
               },
             ],
-            "input": "data",
             "key$": "load",
           },
         },
@@ -402,70 +405,72 @@ def make_config():
         "name": "search",
         "op": {
           "load": {
+            "input": "data",
             "name": "load",
             "points": [
               {
+                "active": True,
                 "args": {
                   "query": [
                     {
+                      "active": True,
                       "kind": "query",
                       "name": "for",
                       "orig": "for",
                       "reqd": True,
                       "type": "`$STRING`",
-                      "active": True,
                     },
                     {
+                      "active": True,
                       "example": "desc",
                       "kind": "query",
                       "name": "order",
                       "orig": "order",
                       "reqd": False,
                       "type": "`$STRING`",
-                      "active": True,
                     },
                     {
+                      "active": True,
                       "example": 1,
                       "kind": "query",
                       "name": "page",
                       "orig": "page",
                       "reqd": False,
                       "type": "`$INTEGER`",
-                      "active": True,
                     },
                     {
+                      "active": True,
                       "example": 10,
                       "kind": "query",
                       "name": "per_page",
                       "orig": "per_page",
                       "reqd": False,
                       "type": "`$INTEGER`",
-                      "active": True,
                     },
                     {
+                      "active": True,
                       "example": "relevance",
                       "kind": "query",
                       "name": "sort",
                       "orig": "sort",
                       "reqd": False,
                       "type": "`$STRING`",
-                      "active": True,
                     },
                     {
+                      "active": True,
                       "kind": "query",
                       "name": "subject",
                       "orig": "subject",
                       "reqd": False,
                       "type": "`$ARRAY`",
-                      "active": True,
                     },
                     {
+                      "active": True,
                       "kind": "query",
                       "name": "type",
                       "orig": "type",
                       "reqd": False,
                       "type": "`$ARRAY`",
-                      "active": True,
                     },
                   ],
                 },
@@ -489,11 +494,9 @@ def make_config():
                   "req": "`reqdata`",
                   "res": "`body`",
                 },
-                "active": True,
                 "index$": 0,
               },
             ],
-            "input": "data",
             "key$": "load",
           },
         },
@@ -506,28 +509,30 @@ def make_config():
         "name": "subject",
         "op": {
           "load": {
+            "input": "data",
             "name": "load",
             "points": [
               {
+                "active": True,
                 "args": {
                   "query": [
                     {
+                      "active": True,
                       "example": 1,
                       "kind": "query",
                       "name": "page",
                       "orig": "page",
                       "reqd": False,
                       "type": "`$INTEGER`",
-                      "active": True,
                     },
                     {
+                      "active": True,
                       "example": 20,
                       "kind": "query",
                       "name": "per_page",
                       "orig": "per_page",
                       "reqd": False,
                       "type": "`$INTEGER`",
-                      "active": True,
                     },
                   ],
                 },
@@ -546,19 +551,19 @@ def make_config():
                   "req": "`reqdata`",
                   "res": "`body`",
                 },
-                "active": True,
                 "index$": 0,
               },
               {
+                "active": True,
                 "args": {
                   "params": [
                     {
+                      "active": True,
                       "kind": "param",
                       "name": "id",
                       "orig": "id",
                       "reqd": True,
                       "type": "`$STRING`",
-                      "active": True,
                     },
                   ],
                 },
@@ -577,11 +582,9 @@ def make_config():
                   "req": "`reqdata`",
                   "res": "`body`",
                 },
-                "active": True,
                 "index$": 1,
               },
             ],
-            "input": "data",
             "key$": "load",
           },
         },

@@ -14,6 +14,9 @@ local function make_config()
     },
     options = {
       base = "https://api.elifesciences.org",
+      auth = {
+        prefix = "Bearer",
+      },
       headers = {
         ["content-type"] = "application/json",
       },
@@ -32,45 +35,47 @@ local function make_config()
         ["name"] = "annotation",
         ["op"] = {
           ["load"] = {
+            ["input"] = "data",
             ["name"] = "load",
             ["points"] = {
               {
+                ["active"] = true,
                 ["args"] = {
                   ["query"] = {
                     {
+                      ["active"] = true,
                       ["kind"] = "query",
                       ["name"] = "by",
                       ["orig"] = "by",
                       ["reqd"] = false,
                       ["type"] = "`$STRING`",
-                      ["active"] = true,
                     },
                     {
+                      ["active"] = true,
                       ["example"] = "desc",
                       ["kind"] = "query",
                       ["name"] = "order",
                       ["orig"] = "order",
                       ["reqd"] = false,
                       ["type"] = "`$STRING`",
-                      ["active"] = true,
                     },
                     {
+                      ["active"] = true,
                       ["example"] = 1,
                       ["kind"] = "query",
                       ["name"] = "page",
                       ["orig"] = "page",
                       ["reqd"] = false,
                       ["type"] = "`$INTEGER`",
-                      ["active"] = true,
                     },
                     {
+                      ["active"] = true,
                       ["example"] = 20,
                       ["kind"] = "query",
                       ["name"] = "per_page",
                       ["orig"] = "per_page",
                       ["reqd"] = false,
                       ["type"] = "`$INTEGER`",
-                      ["active"] = true,
                     },
                   },
                 },
@@ -91,11 +96,9 @@ local function make_config()
                   ["req"] = "`reqdata`",
                   ["res"] = "`body`",
                 },
-                ["active"] = true,
                 ["index$"] = 0,
               },
             },
-            ["input"] = "data",
             ["key$"] = "load",
           },
         },
@@ -108,37 +111,39 @@ local function make_config()
         ["name"] = "article",
         ["op"] = {
           ["load"] = {
+            ["input"] = "data",
             ["name"] = "load",
             ["points"] = {
               {
+                ["active"] = true,
                 ["args"] = {
                   ["query"] = {
                     {
+                      ["active"] = true,
                       ["example"] = "desc",
                       ["kind"] = "query",
                       ["name"] = "order",
                       ["orig"] = "order",
                       ["reqd"] = false,
                       ["type"] = "`$STRING`",
-                      ["active"] = true,
                     },
                     {
+                      ["active"] = true,
                       ["example"] = 1,
                       ["kind"] = "query",
                       ["name"] = "page",
                       ["orig"] = "page",
                       ["reqd"] = false,
                       ["type"] = "`$INTEGER`",
-                      ["active"] = true,
                     },
                     {
+                      ["active"] = true,
                       ["example"] = 20,
                       ["kind"] = "query",
                       ["name"] = "per_page",
                       ["orig"] = "per_page",
                       ["reqd"] = false,
                       ["type"] = "`$INTEGER`",
-                      ["active"] = true,
                     },
                   },
                 },
@@ -158,19 +163,19 @@ local function make_config()
                   ["req"] = "`reqdata`",
                   ["res"] = "`body`",
                 },
-                ["active"] = true,
                 ["index$"] = 0,
               },
               {
+                ["active"] = true,
                 ["args"] = {
                   ["params"] = {
                     {
+                      ["active"] = true,
                       ["kind"] = "param",
                       ["name"] = "id",
                       ["orig"] = "id",
                       ["reqd"] = true,
                       ["type"] = "`$STRING`",
-                      ["active"] = true,
                     },
                   },
                 },
@@ -189,11 +194,9 @@ local function make_config()
                   ["req"] = "`reqdata`",
                   ["res"] = "`body`",
                 },
-                ["active"] = true,
                 ["index$"] = 1,
               },
             },
-            ["input"] = "data",
             ["key$"] = "load",
           },
         },
@@ -206,37 +209,39 @@ local function make_config()
         ["name"] = "collection",
         ["op"] = {
           ["load"] = {
+            ["input"] = "data",
             ["name"] = "load",
             ["points"] = {
               {
+                ["active"] = true,
                 ["args"] = {
                   ["query"] = {
                     {
+                      ["active"] = true,
                       ["example"] = "desc",
                       ["kind"] = "query",
                       ["name"] = "order",
                       ["orig"] = "order",
                       ["reqd"] = false,
                       ["type"] = "`$STRING`",
-                      ["active"] = true,
                     },
                     {
+                      ["active"] = true,
                       ["example"] = 1,
                       ["kind"] = "query",
                       ["name"] = "page",
                       ["orig"] = "page",
                       ["reqd"] = false,
                       ["type"] = "`$INTEGER`",
-                      ["active"] = true,
                     },
                     {
+                      ["active"] = true,
                       ["example"] = 20,
                       ["kind"] = "query",
                       ["name"] = "per_page",
                       ["orig"] = "per_page",
                       ["reqd"] = false,
                       ["type"] = "`$INTEGER`",
-                      ["active"] = true,
                     },
                   },
                 },
@@ -256,19 +261,19 @@ local function make_config()
                   ["req"] = "`reqdata`",
                   ["res"] = "`body`",
                 },
-                ["active"] = true,
                 ["index$"] = 0,
               },
               {
+                ["active"] = true,
                 ["args"] = {
                   ["params"] = {
                     {
+                      ["active"] = true,
                       ["kind"] = "param",
                       ["name"] = "id",
                       ["orig"] = "id",
                       ["reqd"] = true,
                       ["type"] = "`$STRING`",
-                      ["active"] = true,
                     },
                   },
                 },
@@ -287,11 +292,9 @@ local function make_config()
                   ["req"] = "`reqdata`",
                   ["res"] = "`body`",
                 },
-                ["active"] = true,
                 ["index$"] = 1,
               },
             },
-            ["input"] = "data",
             ["key$"] = "load",
           },
         },
@@ -304,36 +307,38 @@ local function make_config()
         ["name"] = "person",
         ["op"] = {
           ["load"] = {
+            ["input"] = "data",
             ["name"] = "load",
             ["points"] = {
               {
+                ["active"] = true,
                 ["args"] = {
                   ["query"] = {
                     {
+                      ["active"] = true,
                       ["example"] = 1,
                       ["kind"] = "query",
                       ["name"] = "page",
                       ["orig"] = "page",
                       ["reqd"] = false,
                       ["type"] = "`$INTEGER`",
-                      ["active"] = true,
                     },
                     {
+                      ["active"] = true,
                       ["example"] = 20,
                       ["kind"] = "query",
                       ["name"] = "per_page",
                       ["orig"] = "per_page",
                       ["reqd"] = false,
                       ["type"] = "`$INTEGER`",
-                      ["active"] = true,
                     },
                     {
+                      ["active"] = true,
                       ["kind"] = "query",
                       ["name"] = "type",
                       ["orig"] = "type",
                       ["reqd"] = false,
                       ["type"] = "`$STRING`",
-                      ["active"] = true,
                     },
                   },
                 },
@@ -353,19 +358,19 @@ local function make_config()
                   ["req"] = "`reqdata`",
                   ["res"] = "`body`",
                 },
-                ["active"] = true,
                 ["index$"] = 0,
               },
               {
+                ["active"] = true,
                 ["args"] = {
                   ["params"] = {
                     {
+                      ["active"] = true,
                       ["kind"] = "param",
                       ["name"] = "id",
                       ["orig"] = "id",
                       ["reqd"] = true,
                       ["type"] = "`$STRING`",
-                      ["active"] = true,
                     },
                   },
                 },
@@ -384,11 +389,9 @@ local function make_config()
                   ["req"] = "`reqdata`",
                   ["res"] = "`body`",
                 },
-                ["active"] = true,
                 ["index$"] = 1,
               },
             },
-            ["input"] = "data",
             ["key$"] = "load",
           },
         },
@@ -401,70 +404,72 @@ local function make_config()
         ["name"] = "search",
         ["op"] = {
           ["load"] = {
+            ["input"] = "data",
             ["name"] = "load",
             ["points"] = {
               {
+                ["active"] = true,
                 ["args"] = {
                   ["query"] = {
                     {
+                      ["active"] = true,
                       ["kind"] = "query",
                       ["name"] = "for",
                       ["orig"] = "for",
                       ["reqd"] = true,
                       ["type"] = "`$STRING`",
-                      ["active"] = true,
                     },
                     {
+                      ["active"] = true,
                       ["example"] = "desc",
                       ["kind"] = "query",
                       ["name"] = "order",
                       ["orig"] = "order",
                       ["reqd"] = false,
                       ["type"] = "`$STRING`",
-                      ["active"] = true,
                     },
                     {
+                      ["active"] = true,
                       ["example"] = 1,
                       ["kind"] = "query",
                       ["name"] = "page",
                       ["orig"] = "page",
                       ["reqd"] = false,
                       ["type"] = "`$INTEGER`",
-                      ["active"] = true,
                     },
                     {
+                      ["active"] = true,
                       ["example"] = 10,
                       ["kind"] = "query",
                       ["name"] = "per_page",
                       ["orig"] = "per_page",
                       ["reqd"] = false,
                       ["type"] = "`$INTEGER`",
-                      ["active"] = true,
                     },
                     {
+                      ["active"] = true,
                       ["example"] = "relevance",
                       ["kind"] = "query",
                       ["name"] = "sort",
                       ["orig"] = "sort",
                       ["reqd"] = false,
                       ["type"] = "`$STRING`",
-                      ["active"] = true,
                     },
                     {
+                      ["active"] = true,
                       ["kind"] = "query",
                       ["name"] = "subject",
                       ["orig"] = "subject",
                       ["reqd"] = false,
                       ["type"] = "`$ARRAY`",
-                      ["active"] = true,
                     },
                     {
+                      ["active"] = true,
                       ["kind"] = "query",
                       ["name"] = "type",
                       ["orig"] = "type",
                       ["reqd"] = false,
                       ["type"] = "`$ARRAY`",
-                      ["active"] = true,
                     },
                   },
                 },
@@ -488,11 +493,9 @@ local function make_config()
                   ["req"] = "`reqdata`",
                   ["res"] = "`body`",
                 },
-                ["active"] = true,
                 ["index$"] = 0,
               },
             },
-            ["input"] = "data",
             ["key$"] = "load",
           },
         },
@@ -505,28 +508,30 @@ local function make_config()
         ["name"] = "subject",
         ["op"] = {
           ["load"] = {
+            ["input"] = "data",
             ["name"] = "load",
             ["points"] = {
               {
+                ["active"] = true,
                 ["args"] = {
                   ["query"] = {
                     {
+                      ["active"] = true,
                       ["example"] = 1,
                       ["kind"] = "query",
                       ["name"] = "page",
                       ["orig"] = "page",
                       ["reqd"] = false,
                       ["type"] = "`$INTEGER`",
-                      ["active"] = true,
                     },
                     {
+                      ["active"] = true,
                       ["example"] = 20,
                       ["kind"] = "query",
                       ["name"] = "per_page",
                       ["orig"] = "per_page",
                       ["reqd"] = false,
                       ["type"] = "`$INTEGER`",
-                      ["active"] = true,
                     },
                   },
                 },
@@ -545,19 +550,19 @@ local function make_config()
                   ["req"] = "`reqdata`",
                   ["res"] = "`body`",
                 },
-                ["active"] = true,
                 ["index$"] = 0,
               },
               {
+                ["active"] = true,
                 ["args"] = {
                   ["params"] = {
                     {
+                      ["active"] = true,
                       ["kind"] = "param",
                       ["name"] = "id",
                       ["orig"] = "id",
                       ["reqd"] = true,
                       ["type"] = "`$STRING`",
-                      ["active"] = true,
                     },
                   },
                 },
@@ -576,11 +581,9 @@ local function make_config()
                   ["req"] = "`reqdata`",
                   ["res"] = "`body`",
                 },
-                ["active"] = true,
                 ["index$"] = 1,
               },
             },
-            ["input"] = "data",
             ["key$"] = "load",
           },
         },

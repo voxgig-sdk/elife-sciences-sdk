@@ -91,6 +91,7 @@ function collection_basic_setup(extra)
     ["ELIFESCIENCES_TEST_COLLECTION_ENTID"] = idmap,
     ["ELIFESCIENCES_TEST_LIVE"] = "FALSE",
     ["ELIFESCIENCES_TEST_EXPLAIN"] = "FALSE",
+    ["ELIFESCIENCES_APIKEY"] = "NONE",
   })
 
   local idmap_resolved = helpers.to_map(
@@ -102,6 +103,7 @@ function collection_basic_setup(extra)
   if env["ELIFESCIENCES_TEST_LIVE"] == "TRUE" then
     local merged_opts = vs.merge({
       {
+        apikey = env["ELIFESCIENCES_APIKEY"],
       },
       extra or {},
     })

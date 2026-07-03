@@ -82,6 +82,7 @@ def annotation_basic_setup(extra)
     "ELIFESCIENCES_TEST_ANNOTATION_ENTID" => idmap,
     "ELIFESCIENCES_TEST_LIVE" => "FALSE",
     "ELIFESCIENCES_TEST_EXPLAIN" => "FALSE",
+    "ELIFESCIENCES_APIKEY" => "NONE",
   })
 
   idmap_resolved = Helpers.to_map(
@@ -93,6 +94,7 @@ def annotation_basic_setup(extra)
   if env["ELIFESCIENCES_TEST_LIVE"] == "TRUE"
     merged_opts = Vs.merge([
       {
+        "apikey" => env["ELIFESCIENCES_APIKEY"],
       },
       extra || {},
     ])

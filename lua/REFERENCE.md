@@ -30,12 +30,12 @@ Create a new SDK client instance.
 
 ### Static Methods
 
-#### `sdk.test(testopts, sdkopts)`
+#### `sdk.test(testopts?, sdkopts?)`
 
-Create a test client with mock features active. Both arguments may be `nil`.
+Create a test client with mock features active. Both arguments are optional.
 
 ```lua
-local client = sdk.test(nil, nil)
+local client = sdk.test()
 ```
 
 
@@ -114,7 +114,7 @@ local annotation = client:Annotation(nil)
 Load a single entity matching the given criteria.
 
 ```lua
-local result, err = client:Annotation(nil):load({ id = "annotation_id" }, nil)
+local result, err = client:Annotation():load({ id = "annotation_id" })
 ```
 
 ### Common Methods
@@ -160,7 +160,7 @@ local article = client:Article(nil)
 Load a single entity matching the given criteria.
 
 ```lua
-local result, err = client:Article(nil):load({ id = "article_id" }, nil)
+local result, err = client:Article():load({ id = "article_id" })
 ```
 
 ### Common Methods
@@ -206,7 +206,7 @@ local collection = client:Collection(nil)
 Load a single entity matching the given criteria.
 
 ```lua
-local result, err = client:Collection(nil):load({ id = "collection_id" }, nil)
+local result, err = client:Collection():load({ id = "collection_id" })
 ```
 
 ### Common Methods
@@ -252,7 +252,7 @@ local person = client:Person(nil)
 Load a single entity matching the given criteria.
 
 ```lua
-local result, err = client:Person(nil):load({ id = "person_id" }, nil)
+local result, err = client:Person():load({ id = "person_id" })
 ```
 
 ### Common Methods
@@ -298,7 +298,7 @@ local search = client:Search(nil)
 Load a single entity matching the given criteria.
 
 ```lua
-local result, err = client:Search(nil):load({ id = "search_id" }, nil)
+local result, err = client:Search():load({ id = "search_id" })
 ```
 
 ### Common Methods
@@ -344,7 +344,7 @@ local subject = client:Subject(nil)
 Load a single entity matching the given criteria.
 
 ```lua
-local result, err = client:Subject(nil):load({ id = "subject_id" }, nil)
+local result, err = client:Subject():load({ id = "subject_id" })
 ```
 
 ### Common Methods

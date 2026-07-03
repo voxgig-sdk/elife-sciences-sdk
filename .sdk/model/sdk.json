@@ -1,49 +1,13 @@
 {
-  "name": "elife-sciences",
-  "origin": "voxgig-sdk",
   "def": "elife-sciences_0.1.0.json",
   "main": {
+    "def": {
+      "desc": ""
+    },
     "kit": {
-      "info": {
-        "contact": {
-          "name": "eLife Sciences",
-          "url": "https://elifesciences.org"
-        },
-        "description": "The eLife Sciences API provides access to various resources related to scientific articles, annotations, reports, and more. It allows users to retrieve, search, and manage scholarly content, emphasizing open access and public data sharing.",
-        "license": {
-          "name": "Creative Commons Attribution 4.0",
-          "url": "https://creativecommons.org/licenses/by/4.0/"
-        },
-        "servers": [
-          {
-            "description": "Production server",
-            "url": "https://api.elifesciences.org"
-          }
-        ],
-        "title": "eLife Sciences API",
-        "version": "1.0.0",
-        "tagline": "Open access to eLife's peer-reviewed research articles, collections, subjects, and author profiles",
-        "homepage": "https://elifesciences.org",
-        "docs_url": "https://api.elifesciences.org/documentation/",
-        "license_short": "Content licensed under Creative Commons Attribution 4.0 (CC BY 4.0)",
-        "license_md": "- Article content and metadata are published under [Creative Commons Attribution 4.0 International (CC BY 4.0)](https://creativecommons.org/licenses/by/4.0/).\n- You may reuse, redistribute, and adapt the material as long as appropriate credit is given to eLife and the original authors.\n- Some third-party figures or supplementary materials may carry their own licence terms — check individual article metadata.\n- The API itself is provided without a separate terms-of-use statement; use is expected to follow scholarly norms.",
-        "about_md": "The [eLife Sciences API](https://api.elifesciences.org) is the public HTTP interface to the open-access journal [eLife](https://elifesciences.org), a non-profit publisher of peer-reviewed research across the life sciences and biomedicine. The same API powers the eLife website and is used by researchers, indexers, and third-party tools to retrieve article content and metadata.\n\nWhat you get from the API:\n\n- Peer-reviewed research articles, including full text, figures, abstracts, authors, and editorial history.\n- Curated collections and special issues grouped by topic or editor.\n- Subject taxonomy describing research areas covered by the journal.\n- Author and editor profiles (people).\n- Cross-resource search across articles, collections, people, and subjects.\n- Annotations attached to article content.\n\nResponses use versioned vendor media types (e.g. `application/vnd.elife.article-list+json`) so clients can request the schema version they support. No authentication is required for public reads, and CORS is enabled for browser-based clients.",
-        "entity_desc": {
-          "annotation": "Reader and editorial annotations attached to article content.",
-          "article": "Peer-reviewed research articles, with metadata, abstracts, figures, and full text, served from `/articles`.",
-          "collection": "Curated groups of articles assembled around a topic, theme, or guest editor, served from `/collections`.",
-          "person": "Profiles of eLife authors, reviewers, and editors, served from `/people`.",
-          "search": "Cross-resource search over articles, collections, people, and subjects, served from `/search`.",
-          "subject": "The eLife subject taxonomy (research areas such as cell biology, neuroscience, immunology), served from `/subjects`."
-        },
-        "auth": false
-      },
       "config": {
         "auth": {
           "prefix": "Bearer"
-        },
-        "headers": {
-          "content-type": "application/json"
         },
         "docs_order": [
           "ts",
@@ -52,55 +16,62 @@
           "go",
           "rb",
           "lua"
-        ]
+        ],
+        "headers": {
+          "content-type": "application/json"
+        }
       },
       "entity": {
         "annotation": {
+          "active": true,
           "alias": {
             "field": {}
           },
+          "fields": [],
           "name": "annotation",
           "op": {
             "load": {
+              "input": "data",
               "name": "load",
               "points": [
                 {
+                  "active": true,
                   "args": {
                     "query": [
                       {
+                        "active": true,
                         "kind": "query",
                         "name": "by",
                         "orig": "by",
                         "reqd": false,
-                        "type": "`$STRING`",
-                        "active": true
+                        "type": "`$STRING`"
                       },
                       {
+                        "active": true,
                         "example": "desc",
                         "kind": "query",
                         "name": "order",
                         "orig": "order",
                         "reqd": false,
-                        "type": "`$STRING`",
-                        "active": true
+                        "type": "`$STRING`"
                       },
                       {
+                        "active": true,
                         "example": 1,
                         "kind": "query",
                         "name": "page",
                         "orig": "page",
                         "reqd": false,
-                        "type": "`$INTEGER`",
-                        "active": true
+                        "type": "`$INTEGER`"
                       },
                       {
+                        "active": true,
                         "example": 20,
                         "kind": "query",
                         "name": "per_page",
                         "orig": "per_page",
                         "reqd": false,
-                        "type": "`$INTEGER`",
-                        "active": true
+                        "type": "`$INTEGER`"
                       }
                     ]
                   },
@@ -120,57 +91,57 @@
                   "transform": {
                     "req": "`reqdata`",
                     "res": "`body`"
-                  },
-                  "active": true
+                  }
                 }
-              ],
-              "input": "data"
+              ]
             }
           },
-          "active": true,
-          "fields": [],
           "relations": {
             "ancestors": []
           }
         },
         "article": {
+          "active": true,
           "alias": {
             "field": {}
           },
+          "fields": [],
           "name": "article",
           "op": {
             "load": {
+              "input": "data",
               "name": "load",
               "points": [
                 {
+                  "active": true,
                   "args": {
                     "query": [
                       {
+                        "active": true,
                         "example": "desc",
                         "kind": "query",
                         "name": "order",
                         "orig": "order",
                         "reqd": false,
-                        "type": "`$STRING`",
-                        "active": true
+                        "type": "`$STRING`"
                       },
                       {
+                        "active": true,
                         "example": 1,
                         "kind": "query",
                         "name": "page",
                         "orig": "page",
                         "reqd": false,
-                        "type": "`$INTEGER`",
-                        "active": true
+                        "type": "`$INTEGER`"
                       },
                       {
+                        "active": true,
                         "example": 20,
                         "kind": "query",
                         "name": "per_page",
                         "orig": "per_page",
                         "reqd": false,
-                        "type": "`$INTEGER`",
-                        "active": true
+                        "type": "`$INTEGER`"
                       }
                     ]
                   },
@@ -189,19 +160,19 @@
                   "transform": {
                     "req": "`reqdata`",
                     "res": "`body`"
-                  },
-                  "active": true
+                  }
                 },
                 {
+                  "active": true,
                   "args": {
                     "params": [
                       {
+                        "active": true,
                         "kind": "param",
                         "name": "id",
                         "orig": "id",
                         "reqd": true,
-                        "type": "`$STRING`",
-                        "active": true
+                        "type": "`$STRING`"
                       }
                     ]
                   },
@@ -219,57 +190,57 @@
                   "transform": {
                     "req": "`reqdata`",
                     "res": "`body`"
-                  },
-                  "active": true
+                  }
                 }
-              ],
-              "input": "data"
+              ]
             }
           },
-          "active": true,
-          "fields": [],
           "relations": {
             "ancestors": []
           }
         },
         "collection": {
+          "active": true,
           "alias": {
             "field": {}
           },
+          "fields": [],
           "name": "collection",
           "op": {
             "load": {
+              "input": "data",
               "name": "load",
               "points": [
                 {
+                  "active": true,
                   "args": {
                     "query": [
                       {
+                        "active": true,
                         "example": "desc",
                         "kind": "query",
                         "name": "order",
                         "orig": "order",
                         "reqd": false,
-                        "type": "`$STRING`",
-                        "active": true
+                        "type": "`$STRING`"
                       },
                       {
+                        "active": true,
                         "example": 1,
                         "kind": "query",
                         "name": "page",
                         "orig": "page",
                         "reqd": false,
-                        "type": "`$INTEGER`",
-                        "active": true
+                        "type": "`$INTEGER`"
                       },
                       {
+                        "active": true,
                         "example": 20,
                         "kind": "query",
                         "name": "per_page",
                         "orig": "per_page",
                         "reqd": false,
-                        "type": "`$INTEGER`",
-                        "active": true
+                        "type": "`$INTEGER`"
                       }
                     ]
                   },
@@ -288,19 +259,19 @@
                   "transform": {
                     "req": "`reqdata`",
                     "res": "`body`"
-                  },
-                  "active": true
+                  }
                 },
                 {
+                  "active": true,
                   "args": {
                     "params": [
                       {
+                        "active": true,
                         "kind": "param",
                         "name": "id",
                         "orig": "id",
                         "reqd": true,
-                        "type": "`$STRING`",
-                        "active": true
+                        "type": "`$STRING`"
                       }
                     ]
                   },
@@ -318,56 +289,56 @@
                   "transform": {
                     "req": "`reqdata`",
                     "res": "`body`"
-                  },
-                  "active": true
+                  }
                 }
-              ],
-              "input": "data"
+              ]
             }
           },
-          "active": true,
-          "fields": [],
           "relations": {
             "ancestors": []
           }
         },
         "person": {
+          "active": true,
           "alias": {
             "field": {}
           },
+          "fields": [],
           "name": "person",
           "op": {
             "load": {
+              "input": "data",
               "name": "load",
               "points": [
                 {
+                  "active": true,
                   "args": {
                     "query": [
                       {
+                        "active": true,
                         "example": 1,
                         "kind": "query",
                         "name": "page",
                         "orig": "page",
                         "reqd": false,
-                        "type": "`$INTEGER`",
-                        "active": true
+                        "type": "`$INTEGER`"
                       },
                       {
+                        "active": true,
                         "example": 20,
                         "kind": "query",
                         "name": "per_page",
                         "orig": "per_page",
                         "reqd": false,
-                        "type": "`$INTEGER`",
-                        "active": true
+                        "type": "`$INTEGER`"
                       },
                       {
+                        "active": true,
                         "kind": "query",
                         "name": "type",
                         "orig": "type",
                         "reqd": false,
-                        "type": "`$STRING`",
-                        "active": true
+                        "type": "`$STRING`"
                       }
                     ]
                   },
@@ -386,19 +357,19 @@
                   "transform": {
                     "req": "`reqdata`",
                     "res": "`body`"
-                  },
-                  "active": true
+                  }
                 },
                 {
+                  "active": true,
                   "args": {
                     "params": [
                       {
+                        "active": true,
                         "kind": "param",
                         "name": "id",
                         "orig": "id",
                         "reqd": true,
-                        "type": "`$STRING`",
-                        "active": true
+                        "type": "`$STRING`"
                       }
                     ]
                   },
@@ -416,90 +387,90 @@
                   "transform": {
                     "req": "`reqdata`",
                     "res": "`body`"
-                  },
-                  "active": true
+                  }
                 }
-              ],
-              "input": "data"
+              ]
             }
           },
-          "active": true,
-          "fields": [],
           "relations": {
             "ancestors": []
           }
         },
         "search": {
+          "active": true,
           "alias": {
             "field": {}
           },
+          "fields": [],
           "name": "search",
           "op": {
             "load": {
+              "input": "data",
               "name": "load",
               "points": [
                 {
+                  "active": true,
                   "args": {
                     "query": [
                       {
+                        "active": true,
                         "kind": "query",
                         "name": "for",
                         "orig": "for",
                         "reqd": true,
-                        "type": "`$STRING`",
-                        "active": true
+                        "type": "`$STRING`"
                       },
                       {
+                        "active": true,
                         "example": "desc",
                         "kind": "query",
                         "name": "order",
                         "orig": "order",
                         "reqd": false,
-                        "type": "`$STRING`",
-                        "active": true
+                        "type": "`$STRING`"
                       },
                       {
+                        "active": true,
                         "example": 1,
                         "kind": "query",
                         "name": "page",
                         "orig": "page",
                         "reqd": false,
-                        "type": "`$INTEGER`",
-                        "active": true
+                        "type": "`$INTEGER`"
                       },
                       {
+                        "active": true,
                         "example": 10,
                         "kind": "query",
                         "name": "per_page",
                         "orig": "per_page",
                         "reqd": false,
-                        "type": "`$INTEGER`",
-                        "active": true
+                        "type": "`$INTEGER`"
                       },
                       {
+                        "active": true,
                         "example": "relevance",
                         "kind": "query",
                         "name": "sort",
                         "orig": "sort",
                         "reqd": false,
-                        "type": "`$STRING`",
-                        "active": true
+                        "type": "`$STRING`"
                       },
                       {
+                        "active": true,
                         "kind": "query",
                         "name": "subject",
                         "orig": "subject",
                         "reqd": false,
-                        "type": "`$ARRAY`",
-                        "active": true
+                        "type": "`$ARRAY`"
                       },
                       {
+                        "active": true,
                         "kind": "query",
                         "name": "type",
                         "orig": "type",
                         "reqd": false,
-                        "type": "`$ARRAY`",
-                        "active": true
+                        "type": "`$ARRAY`"
                       }
                     ]
                   },
@@ -522,48 +493,48 @@
                   "transform": {
                     "req": "`reqdata`",
                     "res": "`body`"
-                  },
-                  "active": true
+                  }
                 }
-              ],
-              "input": "data"
+              ]
             }
           },
-          "active": true,
-          "fields": [],
           "relations": {
             "ancestors": []
           }
         },
         "subject": {
+          "active": true,
           "alias": {
             "field": {}
           },
+          "fields": [],
           "name": "subject",
           "op": {
             "load": {
+              "input": "data",
               "name": "load",
               "points": [
                 {
+                  "active": true,
                   "args": {
                     "query": [
                       {
+                        "active": true,
                         "example": 1,
                         "kind": "query",
                         "name": "page",
                         "orig": "page",
                         "reqd": false,
-                        "type": "`$INTEGER`",
-                        "active": true
+                        "type": "`$INTEGER`"
                       },
                       {
+                        "active": true,
                         "example": 20,
                         "kind": "query",
                         "name": "per_page",
                         "orig": "per_page",
                         "reqd": false,
-                        "type": "`$INTEGER`",
-                        "active": true
+                        "type": "`$INTEGER`"
                       }
                     ]
                   },
@@ -581,19 +552,19 @@
                   "transform": {
                     "req": "`reqdata`",
                     "res": "`body`"
-                  },
-                  "active": true
+                  }
                 },
                 {
+                  "active": true,
                   "args": {
                     "params": [
                       {
+                        "active": true,
                         "kind": "param",
                         "name": "id",
                         "orig": "id",
                         "reqd": true,
-                        "type": "`$STRING`",
-                        "active": true
+                        "type": "`$STRING`"
                       }
                     ]
                   },
@@ -611,15 +582,11 @@
                   "transform": {
                     "req": "`reqdata`",
                     "res": "`body`"
-                  },
-                  "active": true
+                  }
                 }
-              ],
-              "input": "data"
+              ]
             }
           },
-          "active": true,
-          "fields": [],
           "relations": {
             "ancestors": []
           }
@@ -627,9 +594,6 @@
       },
       "feature": {
         "test": {
-          "name": "test",
-          "title": "In-memory mock transport for testing without a live server",
-          "version": "0.0.1",
           "active": true,
           "config": {
             "options": {
@@ -637,6 +601,14 @@
             }
           },
           "hook": {
+            "GetData": {
+              "active": true,
+              "await": false
+            },
+            "GetMatch": {
+              "active": true,
+              "await": false
+            },
             "PostConstruct": {
               "active": true,
               "await": false
@@ -645,25 +617,11 @@
               "active": true,
               "await": false
             },
-            "SetData": {
-              "active": true,
-              "await": false
-            },
-            "GetData": {
-              "active": true,
-              "await": false
-            },
-            "SetMatch": {
-              "active": true
-            },
-            "GetMatch": {
-              "active": true,
+            "PostOperation": {
+              "active": false,
               "await": false
             },
             "PrePoint": {
-              "active": true
-            },
-            "PreSpec": {
               "active": true,
               "await": false
             },
@@ -679,20 +637,32 @@
               "active": true,
               "await": false
             },
+            "PreSpec": {
+              "active": true,
+              "await": false
+            },
             "PreTarget": {
               "active": false,
               "await": false
             },
-            "PostOperation": {
-              "active": false,
+            "SetData": {
+              "active": true,
+              "await": false
+            },
+            "SetMatch": {
+              "active": true,
               "await": false
             }
           },
+          "name": "test",
           "target": {
-            "ts": {
+            "go": {
               "deps": {}
             },
-            "go": {
+            "go-cli": {
+              "deps": {}
+            },
+            "go-mcp": {
               "deps": {}
             },
             "lua": {
@@ -707,28 +677,34 @@
             "rb": {
               "deps": {}
             },
-            "go-cli": {
-              "deps": {}
-            },
-            "go-mcp": {
+            "ts": {
               "deps": {}
             }
-          }
+          },
+          "title": "In-memory mock transport for testing without a live server",
+          "version": "0.0.1"
         }
       },
       "flow": {
         "BasicAnnotationFlow": {
+          "active": true,
           "entity": "annotation",
+          "key$": "BasicAnnotationFlow",
           "kind": "basic",
           "name": "BasicAnnotationFlow",
+          "param": {},
           "step": [
             {
+              "active": true,
+              "data": {},
               "input": {
                 "ref": "annotation_ref01",
                 "srcdatavar": "annotation_ref01_data",
                 "suffix": "_dt0"
               },
+              "match": {},
               "op": "load",
+              "spec": [],
               "valid": [
                 {
                   "apply": "TextFieldMark",
@@ -736,23 +712,21 @@
                     "mark": "Mark01-annotation_ref01"
                   }
                 }
-              ],
-              "active": true,
-              "match": {},
-              "data": {},
-              "spec": []
+              ]
             }
-          ],
-          "key$": "BasicAnnotationFlow",
-          "active": true,
-          "param": {}
+          ]
         },
         "BasicArticleFlow": {
+          "active": true,
           "entity": "article",
+          "key$": "BasicArticleFlow",
           "kind": "basic",
           "name": "BasicArticleFlow",
+          "param": {},
           "step": [
             {
+              "active": true,
+              "data": {},
               "input": {
                 "ref": "article_ref01",
                 "srcdatavar": "article_ref01_data",
@@ -762,6 +736,7 @@
                 "id": "article01"
               },
               "op": "load",
+              "spec": [],
               "valid": [
                 {
                   "apply": "TextFieldMark",
@@ -769,22 +744,21 @@
                     "mark": "Mark01-article_ref01"
                   }
                 }
-              ],
-              "active": true,
-              "data": {},
-              "spec": []
+              ]
             }
-          ],
-          "key$": "BasicArticleFlow",
-          "active": true,
-          "param": {}
+          ]
         },
         "BasicCollectionFlow": {
+          "active": true,
           "entity": "collection",
+          "key$": "BasicCollectionFlow",
           "kind": "basic",
           "name": "BasicCollectionFlow",
+          "param": {},
           "step": [
             {
+              "active": true,
+              "data": {},
               "input": {
                 "ref": "collection_ref01",
                 "srcdatavar": "collection_ref01_data",
@@ -794,6 +768,7 @@
                 "id": "collection01"
               },
               "op": "load",
+              "spec": [],
               "valid": [
                 {
                   "apply": "TextFieldMark",
@@ -801,22 +776,21 @@
                     "mark": "Mark01-collection_ref01"
                   }
                 }
-              ],
-              "active": true,
-              "data": {},
-              "spec": []
+              ]
             }
-          ],
-          "key$": "BasicCollectionFlow",
-          "active": true,
-          "param": {}
+          ]
         },
         "BasicPersonFlow": {
+          "active": true,
           "entity": "person",
+          "key$": "BasicPersonFlow",
           "kind": "basic",
           "name": "BasicPersonFlow",
+          "param": {},
           "step": [
             {
+              "active": true,
+              "data": {},
               "input": {
                 "ref": "person_ref01",
                 "srcdatavar": "person_ref01_data",
@@ -826,6 +800,7 @@
                 "id": "person01"
               },
               "op": "load",
+              "spec": [],
               "valid": [
                 {
                   "apply": "TextFieldMark",
@@ -833,28 +808,29 @@
                     "mark": "Mark01-person_ref01"
                   }
                 }
-              ],
-              "active": true,
-              "data": {},
-              "spec": []
+              ]
             }
-          ],
-          "key$": "BasicPersonFlow",
-          "active": true,
-          "param": {}
+          ]
         },
         "BasicSearchFlow": {
+          "active": true,
           "entity": "search",
+          "key$": "BasicSearchFlow",
           "kind": "basic",
           "name": "BasicSearchFlow",
+          "param": {},
           "step": [
             {
+              "active": true,
+              "data": {},
               "input": {
                 "ref": "search_ref01",
                 "srcdatavar": "search_ref01_data",
                 "suffix": "_dt0"
               },
+              "match": {},
               "op": "load",
+              "spec": [],
               "valid": [
                 {
                   "apply": "TextFieldMark",
@@ -862,23 +838,21 @@
                     "mark": "Mark01-search_ref01"
                   }
                 }
-              ],
-              "active": true,
-              "match": {},
-              "data": {},
-              "spec": []
+              ]
             }
-          ],
-          "key$": "BasicSearchFlow",
-          "active": true,
-          "param": {}
+          ]
         },
         "BasicSubjectFlow": {
+          "active": true,
           "entity": "subject",
+          "key$": "BasicSubjectFlow",
           "kind": "basic",
           "name": "BasicSubjectFlow",
+          "param": {},
           "step": [
             {
+              "active": true,
+              "data": {},
               "input": {
                 "ref": "subject_ref01",
                 "srcdatavar": "subject_ref01_data",
@@ -888,6 +862,7 @@
                 "id": "subject01"
               },
               "op": "load",
+              "spec": [],
               "valid": [
                 {
                   "apply": "TextFieldMark",
@@ -895,27 +870,57 @@
                     "mark": "Mark01-subject_ref01"
                   }
                 }
-              ],
-              "active": true,
-              "data": {},
-              "spec": []
+              ]
             }
-          ],
-          "key$": "BasicSubjectFlow",
-          "active": true,
-          "param": {}
+          ]
         }
       },
+      "info": {
+        "contact": {
+          "name": "eLife Sciences",
+          "url": "https://elifesciences.org"
+        },
+        "description": "The eLife Sciences API provides access to various resources related to scientific articles, annotations, reports, and more. It allows users to retrieve, search, and manage scholarly content, emphasizing open access and public data sharing.",
+        "license": {
+          "name": "Creative Commons Attribution 4.0",
+          "url": "https://creativecommons.org/licenses/by/4.0/"
+        },
+        "servers": [
+          {
+            "description": "Production server",
+            "url": "https://api.elifesciences.org"
+          }
+        ],
+        "title": "eLife Sciences API",
+        "version": "1.0.0"
+      },
+      "option": {},
       "target": {
-        "go-cli": {
-          "title": "Go CLI",
-          "ext": "go",
+        "go": {
+          "active": true,
           "comment": {
             "line": "//"
           },
+          "deps": {},
+          "ext": "go",
           "module": {
             "name": "elife-sciences"
           },
+          "name": "go",
+          "srcfeature": false,
+          "title": "Golang"
+        },
+        "go-cli": {
+          "active": true,
+          "comment": {
+            "line": "//"
+          },
+          "deps": {},
+          "ext": "go",
+          "module": {
+            "name": "elife-sciences"
+          },
+          "name": "go-cli",
           "phase": {
             "entity": {
               "active": false
@@ -930,19 +935,19 @@
               "active": false
             }
           },
-          "deps": {},
-          "name": "go-cli",
-          "active": true
+          "title": "Go CLI"
         },
         "go-mcp": {
-          "title": "Go MCP server",
-          "ext": "go",
+          "active": true,
           "comment": {
             "line": "//"
           },
+          "deps": {},
+          "ext": "go",
           "module": {
             "name": "elife-sciences"
           },
+          "name": "go-mcp",
           "phase": {
             "entity": {
               "active": false
@@ -957,138 +962,120 @@
               "active": false
             }
           },
-          "deps": {},
-          "name": "go-mcp",
-          "active": true
-        },
-        "ts": {
-          "title": "TypeScript",
-          "ext": "ts",
-          "comment": {
-            "line": "//"
-          },
-          "module": {
-            "name": "elife-sciences"
-          },
-          "base": "node_modules/@voxgig/sdkgen/project/.sdk",
-          "deps": {
-            "dotenv": {
-              "active": true,
-              "version": "^17.4.2",
-              "kind": "dev"
-            },
-            "typescript": {
-              "active": true,
-              "version": "^5.9.3",
-              "kind": "dev"
-            },
-            "@types/node": {
-              "active": true,
-              "version": "^25.6.0",
-              "kind": "dev"
-            }
-          },
-          "name": "ts",
-          "active": true
-        },
-        "go": {
-          "title": "Golang",
-          "ext": "go",
-          "comment": {
-            "line": "//"
-          },
-          "module": {
-            "name": "elife-sciences"
-          },
-          "srcfeature": false,
-          "deps": {},
-          "name": "go",
-          "active": true
+          "title": "Go MCP server"
         },
         "lua": {
-          "title": "Lua",
-          "ext": "lua",
+          "active": true,
           "comment": {
             "line": "--"
           },
-          "module": {
-            "name": "elife-sciences"
-          },
-          "srcfeature": false,
           "deps": {
             "dkjson": {
               "active": true,
-              "version": "2.5",
-              "kind": "prod"
+              "kind": "prod",
+              "version": "2.5"
             }
           },
+          "ext": "lua",
+          "module": {
+            "name": "elife-sciences"
+          },
           "name": "lua",
-          "active": true
+          "srcfeature": false,
+          "title": "Lua"
         },
         "php": {
-          "title": "PHP",
-          "ext": "php",
+          "active": true,
           "comment": {
             "line": "//"
           },
+          "deps": {},
+          "ext": "php",
           "module": {
             "name": "elife-sciences"
           },
-          "srcfeature": false,
-          "deps": {},
           "name": "php",
-          "active": true
+          "srcfeature": false,
+          "title": "PHP"
         },
         "py": {
-          "title": "Python",
-          "ext": "py",
+          "active": true,
           "comment": {
             "line": "#"
           },
-          "module": {
-            "name": "elife-sciences"
-          },
-          "srcfeature": false,
           "deps": {
             "requests": {
               "active": true,
-              "version": "2.33",
-              "kind": "prod"
+              "kind": "prod",
+              "version": "2.33"
             }
           },
-          "name": "py",
-          "active": true
-        },
-        "rb": {
-          "title": "Ruby",
-          "ext": "rb",
-          "comment": {
-            "line": "#"
-          },
+          "ext": "py",
           "module": {
             "name": "elife-sciences"
           },
+          "name": "py",
           "srcfeature": false,
+          "title": "Python"
+        },
+        "rb": {
+          "active": true,
+          "comment": {
+            "line": "#"
+          },
           "deps": {
-            "voxgig-struct": {
-              "active": true,
-              "version": "0.0.10",
-              "kind": "prod"
-            },
             "json": {
               "active": true,
-              "version": "0",
-              "kind": "prod"
+              "kind": "prod",
+              "version": "0"
+            },
+            "voxgig-struct": {
+              "active": true,
+              "kind": "prod",
+              "version": "0.0.10"
             }
           },
+          "ext": "rb",
+          "module": {
+            "name": "elife-sciences"
+          },
           "name": "rb",
-          "active": true
+          "srcfeature": false,
+          "title": "Ruby"
+        },
+        "ts": {
+          "active": true,
+          "base": "node_modules/@voxgig/sdkgen/project/.sdk",
+          "comment": {
+            "line": "//"
+          },
+          "deps": {
+            "@types/node": {
+              "active": true,
+              "kind": "dev",
+              "version": "^25.6.0"
+            },
+            "dotenv": {
+              "active": true,
+              "kind": "dev",
+              "version": "^17.4.2"
+            },
+            "typescript": {
+              "active": true,
+              "kind": "dev",
+              "version": "^5.9.3"
+            }
+          },
+          "ext": "ts",
+          "module": {
+            "name": "elife-sciences"
+          },
+          "name": "ts",
+          "title": "TypeScript"
         }
-      },
-      "option": {}
-    },
-    "def": {
-      "desc": ""
+      }
     }
-  }
+  },
+  "name": "elife-sciences",
+  "origin": "voxgig-sdk"
 }

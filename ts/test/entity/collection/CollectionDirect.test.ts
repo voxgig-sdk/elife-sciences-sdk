@@ -74,12 +74,14 @@ function directSetup(mockres?: any) {
   const env = envOverride({
     'ELIFESCIENCES_TEST_COLLECTION_ENTID': {},
     'ELIFESCIENCES_TEST_LIVE': 'FALSE',
+    'ELIFESCIENCES_APIKEY': 'NONE',
   })
 
   const live = 'TRUE' === env.ELIFESCIENCES_TEST_LIVE
 
   if (live) {
     const client = new ElifeSciencesSDK({
+      apikey: env.ELIFESCIENCES_APIKEY,
     })
 
     let idmap: any = env['ELIFESCIENCES_TEST_COLLECTION_ENTID']

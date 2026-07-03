@@ -117,6 +117,7 @@ func subjectBasicSetup(extra map[string]any) *entityTestSetup {
 		"ELIFESCIENCES_TEST_SUBJECT_ENTID": idmap,
 		"ELIFESCIENCES_TEST_LIVE":      "FALSE",
 		"ELIFESCIENCES_TEST_EXPLAIN":   "FALSE",
+		"ELIFESCIENCES_APIKEY":         "NONE",
 	})
 
 	idmapResolved := core.ToMapAny(env["ELIFESCIENCES_TEST_SUBJECT_ENTID"])
@@ -127,6 +128,7 @@ func subjectBasicSetup(extra map[string]any) *entityTestSetup {
 	if env["ELIFESCIENCES_TEST_LIVE"] == "TRUE" {
 		mergedOpts := vs.Merge([]any{
 			map[string]any{
+				"apikey": env["ELIFESCIENCES_APIKEY"],
 			},
 			extra,
 		})

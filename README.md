@@ -1,23 +1,8 @@
 # ElifeSciences SDK
 
-Open access to eLife's peer-reviewed research articles, collections, subjects, and author profiles
+eLife Sciences API client, generated from the OpenAPI spec.
 
 > TypeScript, Python, PHP, Golang, Ruby, Lua SDKs, a CLI, an interactive REPL, and an MCP server for AI agents — all generated from one OpenAPI spec by [@voxgig/sdkgen](https://github.com/voxgig/sdkgen).
-
-## About eLife Sciences API
-
-The [eLife Sciences API](https://api.elifesciences.org) is the public HTTP interface to the open-access journal [eLife](https://elifesciences.org), a non-profit publisher of peer-reviewed research across the life sciences and biomedicine. The same API powers the eLife website and is used by researchers, indexers, and third-party tools to retrieve article content and metadata.
-
-What you get from the API:
-
-- Peer-reviewed research articles, including full text, figures, abstracts, authors, and editorial history.
-- Curated collections and special issues grouped by topic or editor.
-- Subject taxonomy describing research areas covered by the journal.
-- Author and editor profiles (people).
-- Cross-resource search across articles, collections, people, and subjects.
-- Annotations attached to article content.
-
-Responses use versioned vendor media types (e.g. `application/vnd.elife.article-list+json`) so clients can request the schema version they support. No authentication is required for public reads, and CORS is enabled for browser-based clients.
 
 ## Try it
 
@@ -51,27 +36,31 @@ gem install elife-sciences-sdk
 luarocks install elife-sciences-sdk
 ```
 
-## 30-second quickstart
+## Quickstart
 
 ### TypeScript
 
 ```ts
 import { ElifeSciencesSDK } from 'elife-sciences'
 
-const client = new ElifeSciencesSDK({})
+const client = new ElifeSciencesSDK({
+  apikey: process.env.ELIFE-SCIENCES_APIKEY,
+})
 
+// Load annotation data
+const annotation = await client.Annotation().load({})
+console.log(annotation.data)
 ```
 
-See the [TypeScript README](ts/README.md) for the
-full guide, or scroll down for the same example in other languages.
+See the [TypeScript README](ts/README.md) for the full guide.
 
-## What's in the box
+## Surfaces
 
-| Surface | Use it for | Path |
-| --- | --- | --- |
-| **SDK** (TypeScript, Python, PHP, Golang, Ruby, Lua) | App integration | `ts/` `py/` `php/` `go/` `rb/` `lua/` |
-| **CLI** | Scripts, CI, ops, one-off API calls | `go-cli/` |
-| **MCP server** | AI agents (Claude, Cursor, Cline) | `go-mcp/` |
+| Surface | Path |
+| --- | --- |
+| **SDK** (TypeScript, Python, PHP, Golang, Ruby, Lua) | `ts/` `py/` `php/` `go/` `rb/` `lua/` |
+| **CLI** | `go-cli/` |
+| **MCP server** | `go-mcp/` |
 
 ## Use it from an AI agent (MCP)
 
@@ -101,12 +90,12 @@ The API exposes 6 entities:
 
 | Entity | Description | API path |
 | --- | --- | --- |
-| **Annotation** | Reader and editorial annotations attached to article content. | `/annotations` |
-| **Article** | Peer-reviewed research articles, with metadata, abstracts, figures, and full text, served from `/articles`. | `/articles` |
-| **Collection** | Curated groups of articles assembled around a topic, theme, or guest editor, served from `/collections`. | `/collections` |
-| **Person** | Profiles of eLife authors, reviewers, and editors, served from `/people`. | `/people` |
-| **Search** | Cross-resource search over articles, collections, people, and subjects, served from `/search`. | `/search` |
-| **Subject** | The eLife subject taxonomy (research areas such as cell biology, neuroscience, immunology), served from `/subjects`. | `/subjects` |
+| **Annotation** |  | `/annotations` |
+| **Article** |  | `/articles` |
+| **Collection** |  | `/collections` |
+| **Person** |  | `/people` |
+| **Search** |  | `/search` |
+| **Subject** |  | `/subjects` |
 
 Each entity supports the following operations where available: **load**,
 **list**, **create**, **update**, and **remove**.
@@ -116,15 +105,17 @@ Each entity supports the following operations where available: **load**,
 ### Python
 
 ```python
+import os
 from elifesciences_sdk import ElifeSciencesSDK
 
-client = ElifeSciencesSDK({})
+client = ElifeSciencesSDK({
+    "apikey": os.environ.get("ELIFE-SCIENCES_APIKEY"),
+})
 
 
 # Load a specific annotation
-annotation, err = client.Annotation(None).load(
-    {"id": "example_id"}, None
-)
+annotation, err = client.Annotation().load({"id": "example_id"})
+print(annotation)
 ```
 
 ### PHP
@@ -133,13 +124,14 @@ annotation, err = client.Annotation(None).load(
 <?php
 require_once 'elifesciences_sdk.php';
 
-$client = new ElifeSciencesSDK([]);
+$client = new ElifeSciencesSDK([
+    "apikey" => getenv("ELIFE-SCIENCES_APIKEY"),
+]);
 
 
 // Load a specific annotation
-[$annotation, $err] = $client->Annotation(null)->load(
-    ["id" => "example_id"], null
-);
+[$annotation, $err] = $client->Annotation()->load(["id" => "example_id"]);
+print_r($annotation);
 ```
 
 ### Golang
@@ -147,8 +139,13 @@ $client = new ElifeSciencesSDK([]);
 ```go
 import sdk "github.com/voxgig-sdk/elife-sciences-sdk/go"
 
-client := sdk.NewElifeSciencesSDK(map[string]any{})
+client := sdk.NewElifeSciencesSDK(map[string]any{
+    "apikey": os.Getenv("ELIFE-SCIENCES_APIKEY"),
+})
 
+// Load annotation data
+annotation, err := client.Annotation(nil).Load(map[string]any{}, nil)
+fmt.Println(annotation)
 ```
 
 ### Ruby
@@ -156,13 +153,14 @@ client := sdk.NewElifeSciencesSDK(map[string]any{})
 ```ruby
 require_relative "ElifeSciences_sdk"
 
-client = ElifeSciencesSDK.new({})
+client = ElifeSciencesSDK.new({
+  "apikey" => ENV["ELIFE-SCIENCES_APIKEY"],
+})
 
 
 # Load a specific annotation
-annotation, err = client.Annotation(nil).load(
-  { "id" => "example_id" }, nil
-)
+annotation, err = client.Annotation().load({ "id" => "example_id" })
+puts annotation
 ```
 
 ### Lua
@@ -170,13 +168,14 @@ annotation, err = client.Annotation(nil).load(
 ```lua
 local sdk = require("elife-sciences_sdk")
 
-local client = sdk.new({})
+local client = sdk.new({
+  apikey = os.getenv("ELIFE-SCIENCES_APIKEY"),
+})
 
 
 -- Load a specific annotation
-local annotation, err = client:Annotation(nil):load(
-  { id = "example_id" }, nil
-)
+local annotation, err = client:Annotation():load({ id = "example_id" })
+print(annotation)
 ```
 
 ## Unit testing in offline mode
@@ -195,25 +194,21 @@ const result = await client.Annotation().load({ id: 'test01' })
 ### Python
 
 ```python
-client = ElifeSciencesSDK.test(None, None)
-result, err = client.Annotation(None).load(
-    {"id": "test01"}, None
-)
+client = ElifeSciencesSDK.test()
+result, err = client.Annotation().load({"id": "test01"})
 ```
 
 ### PHP
 
 ```php
-$client = ElifeSciencesSDK::test(null, null);
-[$result, $err] = $client->Annotation(null)->load(
-    ["id" => "test01"], null
-);
+$client = ElifeSciencesSDK::test();
+[$result, $err] = $client->Annotation()->load(["id" => "test01"]);
 ```
 
 ### Golang
 
 ```go
-client := sdk.TestSDK(nil, nil)
+client := sdk.Test()
 result, err := client.Annotation(nil).Load(
     map[string]any{"id": "test01"}, nil,
 )
@@ -222,19 +217,15 @@ result, err := client.Annotation(nil).Load(
 ### Ruby
 
 ```ruby
-client = ElifeSciencesSDK.test(nil, nil)
-result, err = client.Annotation(nil).load(
-  { "id" => "test01" }, nil
-)
+client = ElifeSciencesSDK.test
+result, err = client.Annotation().load({ "id" => "test01" })
 ```
 
 ### Lua
 
 ```lua
-local client = sdk.test(nil, nil)
-local result, err = client:Annotation(nil):load(
-  { id = "test01" }, nil
-)
+local client = sdk.test()
+local result, err = client:Annotation():load({ id = "test01" })
 ```
 
 ## How it works
@@ -338,16 +329,6 @@ local result, err = client:direct({
 - [Golang](go/README.md)
 - [Ruby](rb/README.md)
 - [Lua](lua/README.md)
-
-## Using the eLife Sciences API
-
-- Upstream: [https://elifesciences.org](https://elifesciences.org)
-- API docs: [https://api.elifesciences.org/documentation/](https://api.elifesciences.org/documentation/)
-
-- Article content and metadata are published under [Creative Commons Attribution 4.0 International (CC BY 4.0)](https://creativecommons.org/licenses/by/4.0/).
-- You may reuse, redistribute, and adapt the material as long as appropriate credit is given to eLife and the original authors.
-- Some third-party figures or supplementary materials may carry their own licence terms — check individual article metadata.
-- The API itself is provided without a separate terms-of-use statement; use is expected to follow scholarly norms.
 
 ---
 
