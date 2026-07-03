@@ -10,7 +10,7 @@ The TypeScript SDK for the ElifeSciences API — a type-safe, entity-oriented cl
 
 ## Install
 ```bash
-npm install elife-sciences
+npm install @voxgig-sdk/elife-sciences
 ```
 ## Tutorial: your first API call
 

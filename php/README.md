@@ -10,7 +10,7 @@ The PHP SDK for the ElifeSciences API — an entity-oriented client using PHP co
 
 ## Install
 ```bash
-composer require voxgig/elife-sciences-sdk
+composer require voxgig-sdk/elife-sciences
 ```
 
 

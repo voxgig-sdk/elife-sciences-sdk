@@ -10,13 +10,13 @@ The Ruby SDK for the ElifeSciences API — an entity-oriented client using idiom
 
 ## Install
 ```bash
-gem install elife-sciences-sdk
+gem install voxgig-sdk-elife-sciences
 ```
 
 Or add to your `Gemfile`:
 
 ```ruby
-gem "elife-sciences-sdk"
+gem "voxgig-sdk-elife-sciences"
 ```
 
 Then run:

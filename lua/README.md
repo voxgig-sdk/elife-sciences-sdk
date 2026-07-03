@@ -10,7 +10,7 @@ The Lua SDK for the ElifeSciences API — an entity-oriented client using Lua co
 
 ## Install
 ```bash
-luarocks install elife-sciences-sdk
+luarocks install voxgig-sdk-elife-sciences
 ```
 
 If the module is not yet published, add the source directory to

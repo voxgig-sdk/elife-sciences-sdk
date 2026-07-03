@@ -10,7 +10,7 @@ The Python SDK for the ElifeSciences API — an entity-oriented client following
 
 ## Install
 ```bash
-pip install elife-sciences-sdk
+pip install voxgig-sdk-elife-sciences
 ```
 
 Or install from source:

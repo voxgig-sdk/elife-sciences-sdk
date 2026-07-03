@@ -8,12 +8,14 @@ source = {
   dir = "elife-sciences-sdk/lua"
 }
 description = {
-  summary = "ElifeSciences SDK for Lua",
-  license = "MIT"
+  summary = "Unofficial generated Lua SDK for the eLife Sciences public API. Not affiliated with or endorsed by the upstream API provider.",
+  homepage = "https://github.com/voxgig-sdk/elife-sciences-sdk",
+  issues_url = "https://github.com/voxgig-sdk/elife-sciences-sdk/issues",
+  license = "MIT",
+  labels = { "voxgig", "sdk", "generated-sdk", "openapi", "api-client", "elife-sciences" }
 }
 dependencies = {
   "lua >= 5.3",
-  "dkjson >= 2.5",
   "dkjson >= 2.5",
 }
 build = {
