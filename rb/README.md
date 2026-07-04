@@ -32,8 +32,9 @@ client = ElifeSciencesSDK.new
 
 ```ruby
 begin
-  result = client.annotation.load({ "id" => "example_id" })
-  puts result
+  # load returns the bare Annotation record (raises on error).
+  annotation = client.Annotation.load({ "id" => "example_id" })
+  puts annotation
 rescue => err
   warn "load failed: #{err}"
 end
@@ -80,13 +81,17 @@ end
 
 ### Use test mode
 
-Create a mock client for unit testing — no server required:
+Create a mock client for unit testing — no server required. Seed fixture
+data via the `entity` option so offline calls resolve without a live server:
 
 ```ruby
-client = ElifeSciencesSDK.test
+client = ElifeSciencesSDK.test({
+  "entity" => { "annotation" => { "test01" => { "id" => "test01" } } },
+})
 
-result = client.annotation.load({ "id" => "test01" })
-# result contains mock response data
+# load returns the bare mock record (raises on error).
+annotation = client.Annotation.load({ "id" => "test01" })
+puts annotation
 ```
 
 ### Use a custom fetch function
@@ -162,8 +167,8 @@ Creates a test-mode client with mock transport. Both arguments may be `nil`.
 | `get_utility` | `() -> Utility` | Copy of the SDK utility object. |
 | `prepare` | `(fetchargs) -> Hash` | Build an HTTP request definition without sending. Raises on error. |
 | `direct` | `(fetchargs) -> Hash` | Build and send an HTTP request. Returns a result hash (`result["ok"]`); does not raise. |
-| `Annotation` | `(data) -> AnnotationEntity` | Create a Annotation entity instance. |
-| `Article` | `(data) -> ArticleEntity` | Create a Article entity instance. |
+| `Annotation` | `(data) -> AnnotationEntity` | Create an Annotation entity instance. |
+| `Article` | `(data) -> ArticleEntity` | Create an Article entity instance. |
 | `Collection` | `(data) -> CollectionEntity` | Create a Collection entity instance. |
 | `Person` | `(data) -> PersonEntity` | Create a Person entity instance. |
 | `Search` | `(data) -> SearchEntity` | Create a Search entity instance. |
@@ -267,7 +272,7 @@ API path: `/subjects`
 
 ### Annotation
 
-Create an instance: `const annotation = client.annotation`
+Create an instance: `annotation = client.Annotation`
 
 #### Operations
 
@@ -277,14 +282,15 @@ Create an instance: `const annotation = client.annotation`
 
 #### Example: Load
 
-```ts
-const annotation = await client.annotation.load({ id: 'annotation_id' })
+```ruby
+# load returns the bare Annotation record (raises on error).
+annotation = client.Annotation.load({ "id" => "annotation_id" })
 ```
 
 
 ### Article
 
-Create an instance: `const article = client.article`
+Create an instance: `article = client.Article`
 
 #### Operations
 
@@ -294,14 +300,15 @@ Create an instance: `const article = client.article`
 
 #### Example: Load
 
-```ts
-const article = await client.article.load({ id: 'article_id' })
+```ruby
+# load returns the bare Article record (raises on error).
+article = client.Article.load({ "id" => "article_id" })
 ```
 
 
 ### Collection
 
-Create an instance: `const collection = client.collection`
+Create an instance: `collection = client.Collection`
 
 #### Operations
 
@@ -311,14 +318,15 @@ Create an instance: `const collection = client.collection`
 
 #### Example: Load
 
-```ts
-const collection = await client.collection.load({ id: 'collection_id' })
+```ruby
+# load returns the bare Collection record (raises on error).
+collection = client.Collection.load({ "id" => "collection_id" })
 ```
 
 
 ### Person
 
-Create an instance: `const person = client.person`
+Create an instance: `person = client.Person`
 
 #### Operations
 
@@ -328,14 +336,15 @@ Create an instance: `const person = client.person`
 
 #### Example: Load
 
-```ts
-const person = await client.person.load({ id: 'person_id' })
+```ruby
+# load returns the bare Person record (raises on error).
+person = client.Person.load({ "id" => "person_id" })
 ```
 
 
 ### Search
 
-Create an instance: `const search = client.search`
+Create an instance: `search = client.Search`
 
 #### Operations
 
@@ -345,14 +354,15 @@ Create an instance: `const search = client.search`
 
 #### Example: Load
 
-```ts
-const search = await client.search.load({ id: 'search_id' })
+```ruby
+# load returns the bare Search record (raises on error).
+search = client.Search.load({ "id" => "search_id" })
 ```
 
 
 ### Subject
 
-Create an instance: `const subject = client.subject`
+Create an instance: `subject = client.Subject`
 
 #### Operations
 
@@ -362,8 +372,9 @@ Create an instance: `const subject = client.subject`
 
 #### Example: Load
 
-```ts
-const subject = await client.subject.load({ id: 'subject_id' })
+```ruby
+# load returns the bare Subject record (raises on error).
+subject = client.Subject.load({ "id" => "subject_id" })
 ```
 
 
@@ -438,7 +449,7 @@ Entity instances are stateful. After a successful `load`, the entity
 stores the returned data and match criteria internally.
 
 ```ruby
-annotation = client.annotation
+annotation = client.Annotation
 annotation.load({ "id" => "example_id" })
 
 # annotation.data_get now returns the loaded annotation data

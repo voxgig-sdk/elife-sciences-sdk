@@ -34,9 +34,9 @@ local client = sdk.new()
 ### 3. Load an annotation
 
 ```lua
-local result, err = client:annotation():load({ id = "example_id" })
+local annotation, err = client:Annotation():load({ id = "example_id" })
 if err then error(err) end
-print(result)
+print(annotation)
 ```
 
 
@@ -82,8 +82,8 @@ Create a mock client for unit testing — no server required:
 ```lua
 local client = sdk.test()
 
-local result, err = client:annotation():load({ id = "test01" })
--- result contains mock response data
+local result, err = client:Annotation():load({ id = "test01" })
+-- result is the loaded data; err is set on failure
 ```
 
 ### Use a custom fetch function
@@ -161,8 +161,8 @@ Creates a test-mode client with mock transport. Both arguments may be `nil`.
 | `get_utility` | `() -> Utility` | Copy of the SDK utility object. |
 | `prepare` | `(fetchargs) -> table, err` | Build an HTTP request definition without sending. |
 | `direct` | `(fetchargs) -> table, err` | Build and send an HTTP request. |
-| `Annotation` | `(data) -> AnnotationEntity` | Create a Annotation entity instance. |
-| `Article` | `(data) -> ArticleEntity` | Create a Article entity instance. |
+| `Annotation` | `(data) -> AnnotationEntity` | Create an Annotation entity instance. |
+| `Article` | `(data) -> ArticleEntity` | Create an Article entity instance. |
 | `Collection` | `(data) -> CollectionEntity` | Create a Collection entity instance. |
 | `Person` | `(data) -> PersonEntity` | Create a Person entity instance. |
 | `Search` | `(data) -> SearchEntity` | Create a Search entity instance. |
@@ -188,17 +188,22 @@ All entities share the same interface.
 
 ### Result shape
 
-Entity operations return `(any, err)`. The first value is a
-`table` with these keys:
+Entity operations return `(value, err)`. The `value` is the operation's
+data **directly** — there is no wrapper:
 
-| Key | Type | Description |
-| --- | --- | --- |
-| `ok` | `boolean` | `true` if the HTTP status is 2xx. |
-| `status` | `number` | HTTP status code. |
-| `headers` | `table` | Response headers. |
-| `data` | `any` | Parsed JSON response body. |
+| Operation | `value` |
+| --- | --- |
+| `load` / `create` / `update` / `remove` | the entity record (a `table`) |
+| `list` | an array (`table`) of entity records |
 
-On error, `ok` is `false` and `err` contains the error value.
+Check `err` first (it is non-`nil` on failure), then use `value`:
+
+    local annotation, err = client:Annotation():load({ id = "example_id" })
+    if err then error(err) end
+    -- annotation is the loaded record
+
+Only `direct()` returns a response envelope — a `table` with `ok`,
+`status`, `headers`, and `data` keys.
 
 ### Entities
 
@@ -263,7 +268,7 @@ API path: `/subjects`
 
 ### Annotation
 
-Create an instance: `const annotation = client.annotation`
+Create an instance: `local annotation = client:Annotation(nil)`
 
 #### Operations
 
@@ -273,14 +278,14 @@ Create an instance: `const annotation = client.annotation`
 
 #### Example: Load
 
-```ts
-const annotation = await client.annotation.load({ id: 'annotation_id' })
+```lua
+local annotation, err = client:Annotation():load({ id = "annotation_id" })
 ```
 
 
 ### Article
 
-Create an instance: `const article = client.article`
+Create an instance: `local article = client:Article(nil)`
 
 #### Operations
 
@@ -290,14 +295,14 @@ Create an instance: `const article = client.article`
 
 #### Example: Load
 
-```ts
-const article = await client.article.load({ id: 'article_id' })
+```lua
+local article, err = client:Article():load({ id = "article_id" })
 ```
 
 
 ### Collection
 
-Create an instance: `const collection = client.collection`
+Create an instance: `local collection = client:Collection(nil)`
 
 #### Operations
 
@@ -307,14 +312,14 @@ Create an instance: `const collection = client.collection`
 
 #### Example: Load
 
-```ts
-const collection = await client.collection.load({ id: 'collection_id' })
+```lua
+local collection, err = client:Collection():load({ id = "collection_id" })
 ```
 
 
 ### Person
 
-Create an instance: `const person = client.person`
+Create an instance: `local person = client:Person(nil)`
 
 #### Operations
 
@@ -324,14 +329,14 @@ Create an instance: `const person = client.person`
 
 #### Example: Load
 
-```ts
-const person = await client.person.load({ id: 'person_id' })
+```lua
+local person, err = client:Person():load({ id = "person_id" })
 ```
 
 
 ### Search
 
-Create an instance: `const search = client.search`
+Create an instance: `local search = client:Search(nil)`
 
 #### Operations
 
@@ -341,14 +346,14 @@ Create an instance: `const search = client.search`
 
 #### Example: Load
 
-```ts
-const search = await client.search.load({ id: 'search_id' })
+```lua
+local search, err = client:Search():load({ id = "search_id" })
 ```
 
 
 ### Subject
 
-Create an instance: `const subject = client.subject`
+Create an instance: `local subject = client:Subject(nil)`
 
 #### Operations
 
@@ -358,8 +363,8 @@ Create an instance: `const subject = client.subject`
 
 #### Example: Load
 
-```ts
-const subject = await client.subject.load({ id: 'subject_id' })
+```lua
+local subject, err = client:Subject():load({ id = "subject_id" })
 ```
 
 
@@ -434,7 +439,7 @@ Entity instances are stateful. After a successful `load`, the entity
 stores the returned data and match criteria internally.
 
 ```lua
-local annotation = client:annotation()
+local annotation = client:Annotation()
 annotation:load({ id = "example_id" })
 
 -- annotation:data_get() now returns the loaded annotation data

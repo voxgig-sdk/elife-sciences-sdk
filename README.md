@@ -26,9 +26,9 @@ import { ElifeSciencesSDK } from '@voxgig-sdk/elife-sciences'
 
 const client = new ElifeSciencesSDK()
 
-// Load annotation data
-const annotation = await client.annotation.load({})
-console.log(annotation.data)
+// Load annotation data (returns a Annotation)
+const annotation = await client.Annotation().load()
+console.log(annotation)
 ```
 
 See the [TypeScript README](ts/README.md) for the full guide.
@@ -89,8 +89,8 @@ from elifesciences_sdk import ElifeSciencesSDK
 client = ElifeSciencesSDK()
 
 
-# Load a specific annotation
-annotation = client.annotation.load({"id": "example_id"})
+# Load a specific annotation (returns the record, raises on error)
+annotation = client.Annotation().load({"id": "example_id"})
 print(annotation)
 ```
 
@@ -103,8 +103,8 @@ require_once 'elifesciences_sdk.php';
 $client = new ElifeSciencesSDK();
 
 
-// Load a specific annotation
-$annotation = $client->annotation()->load(["id" => "example_id"]);
+// Load a specific annotation (returns the bare record; throws on error)
+$annotation = $client->Annotation()->load(["id" => "example_id"]);
 print_r($annotation);
 ```
 
@@ -128,8 +128,8 @@ require_relative "ElifeSciences_sdk"
 client = ElifeSciencesSDK.new
 
 
-# Load a specific annotation
-annotation = client.annotation.load({ "id" => "example_id" })
+# Load a specific annotation (returns the bare record; raises on error)
+annotation = client.Annotation.load({ "id" => "example_id" })
 puts annotation
 ```
 
@@ -142,7 +142,7 @@ local client = sdk.new()
 
 
 -- Load a specific annotation
-local annotation, err = client:annotation():load({ id = "example_id" })
+local annotation, err = client:Annotation():load({ id = "example_id" })
 print(annotation)
 ```
 
@@ -155,22 +155,27 @@ in-memory mock, so unit tests run offline.
 
 ```ts
 const client = ElifeSciencesSDK.test()
-const result = await client.annotation.load({ id: 'test01' })
-// result.ok === true, result.data contains mock data
+const annotation = await client.Annotation().load({ id: 'test01' })
+// annotation is a bare Annotation populated with mock data
+console.log(annotation)
 ```
 
 ### Python
 
 ```python
 client = ElifeSciencesSDK.test()
-result = client.annotation.load({"id": "test01"})
+annotation = client.Annotation().load({"id": "test01"})
+print(annotation)
 ```
 
 ### PHP
 
 ```php
-$client = ElifeSciencesSDK::test();
-$result = $client->annotation()->load(["id" => "test01"]);
+// Seed fixture data so offline calls resolve without a live server.
+$client = ElifeSciencesSDK::test([
+    "entity" => ["annotation" => ["test01" => ["id" => "test01"]]],
+]);
+$annotation = $client->Annotation()->load(["id" => "test01"]);
 ```
 
 ### Golang
@@ -185,15 +190,18 @@ result, err := client.Annotation(nil).Load(
 ### Ruby
 
 ```ruby
-client = ElifeSciencesSDK.test
-result = client.annotation.load({ "id" => "test01" })
+# Seed fixture data so offline calls resolve without a live server.
+client = ElifeSciencesSDK.test({
+  "entity" => { "annotation" => { "test01" => { "id" => "test01" } } },
+})
+annotation = client.Annotation.load({ "id" => "test01" })
 ```
 
 ### Lua
 
 ```lua
 local client = sdk.test()
-local result, err = client:annotation():load({ id = "test01" })
+local result, err = client:Annotation():load({ id = "test01" })
 ```
 
 ## How it works
@@ -241,6 +249,9 @@ const result = await client.direct({
   method: 'GET',
   params: { id: 'example' },
 })
+if (result instanceof Error) {
+  throw result
+}
 console.log(result.data)
 ```
 

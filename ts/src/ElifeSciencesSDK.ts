@@ -209,84 +209,42 @@ class ElifeSciencesSDK {
 
 
 
-  _annotation?: AnnotationEntity
-
-  // Idiomatic facade: `client.annotation.list()` / `client.annotation.load({ id })`.
-  get annotation(): AnnotationEntity {
-    return (this._annotation ??= new AnnotationEntity(this, undefined))
-  }
-
-  /** @deprecated Use `client.annotation` instead. */
+  // Entity access: `client.Annotation().list()` / `client.Annotation().load({ id })`.
   Annotation(data?: any) {
     const self = this
     return new AnnotationEntity(self,data)
   }
 
 
-  _article?: ArticleEntity
-
-  // Idiomatic facade: `client.article.list()` / `client.article.load({ id })`.
-  get article(): ArticleEntity {
-    return (this._article ??= new ArticleEntity(this, undefined))
-  }
-
-  /** @deprecated Use `client.article` instead. */
+  // Entity access: `client.Article().list()` / `client.Article().load({ id })`.
   Article(data?: any) {
     const self = this
     return new ArticleEntity(self,data)
   }
 
 
-  _collection?: CollectionEntity
-
-  // Idiomatic facade: `client.collection.list()` / `client.collection.load({ id })`.
-  get collection(): CollectionEntity {
-    return (this._collection ??= new CollectionEntity(this, undefined))
-  }
-
-  /** @deprecated Use `client.collection` instead. */
+  // Entity access: `client.Collection().list()` / `client.Collection().load({ id })`.
   Collection(data?: any) {
     const self = this
     return new CollectionEntity(self,data)
   }
 
 
-  _person?: PersonEntity
-
-  // Idiomatic facade: `client.person.list()` / `client.person.load({ id })`.
-  get person(): PersonEntity {
-    return (this._person ??= new PersonEntity(this, undefined))
-  }
-
-  /** @deprecated Use `client.person` instead. */
+  // Entity access: `client.Person().list()` / `client.Person().load({ id })`.
   Person(data?: any) {
     const self = this
     return new PersonEntity(self,data)
   }
 
 
-  _search?: SearchEntity
-
-  // Idiomatic facade: `client.search.list()` / `client.search.load({ id })`.
-  get search(): SearchEntity {
-    return (this._search ??= new SearchEntity(this, undefined))
-  }
-
-  /** @deprecated Use `client.search` instead. */
+  // Entity access: `client.Search().list()` / `client.Search().load({ id })`.
   Search(data?: any) {
     const self = this
     return new SearchEntity(self,data)
   }
 
 
-  _subject?: SubjectEntity
-
-  // Idiomatic facade: `client.subject.list()` / `client.subject.load({ id })`.
-  get subject(): SubjectEntity {
-    return (this._subject ??= new SubjectEntity(this, undefined))
-  }
-
-  /** @deprecated Use `client.subject` instead. */
+  // Entity access: `client.Subject().list()` / `client.Subject().load({ id })`.
   Subject(data?: any) {
     const self = this
     return new SubjectEntity(self,data)

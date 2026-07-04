@@ -220,105 +220,45 @@ class ElifeSciencesSDK:
         }
 
 
-    @property
-    def annotation(self):
-        """Idiomatic facade: client.annotation.list() / client.annotation.load({"id": ...})."""
-        from entity.annotation_entity import AnnotationEntity
-        cached = getattr(self, "_annotation", None)
-        if cached is None:
-            cached = AnnotationEntity(self, None)
-            self._annotation = cached
-        return cached
-
-    def Annotation(self, data=None):
-        # Deprecated: use client.annotation instead.
+    def Annotation(self, data=None) -> "AnnotationEntity":
+        """Entity factory: client.Annotation().list({}) / client.Annotation().load({"id": ...})."""
         from entity.annotation_entity import AnnotationEntity
         return AnnotationEntity(self, data)
 
 
-    @property
-    def article(self):
-        """Idiomatic facade: client.article.list() / client.article.load({"id": ...})."""
-        from entity.article_entity import ArticleEntity
-        cached = getattr(self, "_article", None)
-        if cached is None:
-            cached = ArticleEntity(self, None)
-            self._article = cached
-        return cached
-
-    def Article(self, data=None):
-        # Deprecated: use client.article instead.
+    def Article(self, data=None) -> "ArticleEntity":
+        """Entity factory: client.Article().list({}) / client.Article().load({"id": ...})."""
         from entity.article_entity import ArticleEntity
         return ArticleEntity(self, data)
 
 
-    @property
-    def collection(self):
-        """Idiomatic facade: client.collection.list() / client.collection.load({"id": ...})."""
-        from entity.collection_entity import CollectionEntity
-        cached = getattr(self, "_collection", None)
-        if cached is None:
-            cached = CollectionEntity(self, None)
-            self._collection = cached
-        return cached
-
-    def Collection(self, data=None):
-        # Deprecated: use client.collection instead.
+    def Collection(self, data=None) -> "CollectionEntity":
+        """Entity factory: client.Collection().list({}) / client.Collection().load({"id": ...})."""
         from entity.collection_entity import CollectionEntity
         return CollectionEntity(self, data)
 
 
-    @property
-    def person(self):
-        """Idiomatic facade: client.person.list() / client.person.load({"id": ...})."""
-        from entity.person_entity import PersonEntity
-        cached = getattr(self, "_person", None)
-        if cached is None:
-            cached = PersonEntity(self, None)
-            self._person = cached
-        return cached
-
-    def Person(self, data=None):
-        # Deprecated: use client.person instead.
+    def Person(self, data=None) -> "PersonEntity":
+        """Entity factory: client.Person().list({}) / client.Person().load({"id": ...})."""
         from entity.person_entity import PersonEntity
         return PersonEntity(self, data)
 
 
-    @property
-    def search(self):
-        """Idiomatic facade: client.search.list() / client.search.load({"id": ...})."""
-        from entity.search_entity import SearchEntity
-        cached = getattr(self, "_search", None)
-        if cached is None:
-            cached = SearchEntity(self, None)
-            self._search = cached
-        return cached
-
-    def Search(self, data=None):
-        # Deprecated: use client.search instead.
+    def Search(self, data=None) -> "SearchEntity":
+        """Entity factory: client.Search().list({}) / client.Search().load({"id": ...})."""
         from entity.search_entity import SearchEntity
         return SearchEntity(self, data)
 
 
-    @property
-    def subject(self):
-        """Idiomatic facade: client.subject.list() / client.subject.load({"id": ...})."""
-        from entity.subject_entity import SubjectEntity
-        cached = getattr(self, "_subject", None)
-        if cached is None:
-            cached = SubjectEntity(self, None)
-            self._subject = cached
-        return cached
-
-    def Subject(self, data=None):
-        # Deprecated: use client.subject instead.
+    def Subject(self, data=None) -> "SubjectEntity":
+        """Entity factory: client.Subject().list({}) / client.Subject().load({"id": ...})."""
         from entity.subject_entity import SubjectEntity
         return SubjectEntity(self, data)
 
 
 
     @classmethod
-    def test(cls, testopts=None, sdkopts=None):
+    def test(cls, testopts=None, sdkopts=None) -> "ElifeSciencesSDK":
         if sdkopts is None:
             sdkopts = {}
         sdkopts = vs.clone(sdkopts)
@@ -338,3 +278,14 @@ class ElifeSciencesSDK:
         sdk.mode = "test"
 
         return sdk
+
+
+from typing import TYPE_CHECKING
+
+if TYPE_CHECKING:
+    from entity.annotation_entity import AnnotationEntity
+    from entity.article_entity import ArticleEntity
+    from entity.collection_entity import CollectionEntity
+    from entity.person_entity import PersonEntity
+    from entity.search_entity import SearchEntity
+    from entity.subject_entity import SubjectEntity

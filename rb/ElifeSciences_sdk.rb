@@ -208,78 +208,42 @@ class ElifeSciencesSDK
   end
 
 
-  # Idiomatic facade: client.annotation.list / client.annotation.load({ "id" => ... })
-  def annotation
-    require_relative 'entity/annotation_entity'
-    @annotation ||= AnnotationEntity.new(self, nil)
-  end
-
-  # Deprecated: use client.annotation instead.
+  # Canonical facade: client.Annotation.list / client.Annotation.load({ "id" => ... })
   def Annotation(data = nil)
     require_relative 'entity/annotation_entity'
     AnnotationEntity.new(self, data)
   end
 
 
-  # Idiomatic facade: client.article.list / client.article.load({ "id" => ... })
-  def article
-    require_relative 'entity/article_entity'
-    @article ||= ArticleEntity.new(self, nil)
-  end
-
-  # Deprecated: use client.article instead.
+  # Canonical facade: client.Article.list / client.Article.load({ "id" => ... })
   def Article(data = nil)
     require_relative 'entity/article_entity'
     ArticleEntity.new(self, data)
   end
 
 
-  # Idiomatic facade: client.collection.list / client.collection.load({ "id" => ... })
-  def collection
-    require_relative 'entity/collection_entity'
-    @collection ||= CollectionEntity.new(self, nil)
-  end
-
-  # Deprecated: use client.collection instead.
+  # Canonical facade: client.Collection.list / client.Collection.load({ "id" => ... })
   def Collection(data = nil)
     require_relative 'entity/collection_entity'
     CollectionEntity.new(self, data)
   end
 
 
-  # Idiomatic facade: client.person.list / client.person.load({ "id" => ... })
-  def person
-    require_relative 'entity/person_entity'
-    @person ||= PersonEntity.new(self, nil)
-  end
-
-  # Deprecated: use client.person instead.
+  # Canonical facade: client.Person.list / client.Person.load({ "id" => ... })
   def Person(data = nil)
     require_relative 'entity/person_entity'
     PersonEntity.new(self, data)
   end
 
 
-  # Idiomatic facade: client.search.list / client.search.load({ "id" => ... })
-  def search
-    require_relative 'entity/search_entity'
-    @search ||= SearchEntity.new(self, nil)
-  end
-
-  # Deprecated: use client.search instead.
+  # Canonical facade: client.Search.list / client.Search.load({ "id" => ... })
   def Search(data = nil)
     require_relative 'entity/search_entity'
     SearchEntity.new(self, data)
   end
 
 
-  # Idiomatic facade: client.subject.list / client.subject.load({ "id" => ... })
-  def subject
-    require_relative 'entity/subject_entity'
-    @subject ||= SubjectEntity.new(self, nil)
-  end
-
-  # Deprecated: use client.subject instead.
+  # Canonical facade: client.Subject.list / client.Subject.load({ "id" => ... })
   def Subject(data = nil)
     require_relative 'entity/subject_entity'
     SubjectEntity.new(self, data)

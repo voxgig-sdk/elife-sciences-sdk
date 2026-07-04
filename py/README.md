@@ -33,10 +33,12 @@ client = ElifeSciencesSDK()
 
 ### 3. Load an annotation
 
+`load()` returns the bare record (a `dict`) and raises on error.
+
 ```python
 try:
-    result = client.annotation.load({"id": "example_id"})
-    print(result)
+    annotation = client.Annotation().load({"id": "example_id"})
+    print(annotation)
 except Exception as err:
     print(f"load failed: {err}")
 ```
@@ -84,8 +86,9 @@ Create a mock client for unit testing — no server required:
 ```python
 client = ElifeSciencesSDK.test()
 
-result = client.annotation.load({"id": "test01"})
-# result contains mock response data
+# Entity ops return the bare record and raise on error.
+annotation = client.Annotation().load({"id": "test01"})
+# annotation contains the mock response record
 ```
 
 ### Use a custom fetch function
@@ -161,8 +164,8 @@ Creates a test-mode client with mock transport. Both arguments may be `None`.
 | `get_utility` | `() -> Utility` | Copy of the SDK utility object. |
 | `prepare` | `(fetchargs) -> dict` | Build an HTTP request definition without sending. Raises on error. |
 | `direct` | `(fetchargs) -> dict` | Build and send an HTTP request. Returns a result dict (branch on `ok`). |
-| `Annotation` | `(data) -> AnnotationEntity` | Create a Annotation entity instance. |
-| `Article` | `(data) -> ArticleEntity` | Create a Article entity instance. |
+| `Annotation` | `(data) -> AnnotationEntity` | Create an Annotation entity instance. |
+| `Article` | `(data) -> ArticleEntity` | Create an Article entity instance. |
 | `Collection` | `(data) -> CollectionEntity` | Create a Collection entity instance. |
 | `Person` | `(data) -> PersonEntity` | Create a Person entity instance. |
 | `Search` | `(data) -> SearchEntity` | Create a Search entity instance. |
@@ -267,7 +270,7 @@ API path: `/subjects`
 
 ### Annotation
 
-Create an instance: `const annotation = client.annotation`
+Create an instance: `annotation = client.Annotation()`
 
 #### Operations
 
@@ -277,14 +280,14 @@ Create an instance: `const annotation = client.annotation`
 
 #### Example: Load
 
-```ts
-const annotation = await client.annotation.load({ id: 'annotation_id' })
+```python
+annotation = client.Annotation().load({"id": "annotation_id"})
 ```
 
 
 ### Article
 
-Create an instance: `const article = client.article`
+Create an instance: `article = client.Article()`
 
 #### Operations
 
@@ -294,14 +297,14 @@ Create an instance: `const article = client.article`
 
 #### Example: Load
 
-```ts
-const article = await client.article.load({ id: 'article_id' })
+```python
+article = client.Article().load({"id": "article_id"})
 ```
 
 
 ### Collection
 
-Create an instance: `const collection = client.collection`
+Create an instance: `collection = client.Collection()`
 
 #### Operations
 
@@ -311,14 +314,14 @@ Create an instance: `const collection = client.collection`
 
 #### Example: Load
 
-```ts
-const collection = await client.collection.load({ id: 'collection_id' })
+```python
+collection = client.Collection().load({"id": "collection_id"})
 ```
 
 
 ### Person
 
-Create an instance: `const person = client.person`
+Create an instance: `person = client.Person()`
 
 #### Operations
 
@@ -328,14 +331,14 @@ Create an instance: `const person = client.person`
 
 #### Example: Load
 
-```ts
-const person = await client.person.load({ id: 'person_id' })
+```python
+person = client.Person().load({"id": "person_id"})
 ```
 
 
 ### Search
 
-Create an instance: `const search = client.search`
+Create an instance: `search = client.Search()`
 
 #### Operations
 
@@ -345,14 +348,14 @@ Create an instance: `const search = client.search`
 
 #### Example: Load
 
-```ts
-const search = await client.search.load({ id: 'search_id' })
+```python
+search = client.Search().load({"id": "search_id"})
 ```
 
 
 ### Subject
 
-Create an instance: `const subject = client.subject`
+Create an instance: `subject = client.Subject()`
 
 #### Operations
 
@@ -362,8 +365,8 @@ Create an instance: `const subject = client.subject`
 
 #### Example: Load
 
-```ts
-const subject = await client.subject.load({ id: 'subject_id' })
+```python
+subject = client.Subject().load({"id": "subject_id"})
 ```
 
 
@@ -437,7 +440,7 @@ Entity instances are stateful. After a successful `load`, the entity
 stores the returned data and match criteria internally.
 
 ```python
-annotation = client.annotation
+annotation = client.Annotation()
 annotation.load({"id": "example_id"})
 
 # annotation.data_get() now returns the loaded annotation data

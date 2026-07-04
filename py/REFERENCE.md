@@ -100,7 +100,7 @@ Prepare a fetch definition without sending. Returns the `fetchdef` and raises on
 ## AnnotationEntity
 
 ```python
-annotation = client.annotation
+annotation = client.Annotation()
 ```
 
 ### Operations
@@ -110,7 +110,7 @@ annotation = client.annotation
 Load a single entity matching the given criteria. Returns the entity data and raises on error.
 
 ```python
-result = client.annotation.load({"id": "annotation_id"})
+result = client.Annotation().load({"id": "annotation_id"})
 ```
 
 ### Common Methods
@@ -145,7 +145,7 @@ Return the entity name.
 ## ArticleEntity
 
 ```python
-article = client.article
+article = client.Article()
 ```
 
 ### Operations
@@ -155,7 +155,7 @@ article = client.article
 Load a single entity matching the given criteria. Returns the entity data and raises on error.
 
 ```python
-result = client.article.load({"id": "article_id"})
+result = client.Article().load({"id": "article_id"})
 ```
 
 ### Common Methods
@@ -190,7 +190,7 @@ Return the entity name.
 ## CollectionEntity
 
 ```python
-collection = client.collection
+collection = client.Collection()
 ```
 
 ### Operations
@@ -200,7 +200,7 @@ collection = client.collection
 Load a single entity matching the given criteria. Returns the entity data and raises on error.
 
 ```python
-result = client.collection.load({"id": "collection_id"})
+result = client.Collection().load({"id": "collection_id"})
 ```
 
 ### Common Methods
@@ -235,7 +235,7 @@ Return the entity name.
 ## PersonEntity
 
 ```python
-person = client.person
+person = client.Person()
 ```
 
 ### Operations
@@ -245,7 +245,7 @@ person = client.person
 Load a single entity matching the given criteria. Returns the entity data and raises on error.
 
 ```python
-result = client.person.load({"id": "person_id"})
+result = client.Person().load({"id": "person_id"})
 ```
 
 ### Common Methods
@@ -280,7 +280,7 @@ Return the entity name.
 ## SearchEntity
 
 ```python
-search = client.search
+search = client.Search()
 ```
 
 ### Operations
@@ -290,7 +290,7 @@ search = client.search
 Load a single entity matching the given criteria. Returns the entity data and raises on error.
 
 ```python
-result = client.search.load({"id": "search_id"})
+result = client.Search().load({"id": "search_id"})
 ```
 
 ### Common Methods
@@ -325,7 +325,7 @@ Return the entity name.
 ## SubjectEntity
 
 ```python
-subject = client.subject
+subject = client.Subject()
 ```
 
 ### Operations
@@ -335,7 +335,7 @@ subject = client.subject
 Load a single entity matching the given criteria. Returns the entity data and raises on error.
 
 ```python
-result = client.subject.load({"id": "subject_id"})
+result = client.Subject().load({"id": "subject_id"})
 ```
 
 ### Common Methods

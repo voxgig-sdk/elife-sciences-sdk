@@ -30,36 +30,30 @@ go mod edit -replace github.com/voxgig-sdk/elife-sciences-sdk/go=../elife-scienc
 This tutorial walks through creating a client, listing entities, and
 loading a specific record.
 
-### 1. Create a client
+### Quickstart
+
+A complete program: create a client, then call the entity operations.
+Each operation returns `(value, error)` — the value is the data itself
+(there is no `{ok, data}` wrapper), so check `err` and use the value
+directly.
 
 ```go
 package main
 
 import (
     "fmt"
-
     sdk "github.com/voxgig-sdk/elife-sciences-sdk/go"
-    "github.com/voxgig-sdk/elife-sciences-sdk/go/core"
 )
 
 func main() {
     client := sdk.New()
-```
 
-### 3. Load an annotation
-
-```go
-    result, err = client.Annotation(nil).Load(
-        map[string]any{"id": "example_id"}, nil,
-    )
+    // Load a single annotation — the value is the loaded record.
+    annotation, err := client.Annotation(nil).Load(map[string]any{"id": "example_id"}, nil)
     if err != nil {
         panic(err)
     }
-
-    rm = core.ToMapAny(result)
-    if rm["ok"] == true {
-        fmt.Println(rm["data"])
-    }
+    fmt.Println(annotation)
 }
 ```
 
@@ -110,10 +104,13 @@ Create a mock client for unit testing — no server required:
 ```go
 client := sdk.Test()
 
-result, err := client.Annotation(nil).Load(
+annotation, err := client.Annotation(nil).Load(
     map[string]any{"id": "test01"}, nil,
 )
-// result contains mock response data
+if err != nil {
+    panic(err)
+}
+fmt.Println(annotation) // the loaded mock data
 ```
 
 ### Use a custom fetch function
@@ -190,8 +187,8 @@ Creates a test-mode client with mock transport. Both arguments may be `nil`.
 | `GetUtility` | `() *Utility` | Copy of the SDK utility object. |
 | `Prepare` | `(fetchargs map[string]any) (map[string]any, error)` | Build an HTTP request definition without sending. |
 | `Direct` | `(fetchargs map[string]any) (map[string]any, error)` | Build and send an HTTP request. |
-| `Annotation` | `(data map[string]any) ElifeSciencesEntity` | Create a Annotation entity instance. |
-| `Article` | `(data map[string]any) ElifeSciencesEntity` | Create a Article entity instance. |
+| `Annotation` | `(data map[string]any) ElifeSciencesEntity` | Create an Annotation entity instance. |
+| `Article` | `(data map[string]any) ElifeSciencesEntity` | Create an Article entity instance. |
 | `Collection` | `(data map[string]any) ElifeSciencesEntity` | Create a Collection entity instance. |
 | `Person` | `(data map[string]any) ElifeSciencesEntity` | Create a Person entity instance. |
 | `Search` | `(data map[string]any) ElifeSciencesEntity` | Create a Search entity instance. |
@@ -215,17 +212,24 @@ All entities implement the `ElifeSciencesEntity` interface.
 
 ### Result shape
 
-Entity operations return `(any, error)`. The `any` value is a
-`map[string]any` with these keys:
+Entity operations return `(value, error)`. The `value` is the
+operation's data **directly** — there is no wrapper:
 
-| Key | Type | Description |
-| --- | --- | --- |
-| `"ok"` | `bool` | `true` if the HTTP status is 2xx. |
-| `"status"` | `int` | HTTP status code. |
-| `"headers"` | `map[string]any` | Response headers. |
-| `"data"` | `any` | Parsed JSON response body. |
+| Operation | `value` |
+| --- | --- |
+| `Load` / `Create` / `Update` / `Remove` | the entity record (`map[string]any`) |
+| `List` | a `[]any` of entity records |
 
-On error, `"ok"` is `false` and `"err"` contains the error value.
+Check `err` first, then use the value directly (or the typed
+`...Typed` variants, which return the entity's model struct and a typed
+slice):
+
+    annotation, err := client.Annotation(nil).Load(map[string]any{"id": "example_id"}, nil)
+    if err != nil { /* handle */ }
+    // annotation is the loaded record
+
+Only `Direct()` returns a response envelope — a `map[string]any` with
+`"ok"`, `"status"`, `"headers"`, and `"data"` keys.
 
 ### Entities
 
@@ -301,7 +305,11 @@ Create an instance: `annotation := client.Annotation(nil)`
 #### Example: Load
 
 ```go
-result, err := client.Annotation(nil).Load(map[string]any{"id": "annotation_id"}, nil)
+annotation, err := client.Annotation(nil).Load(map[string]any{"id": "annotation_id"}, nil)
+if err != nil {
+    panic(err)
+}
+fmt.Println(annotation) // the loaded record
 ```
 
 
@@ -318,7 +326,11 @@ Create an instance: `article := client.Article(nil)`
 #### Example: Load
 
 ```go
-result, err := client.Article(nil).Load(map[string]any{"id": "article_id"}, nil)
+article, err := client.Article(nil).Load(map[string]any{"id": "article_id"}, nil)
+if err != nil {
+    panic(err)
+}
+fmt.Println(article) // the loaded record
 ```
 
 
@@ -335,7 +347,11 @@ Create an instance: `collection := client.Collection(nil)`
 #### Example: Load
 
 ```go
-result, err := client.Collection(nil).Load(map[string]any{"id": "collection_id"}, nil)
+collection, err := client.Collection(nil).Load(map[string]any{"id": "collection_id"}, nil)
+if err != nil {
+    panic(err)
+}
+fmt.Println(collection) // the loaded record
 ```
 
 
@@ -352,7 +368,11 @@ Create an instance: `person := client.Person(nil)`
 #### Example: Load
 
 ```go
-result, err := client.Person(nil).Load(map[string]any{"id": "person_id"}, nil)
+person, err := client.Person(nil).Load(map[string]any{"id": "person_id"}, nil)
+if err != nil {
+    panic(err)
+}
+fmt.Println(person) // the loaded record
 ```
 
 
@@ -369,7 +389,11 @@ Create an instance: `search := client.Search(nil)`
 #### Example: Load
 
 ```go
-result, err := client.Search(nil).Load(map[string]any{"id": "search_id"}, nil)
+search, err := client.Search(nil).Load(map[string]any{"id": "search_id"}, nil)
+if err != nil {
+    panic(err)
+}
+fmt.Println(search) // the loaded record
 ```
 
 
@@ -386,7 +410,11 @@ Create an instance: `subject := client.Subject(nil)`
 #### Example: Load
 
 ```go
-result, err := client.Subject(nil).Load(map[string]any{"id": "subject_id"}, nil)
+subject, err := client.Subject(nil).Load(map[string]any{"id": "subject_id"}, nil)
+if err != nil {
+    panic(err)
+}
+fmt.Println(subject) // the loaded record
 ```
 
 

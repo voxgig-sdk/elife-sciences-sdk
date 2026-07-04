@@ -106,7 +106,7 @@ same parameters as `direct()`. Raises on error.
 ## AnnotationEntity
 
 ```ruby
-annotation = client.annotation
+annotation = client.Annotation
 ```
 
 ### Operations
@@ -116,7 +116,7 @@ annotation = client.annotation
 Load a single entity matching the given criteria. Raises on error.
 
 ```ruby
-result = client.annotation.load({ "id" => "annotation_id" })
+result = client.Annotation.load({ "id" => "annotation_id" })
 ```
 
 ### Common Methods
@@ -152,7 +152,7 @@ Return the entity name.
 ## ArticleEntity
 
 ```ruby
-article = client.article
+article = client.Article
 ```
 
 ### Operations
@@ -162,7 +162,7 @@ article = client.article
 Load a single entity matching the given criteria. Raises on error.
 
 ```ruby
-result = client.article.load({ "id" => "article_id" })
+result = client.Article.load({ "id" => "article_id" })
 ```
 
 ### Common Methods
@@ -198,7 +198,7 @@ Return the entity name.
 ## CollectionEntity
 
 ```ruby
-collection = client.collection
+collection = client.Collection
 ```
 
 ### Operations
@@ -208,7 +208,7 @@ collection = client.collection
 Load a single entity matching the given criteria. Raises on error.
 
 ```ruby
-result = client.collection.load({ "id" => "collection_id" })
+result = client.Collection.load({ "id" => "collection_id" })
 ```
 
 ### Common Methods
@@ -244,7 +244,7 @@ Return the entity name.
 ## PersonEntity
 
 ```ruby
-person = client.person
+person = client.Person
 ```
 
 ### Operations
@@ -254,7 +254,7 @@ person = client.person
 Load a single entity matching the given criteria. Raises on error.
 
 ```ruby
-result = client.person.load({ "id" => "person_id" })
+result = client.Person.load({ "id" => "person_id" })
 ```
 
 ### Common Methods
@@ -290,7 +290,7 @@ Return the entity name.
 ## SearchEntity
 
 ```ruby
-search = client.search
+search = client.Search
 ```
 
 ### Operations
@@ -300,7 +300,7 @@ search = client.search
 Load a single entity matching the given criteria. Raises on error.
 
 ```ruby
-result = client.search.load({ "id" => "search_id" })
+result = client.Search.load({ "id" => "search_id" })
 ```
 
 ### Common Methods
@@ -336,7 +336,7 @@ Return the entity name.
 ## SubjectEntity
 
 ```ruby
-subject = client.subject
+subject = client.Subject
 ```
 
 ### Operations
@@ -346,7 +346,7 @@ subject = client.subject
 Load a single entity matching the given criteria. Raises on error.
 
 ```ruby
-result = client.subject.load({ "id" => "subject_id" })
+result = client.Subject.load({ "id" => "subject_id" })
 ```
 
 ### Common Methods

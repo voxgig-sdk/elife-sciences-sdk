@@ -244,8 +244,9 @@ end
 
 
 
--- Idiomatic facade: client:annotation():list() / client:annotation():load({ id = ... })
-function ElifeSciencesSDK:annotation(data)
+-- Idiomatic facade: client:Annotation():list() / client:Annotation():load({ id = ... })
+-- Entity access is capitalised (PascalCase) for parity with the other SDKs.
+function ElifeSciencesSDK:Annotation(data)
   local EntityMod = require("entity.annotation_entity")
   if data == nil then
     if self._annotation == nil then
@@ -256,15 +257,10 @@ function ElifeSciencesSDK:annotation(data)
   return EntityMod.new(self, data)
 end
 
--- Deprecated: use client:annotation() instead.
-function ElifeSciencesSDK:Annotation(data)
-  local EntityMod = require("entity.annotation_entity")
-  return EntityMod.new(self, data)
-end
 
-
--- Idiomatic facade: client:article():list() / client:article():load({ id = ... })
-function ElifeSciencesSDK:article(data)
+-- Idiomatic facade: client:Article():list() / client:Article():load({ id = ... })
+-- Entity access is capitalised (PascalCase) for parity with the other SDKs.
+function ElifeSciencesSDK:Article(data)
   local EntityMod = require("entity.article_entity")
   if data == nil then
     if self._article == nil then
@@ -275,15 +271,10 @@ function ElifeSciencesSDK:article(data)
   return EntityMod.new(self, data)
 end
 
--- Deprecated: use client:article() instead.
-function ElifeSciencesSDK:Article(data)
-  local EntityMod = require("entity.article_entity")
-  return EntityMod.new(self, data)
-end
 
-
--- Idiomatic facade: client:collection():list() / client:collection():load({ id = ... })
-function ElifeSciencesSDK:collection(data)
+-- Idiomatic facade: client:Collection():list() / client:Collection():load({ id = ... })
+-- Entity access is capitalised (PascalCase) for parity with the other SDKs.
+function ElifeSciencesSDK:Collection(data)
   local EntityMod = require("entity.collection_entity")
   if data == nil then
     if self._collection == nil then
@@ -294,15 +285,10 @@ function ElifeSciencesSDK:collection(data)
   return EntityMod.new(self, data)
 end
 
--- Deprecated: use client:collection() instead.
-function ElifeSciencesSDK:Collection(data)
-  local EntityMod = require("entity.collection_entity")
-  return EntityMod.new(self, data)
-end
 
-
--- Idiomatic facade: client:person():list() / client:person():load({ id = ... })
-function ElifeSciencesSDK:person(data)
+-- Idiomatic facade: client:Person():list() / client:Person():load({ id = ... })
+-- Entity access is capitalised (PascalCase) for parity with the other SDKs.
+function ElifeSciencesSDK:Person(data)
   local EntityMod = require("entity.person_entity")
   if data == nil then
     if self._person == nil then
@@ -313,15 +299,10 @@ function ElifeSciencesSDK:person(data)
   return EntityMod.new(self, data)
 end
 
--- Deprecated: use client:person() instead.
-function ElifeSciencesSDK:Person(data)
-  local EntityMod = require("entity.person_entity")
-  return EntityMod.new(self, data)
-end
 
-
--- Idiomatic facade: client:search():list() / client:search():load({ id = ... })
-function ElifeSciencesSDK:search(data)
+-- Idiomatic facade: client:Search():list() / client:Search():load({ id = ... })
+-- Entity access is capitalised (PascalCase) for parity with the other SDKs.
+function ElifeSciencesSDK:Search(data)
   local EntityMod = require("entity.search_entity")
   if data == nil then
     if self._search == nil then
@@ -332,15 +313,10 @@ function ElifeSciencesSDK:search(data)
   return EntityMod.new(self, data)
 end
 
--- Deprecated: use client:search() instead.
-function ElifeSciencesSDK:Search(data)
-  local EntityMod = require("entity.search_entity")
-  return EntityMod.new(self, data)
-end
 
-
--- Idiomatic facade: client:subject():list() / client:subject():load({ id = ... })
-function ElifeSciencesSDK:subject(data)
+-- Idiomatic facade: client:Subject():list() / client:Subject():load({ id = ... })
+-- Entity access is capitalised (PascalCase) for parity with the other SDKs.
+function ElifeSciencesSDK:Subject(data)
   local EntityMod = require("entity.subject_entity")
   if data == nil then
     if self._subject == nil then
@@ -348,12 +324,6 @@ function ElifeSciencesSDK:subject(data)
     end
     return self._subject
   end
-  return EntityMod.new(self, data)
-end
-
--- Deprecated: use client:subject() instead.
-function ElifeSciencesSDK:Subject(data)
-  local EntityMod = require("entity.subject_entity")
   return EntityMod.new(self, data)
 end
 
