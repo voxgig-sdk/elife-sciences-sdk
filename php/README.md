@@ -9,9 +9,10 @@ The PHP SDK for the ElifeSciences API — an entity-oriented client using PHP co
 
 
 ## Install
-```bash
-composer require voxgig-sdk/elife-sciences
-```
+This package is not yet published to Packagist. Install it from the
+GitHub release tag (`php/vX.Y.Z`):
+
+- Releases: [https://github.com/voxgig-sdk/elife-sciences-sdk/releases](https://github.com/voxgig-sdk/elife-sciences-sdk/releases)
 
 
 ## Tutorial: your first API call
@@ -25,17 +26,18 @@ loading a specific record.
 <?php
 require_once 'elifesciences_sdk.php';
 
-$client = new ElifeSciencesSDK([
-    "apikey" => getenv("ELIFE-SCIENCES_APIKEY"),
-]);
+$client = new ElifeSciencesSDK();
 ```
 
-### 3. Load a annotation
+### 3. Load an annotation
 
 ```php
-[$result, $err] = $client->Annotation()->load(["id" => "example_id"]);
-if ($err) { throw new \Exception($err); }
-print_r($result);
+try {
+    $result = $client->annotation()->load(["id" => "example_id"]);
+    print_r($result);
+} catch (\Exception $err) {
+    echo "Error: " . $err->getMessage();
+}
 ```
 
 
@@ -46,28 +48,31 @@ print_r($result);
 For endpoints not covered by entity methods:
 
 ```php
-[$result, $err] = $client->direct([
+// direct() is the raw-HTTP escape hatch: it returns a result array
+// (it does not throw). Branch on $result["ok"].
+$result = $client->direct([
     "path" => "/api/resource/{id}",
     "method" => "GET",
     "params" => ["id" => "example"],
 ]);
-if ($err) { throw new \Exception($err); }
 
 if ($result["ok"]) {
     echo $result["status"];  // 200
     print_r($result["data"]);  // response body
+} else {
+    echo "Error: " . $result["err"]->getMessage();
 }
 ```
 
 ### Prepare a request without sending it
 
 ```php
-[$fetchdef, $err] = $client->prepare([
+// prepare() throws on error and returns the fetch definition.
+$fetchdef = $client->prepare([
     "path" => "/api/resource/{id}",
     "method" => "DELETE",
     "params" => ["id" => "example"],
 ]);
-if ($err) { throw new \Exception($err); }
 
 echo $fetchdef["url"];
 echo $fetchdef["method"];
@@ -81,7 +86,7 @@ Create a mock client for unit testing — no server required:
 ```php
 $client = ElifeSciencesSDK::test();
 
-[$result, $err] = $client->ElifeSciences()->load(["id" => "test01"]);
+$result = $client->annotation()->load(["id" => "test01"]);
 // $result contains mock response data
 ```
 
@@ -115,8 +120,7 @@ $client = new ElifeSciencesSDK([
 Create a `.env.local` file at the project root:
 
 ```
-ELIFE-SCIENCES_TEST_LIVE=TRUE
-ELIFE-SCIENCES_APIKEY=<your-key>
+ELIFE_SCIENCES_TEST_LIVE=TRUE
 ```
 
 Then run:
@@ -139,7 +143,6 @@ Creates a new SDK client.
 
 | Option | Type | Description |
 | --- | --- | --- |
-| `apikey` | `string` | API key for authentication. |
 | `base` | `string` | Base URL of the API server. |
 | `prefix` | `string` | URL path prefix prepended to all requests. |
 | `suffix` | `string` | URL path suffix appended to all requests. |
@@ -190,8 +193,12 @@ All entities share the same interface.
 
 ### Result shape
 
-Entity operations return `[$result, $err]`. The first value is an
-`array` with these keys:
+Entity operations return the bare result data (an `array` for single-entity
+ops, a `list` for `list`) and throw on error. Wrap calls in
+`try`/`catch` to handle failures.
+
+The `direct()` escape hatch never throws — it returns a result `array`
+you branch on via `$result["ok"]`:
 
 | Key | Type | Description |
 | --- | --- | --- |
@@ -265,7 +272,7 @@ API path: `/subjects`
 
 ### Annotation
 
-Create an instance: `const annotation = client.Annotation()`
+Create an instance: `const annotation = client.annotation`
 
 #### Operations
 
@@ -276,13 +283,13 @@ Create an instance: `const annotation = client.Annotation()`
 #### Example: Load
 
 ```ts
-const annotation = await client.Annotation().load({ id: 'annotation_id' })
+const annotation = await client.annotation.load({ id: 'annotation_id' })
 ```
 
 
 ### Article
 
-Create an instance: `const article = client.Article()`
+Create an instance: `const article = client.article`
 
 #### Operations
 
@@ -293,13 +300,13 @@ Create an instance: `const article = client.Article()`
 #### Example: Load
 
 ```ts
-const article = await client.Article().load({ id: 'article_id' })
+const article = await client.article.load({ id: 'article_id' })
 ```
 
 
 ### Collection
 
-Create an instance: `const collection = client.Collection()`
+Create an instance: `const collection = client.collection`
 
 #### Operations
 
@@ -310,13 +317,13 @@ Create an instance: `const collection = client.Collection()`
 #### Example: Load
 
 ```ts
-const collection = await client.Collection().load({ id: 'collection_id' })
+const collection = await client.collection.load({ id: 'collection_id' })
 ```
 
 
 ### Person
 
-Create an instance: `const person = client.Person()`
+Create an instance: `const person = client.person`
 
 #### Operations
 
@@ -327,13 +334,13 @@ Create an instance: `const person = client.Person()`
 #### Example: Load
 
 ```ts
-const person = await client.Person().load({ id: 'person_id' })
+const person = await client.person.load({ id: 'person_id' })
 ```
 
 
 ### Search
 
-Create an instance: `const search = client.Search()`
+Create an instance: `const search = client.search`
 
 #### Operations
 
@@ -344,13 +351,13 @@ Create an instance: `const search = client.Search()`
 #### Example: Load
 
 ```ts
-const search = await client.Search().load({ id: 'search_id' })
+const search = await client.search.load({ id: 'search_id' })
 ```
 
 
 ### Subject
 
-Create an instance: `const subject = client.Subject()`
+Create an instance: `const subject = client.subject`
 
 #### Operations
 
@@ -361,7 +368,7 @@ Create an instance: `const subject = client.Subject()`
 #### Example: Load
 
 ```ts
-const subject = await client.Subject().load({ id: 'subject_id' })
+const subject = await client.subject.load({ id: 'subject_id' })
 ```
 
 
@@ -436,11 +443,11 @@ Entity instances are stateful. After a successful `load`, the entity
 stores the returned data and match criteria internally.
 
 ```php
-$moon = $client->Moon();
-[$result, $err] = $moon->load(["planet_id" => "earth", "id" => "luna"]);
+$annotation = $client->annotation();
+$annotation->load(["id" => "example_id"]);
 
-// $moon->dataGet() now returns the loaded moon data
-// $moon->matchGet() returns the last match criteria
+// $annotation->dataGet() now returns the loaded annotation data
+// $annotation->matchGet() returns the last match criteria
 ```
 
 Call `make()` to create a fresh instance with the same configuration

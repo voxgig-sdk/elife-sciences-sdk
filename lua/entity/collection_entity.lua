@@ -79,6 +79,10 @@ end
 
 
 
+---@param reqmatch CollectionLoadMatch
+---@param ctrl? table
+---@return Collection
+---@return string? err
 function CollectionEntity:load(reqmatch, ctrl)
   local utility = self._utility
   local ctx = utility.make_context({

@@ -244,36 +244,114 @@ end
 
 
 
+-- Idiomatic facade: client:annotation():list() / client:annotation():load({ id = ... })
+function ElifeSciencesSDK:annotation(data)
+  local EntityMod = require("entity.annotation_entity")
+  if data == nil then
+    if self._annotation == nil then
+      self._annotation = EntityMod.new(self, nil)
+    end
+    return self._annotation
+  end
+  return EntityMod.new(self, data)
+end
+
+-- Deprecated: use client:annotation() instead.
 function ElifeSciencesSDK:Annotation(data)
   local EntityMod = require("entity.annotation_entity")
   return EntityMod.new(self, data)
 end
 
 
+-- Idiomatic facade: client:article():list() / client:article():load({ id = ... })
+function ElifeSciencesSDK:article(data)
+  local EntityMod = require("entity.article_entity")
+  if data == nil then
+    if self._article == nil then
+      self._article = EntityMod.new(self, nil)
+    end
+    return self._article
+  end
+  return EntityMod.new(self, data)
+end
+
+-- Deprecated: use client:article() instead.
 function ElifeSciencesSDK:Article(data)
   local EntityMod = require("entity.article_entity")
   return EntityMod.new(self, data)
 end
 
 
+-- Idiomatic facade: client:collection():list() / client:collection():load({ id = ... })
+function ElifeSciencesSDK:collection(data)
+  local EntityMod = require("entity.collection_entity")
+  if data == nil then
+    if self._collection == nil then
+      self._collection = EntityMod.new(self, nil)
+    end
+    return self._collection
+  end
+  return EntityMod.new(self, data)
+end
+
+-- Deprecated: use client:collection() instead.
 function ElifeSciencesSDK:Collection(data)
   local EntityMod = require("entity.collection_entity")
   return EntityMod.new(self, data)
 end
 
 
+-- Idiomatic facade: client:person():list() / client:person():load({ id = ... })
+function ElifeSciencesSDK:person(data)
+  local EntityMod = require("entity.person_entity")
+  if data == nil then
+    if self._person == nil then
+      self._person = EntityMod.new(self, nil)
+    end
+    return self._person
+  end
+  return EntityMod.new(self, data)
+end
+
+-- Deprecated: use client:person() instead.
 function ElifeSciencesSDK:Person(data)
   local EntityMod = require("entity.person_entity")
   return EntityMod.new(self, data)
 end
 
 
+-- Idiomatic facade: client:search():list() / client:search():load({ id = ... })
+function ElifeSciencesSDK:search(data)
+  local EntityMod = require("entity.search_entity")
+  if data == nil then
+    if self._search == nil then
+      self._search = EntityMod.new(self, nil)
+    end
+    return self._search
+  end
+  return EntityMod.new(self, data)
+end
+
+-- Deprecated: use client:search() instead.
 function ElifeSciencesSDK:Search(data)
   local EntityMod = require("entity.search_entity")
   return EntityMod.new(self, data)
 end
 
 
+-- Idiomatic facade: client:subject():list() / client:subject():load({ id = ... })
+function ElifeSciencesSDK:subject(data)
+  local EntityMod = require("entity.subject_entity")
+  if data == nil then
+    if self._subject == nil then
+      self._subject = EntityMod.new(self, nil)
+    end
+    return self._subject
+  end
+  return EntityMod.new(self, data)
+end
+
+-- Deprecated: use client:subject() instead.
 function ElifeSciencesSDK:Subject(data)
   local EntityMod = require("entity.subject_entity")
   return EntityMod.new(self, data)

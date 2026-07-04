@@ -19,7 +19,6 @@ Create a new SDK client instance.
 | Name | Type | Description |
 | --- | --- | --- |
 | `options` | `table` | SDK configuration options. |
-| `options.apikey` | `string` | API key for authentication. |
 | `options.base` | `string` | Base URL for API requests. |
 | `options.prefix` | `string` | URL prefix appended after base. |
 | `options.suffix` | `string` | URL suffix appended after path. |
@@ -104,7 +103,7 @@ same parameters as `direct()`.
 ## AnnotationEntity
 
 ```lua
-local annotation = client:Annotation(nil)
+local annotation = client:annotation(nil)
 ```
 
 ### Operations
@@ -114,7 +113,7 @@ local annotation = client:Annotation(nil)
 Load a single entity matching the given criteria.
 
 ```lua
-local result, err = client:Annotation():load({ id = "annotation_id" })
+local result, err = client:annotation():load({ id = "annotation_id" })
 ```
 
 ### Common Methods
@@ -150,7 +149,7 @@ Return the entity name.
 ## ArticleEntity
 
 ```lua
-local article = client:Article(nil)
+local article = client:article(nil)
 ```
 
 ### Operations
@@ -160,7 +159,7 @@ local article = client:Article(nil)
 Load a single entity matching the given criteria.
 
 ```lua
-local result, err = client:Article():load({ id = "article_id" })
+local result, err = client:article():load({ id = "article_id" })
 ```
 
 ### Common Methods
@@ -196,7 +195,7 @@ Return the entity name.
 ## CollectionEntity
 
 ```lua
-local collection = client:Collection(nil)
+local collection = client:collection(nil)
 ```
 
 ### Operations
@@ -206,7 +205,7 @@ local collection = client:Collection(nil)
 Load a single entity matching the given criteria.
 
 ```lua
-local result, err = client:Collection():load({ id = "collection_id" })
+local result, err = client:collection():load({ id = "collection_id" })
 ```
 
 ### Common Methods
@@ -242,7 +241,7 @@ Return the entity name.
 ## PersonEntity
 
 ```lua
-local person = client:Person(nil)
+local person = client:person(nil)
 ```
 
 ### Operations
@@ -252,7 +251,7 @@ local person = client:Person(nil)
 Load a single entity matching the given criteria.
 
 ```lua
-local result, err = client:Person():load({ id = "person_id" })
+local result, err = client:person():load({ id = "person_id" })
 ```
 
 ### Common Methods
@@ -288,7 +287,7 @@ Return the entity name.
 ## SearchEntity
 
 ```lua
-local search = client:Search(nil)
+local search = client:search(nil)
 ```
 
 ### Operations
@@ -298,7 +297,7 @@ local search = client:Search(nil)
 Load a single entity matching the given criteria.
 
 ```lua
-local result, err = client:Search():load({ id = "search_id" })
+local result, err = client:search():load({ id = "search_id" })
 ```
 
 ### Common Methods
@@ -334,7 +333,7 @@ Return the entity name.
 ## SubjectEntity
 
 ```lua
-local subject = client:Subject(nil)
+local subject = client:subject(nil)
 ```
 
 ### Operations
@@ -344,7 +343,7 @@ local subject = client:Subject(nil)
 Load a single entity matching the given criteria.
 
 ```lua
-local result, err = client:Subject():load({ id = "subject_id" })
+local result, err = client:subject():load({ id = "subject_id" })
 ```
 
 ### Common Methods

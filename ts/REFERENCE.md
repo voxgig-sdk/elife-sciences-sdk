@@ -18,7 +18,6 @@ Create a new SDK client instance.
 | Name | Type | Description |
 | --- | --- | --- |
 | `options` | `object` | SDK configuration options. |
-| `options.apikey` | `string` | API key for authentication. |
 | `options.base` | `string` | Base URL for API requests. |
 | `options.prefix` | `string` | URL prefix appended after base. |
 | `options.suffix` | `string` | URL suffix appended after path. |
@@ -170,7 +169,7 @@ Alias for `ElifeSciencesSDK.test()`.
 ## AnnotationEntity
 
 ```ts
-const annotation = client.Annotation()
+const annotation = client.annotation
 ```
 
 ### Operations
@@ -180,7 +179,7 @@ const annotation = client.Annotation()
 Load a single entity matching the given criteria.
 
 ```ts
-const result = await client.Annotation().load({ id: 'annotation_id' })
+const result = await client.annotation.load({ id: 'annotation_id' })
 ```
 
 ### Common Methods
@@ -214,7 +213,7 @@ Return a copy of the entity options.
 ## ArticleEntity
 
 ```ts
-const article = client.Article()
+const article = client.article
 ```
 
 ### Operations
@@ -224,7 +223,7 @@ const article = client.Article()
 Load a single entity matching the given criteria.
 
 ```ts
-const result = await client.Article().load({ id: 'article_id' })
+const result = await client.article.load({ id: 'article_id' })
 ```
 
 ### Common Methods
@@ -258,7 +257,7 @@ Return a copy of the entity options.
 ## CollectionEntity
 
 ```ts
-const collection = client.Collection()
+const collection = client.collection
 ```
 
 ### Operations
@@ -268,7 +267,7 @@ const collection = client.Collection()
 Load a single entity matching the given criteria.
 
 ```ts
-const result = await client.Collection().load({ id: 'collection_id' })
+const result = await client.collection.load({ id: 'collection_id' })
 ```
 
 ### Common Methods
@@ -302,7 +301,7 @@ Return a copy of the entity options.
 ## PersonEntity
 
 ```ts
-const person = client.Person()
+const person = client.person
 ```
 
 ### Operations
@@ -312,7 +311,7 @@ const person = client.Person()
 Load a single entity matching the given criteria.
 
 ```ts
-const result = await client.Person().load({ id: 'person_id' })
+const result = await client.person.load({ id: 'person_id' })
 ```
 
 ### Common Methods
@@ -346,7 +345,7 @@ Return a copy of the entity options.
 ## SearchEntity
 
 ```ts
-const search = client.Search()
+const search = client.search
 ```
 
 ### Operations
@@ -356,7 +355,7 @@ const search = client.Search()
 Load a single entity matching the given criteria.
 
 ```ts
-const result = await client.Search().load({ id: 'search_id' })
+const result = await client.search.load({ id: 'search_id' })
 ```
 
 ### Common Methods
@@ -390,7 +389,7 @@ Return a copy of the entity options.
 ## SubjectEntity
 
 ```ts
-const subject = client.Subject()
+const subject = client.subject
 ```
 
 ### Operations
@@ -400,7 +399,7 @@ const subject = client.Subject()
 Load a single entity matching the given criteria.
 
 ```ts
-const result = await client.Subject().load({ id: 'subject_id' })
+const result = await client.subject.load({ id: 'subject_id' })
 ```
 
 ### Common Methods

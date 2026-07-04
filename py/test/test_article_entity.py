@@ -49,8 +49,7 @@ class TestArticleEntity:
         # LOAD
         article_ref01_ent = client.Article(None)
         article_ref01_match_dt0 = {}
-        article_ref01_data_dt0_loaded, err = article_ref01_ent.load(article_ref01_match_dt0, None)
-        assert err is None
+        article_ref01_data_dt0_loaded = article_ref01_ent.load(article_ref01_match_dt0, None)
         assert article_ref01_data_dt0_loaded is not None
 
 
@@ -91,7 +90,6 @@ def _article_basic_setup(extra):
         "ELIFESCIENCES_TEST_ARTICLE_ENTID": idmap,
         "ELIFESCIENCES_TEST_LIVE": "FALSE",
         "ELIFESCIENCES_TEST_EXPLAIN": "FALSE",
-        "ELIFESCIENCES_APIKEY": "NONE",
     })
 
     idmap_resolved = helpers.to_map(
@@ -102,7 +100,6 @@ def _article_basic_setup(extra):
     if env.get("ELIFESCIENCES_TEST_LIVE") == "TRUE":
         merged_opts = vs.merge([
             {
-                "apikey": env.get("ELIFESCIENCES_APIKEY"),
             },
             extra or {},
         ])

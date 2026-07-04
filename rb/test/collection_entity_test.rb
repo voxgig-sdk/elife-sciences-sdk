@@ -42,8 +42,7 @@ class CollectionEntityTest < Minitest::Test
     # LOAD
     collection_ref01_ent = client.Collection(nil)
     collection_ref01_match_dt0 = {}
-    collection_ref01_data_dt0_loaded, err = collection_ref01_ent.load(collection_ref01_match_dt0, nil)
-    assert_nil err
+    collection_ref01_data_dt0_loaded = collection_ref01_ent.load(collection_ref01_match_dt0, nil)
     assert !collection_ref01_data_dt0_loaded.nil?
 
   end
@@ -82,7 +81,6 @@ def collection_basic_setup(extra)
     "ELIFESCIENCES_TEST_COLLECTION_ENTID" => idmap,
     "ELIFESCIENCES_TEST_LIVE" => "FALSE",
     "ELIFESCIENCES_TEST_EXPLAIN" => "FALSE",
-    "ELIFESCIENCES_APIKEY" => "NONE",
   })
 
   idmap_resolved = Helpers.to_map(
@@ -94,7 +92,6 @@ def collection_basic_setup(extra)
   if env["ELIFESCIENCES_TEST_LIVE"] == "TRUE"
     merged_opts = Vs.merge([
       {
-        "apikey" => env["ELIFESCIENCES_APIKEY"],
       },
       extra || {},
     ])

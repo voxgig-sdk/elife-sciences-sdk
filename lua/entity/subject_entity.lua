@@ -79,6 +79,10 @@ end
 
 
 
+---@param reqmatch SubjectLoadMatch
+---@param ctrl? table
+---@return Subject
+---@return string? err
 function SubjectEntity:load(reqmatch, ctrl)
   local utility = self._utility
   local ctx = utility.make_context({

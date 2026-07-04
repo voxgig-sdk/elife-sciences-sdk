@@ -14,9 +14,13 @@ import type {
   Control,
 } from '../types'
 
+import type {
+  Collection,
+  CollectionLoadMatch,
+} from '../ElifeSciencesTypes'
 
 // TODO: needs Entity superclass
-class CollectionEntity extends ElifeSciencesEntityBase {
+class CollectionEntity extends ElifeSciencesEntityBase<Collection> {
 
   constructor(client: ElifeSciencesSDK, entopts: any) {
     super(client, entopts)
@@ -32,7 +36,7 @@ class CollectionEntity extends ElifeSciencesEntityBase {
 
 
 
-  async load(this: any, reqmatch?: any, ctrl?: Control) {
+  async load(this: any, reqmatch?: CollectionLoadMatch, ctrl?: Control): Promise<Collection> {
 
     const utility = this._utility
 
@@ -136,7 +140,9 @@ class CollectionEntity extends ElifeSciencesEntityBase {
         throw err
       }
       else {
-        return undefined
+        // Off-happy-path (throw disabled): typed as any so the method's
+        // Promise<Collection> return stays clean under strict null checks.
+        return undefined as any
       }
     }
   }

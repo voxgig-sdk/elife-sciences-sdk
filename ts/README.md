@@ -9,9 +9,12 @@ The TypeScript SDK for the ElifeSciences API — a type-safe, entity-oriented cl
 
 
 ## Install
-```bash
-npm install @voxgig-sdk/elife-sciences
-```
+This package is not yet published to npm. Install it from the GitHub
+release tag (`ts/vX.Y.Z`):
+
+- Releases: [https://github.com/voxgig-sdk/elife-sciences-sdk/releases](https://github.com/voxgig-sdk/elife-sciences-sdk/releases)
+
+
 ## Tutorial: your first API call
 
 This tutorial walks through creating a client, listing entities, and
@@ -20,17 +23,15 @@ loading a specific record.
 ### 1. Create a client
 
 ```ts
-import { ElifeSciencesSDK } from 'elife-sciences'
+import { ElifeSciencesSDK } from '@voxgig-sdk/elife-sciences'
 
-const client = new ElifeSciencesSDK({
-  apikey: process.env.ELIFE-SCIENCES_APIKEY,
-})
+const client = new ElifeSciencesSDK()
 ```
 
-### 3. Load a annotation
+### 3. Load an annotation
 
 ```ts
-const result = await client.Annotation().load({ id: 'example_id' })
+const result = await client.annotation.load({ id: 'example_id' })
 
 if (result.ok) {
   console.log(result.data)
@@ -79,7 +80,7 @@ Create a mock client for unit testing — no server required:
 ```ts
 const client = ElifeSciencesSDK.test()
 
-const result = await client.Planet().load({ id: 'test01' })
+const result = await client.annotation.load({ id: 'test01' })
 // result.ok === true
 // result.data contains mock response data
 ```
@@ -87,7 +88,7 @@ const result = await client.Planet().load({ id: 'test01' })
 You can also use the instance method:
 
 ```ts
-const client = new ElifeSciencesSDK({ apikey: '...' })
+const client = new ElifeSciencesSDK()
 const testClient = client.tester()
 ```
 
@@ -96,7 +97,7 @@ const testClient = client.tester()
 Entity instances remember their last match and data:
 
 ```ts
-const entity = client.Planet()
+const entity = client.annotation
 
 // First call sets internal match
 await entity.load({ id: 'example' })
@@ -123,7 +124,6 @@ const logger = {
 }
 
 const client = new ElifeSciencesSDK({
-  apikey: '...',
   extend: [logger],
 })
 ```
@@ -133,8 +133,7 @@ const client = new ElifeSciencesSDK({
 Create a `.env.local` file at the project root:
 
 ```
-ELIFE-SCIENCES_TEST_LIVE=TRUE
-ELIFE-SCIENCES_APIKEY=<your-key>
+ELIFE_SCIENCES_TEST_LIVE=TRUE
 ```
 
 Then run:
@@ -152,7 +151,6 @@ cd ts && npm test
 
 ```ts
 new ElifeSciencesSDK(options?: {
-  apikey?: string
   base?: string
   prefix?: string
   suffix?: string
@@ -163,7 +161,6 @@ new ElifeSciencesSDK(options?: {
 
 | Option | Type | Description |
 | --- | --- | --- |
-| `apikey` | `string` | API key for authentication. |
 | `base` | `string` | Base URL of the API server. |
 | `prefix` | `string` | URL path prefix prepended to all requests. |
 | `suffix` | `string` | URL path suffix appended to all requests. |
@@ -315,7 +312,7 @@ API path: `/subjects`
 
 ### Annotation
 
-Create an instance: `const annotation = client.Annotation()`
+Create an instance: `const annotation = client.annotation`
 
 #### Operations
 
@@ -326,13 +323,13 @@ Create an instance: `const annotation = client.Annotation()`
 #### Example: Load
 
 ```ts
-const annotation = await client.Annotation().load({ id: 'annotation_id' })
+const annotation = await client.annotation.load({ id: 'annotation_id' })
 ```
 
 
 ### Article
 
-Create an instance: `const article = client.Article()`
+Create an instance: `const article = client.article`
 
 #### Operations
 
@@ -343,13 +340,13 @@ Create an instance: `const article = client.Article()`
 #### Example: Load
 
 ```ts
-const article = await client.Article().load({ id: 'article_id' })
+const article = await client.article.load({ id: 'article_id' })
 ```
 
 
 ### Collection
 
-Create an instance: `const collection = client.Collection()`
+Create an instance: `const collection = client.collection`
 
 #### Operations
 
@@ -360,13 +357,13 @@ Create an instance: `const collection = client.Collection()`
 #### Example: Load
 
 ```ts
-const collection = await client.Collection().load({ id: 'collection_id' })
+const collection = await client.collection.load({ id: 'collection_id' })
 ```
 
 
 ### Person
 
-Create an instance: `const person = client.Person()`
+Create an instance: `const person = client.person`
 
 #### Operations
 
@@ -377,13 +374,13 @@ Create an instance: `const person = client.Person()`
 #### Example: Load
 
 ```ts
-const person = await client.Person().load({ id: 'person_id' })
+const person = await client.person.load({ id: 'person_id' })
 ```
 
 
 ### Search
 
-Create an instance: `const search = client.Search()`
+Create an instance: `const search = client.search`
 
 #### Operations
 
@@ -394,13 +391,13 @@ Create an instance: `const search = client.Search()`
 #### Example: Load
 
 ```ts
-const search = await client.Search().load({ id: 'search_id' })
+const search = await client.search.load({ id: 'search_id' })
 ```
 
 
 ### Subject
 
-Create an instance: `const subject = client.Subject()`
+Create an instance: `const subject = client.subject`
 
 #### Operations
 
@@ -411,7 +408,7 @@ Create an instance: `const subject = client.Subject()`
 #### Example: Load
 
 ```ts
-const subject = await client.Subject().load({ id: 'subject_id' })
+const subject = await client.subject.load({ id: 'subject_id' })
 ```
 
 
@@ -472,7 +469,7 @@ elife-sciences/
 Import the SDK from the package root:
 
 ```ts
-import { ElifeSciencesSDK } from 'elife-sciences'
+import { ElifeSciencesSDK } from '@voxgig-sdk/elife-sciences'
 ```
 
 ### Entity state
@@ -482,11 +479,11 @@ stores the returned data and match criteria internally. Subsequent
 calls on the same instance can rely on this state.
 
 ```ts
-const moon = client.Moon()
-await moon.load({ planet_id: 'earth', id: 'luna' })
+const annotation = client.annotation
+await annotation.load({ id: "example_id" })
 
-// moon.data() now returns the loaded moon data
-// moon.match() returns { planet_id: 'earth', id: 'luna' }
+// annotation.data() now returns the loaded annotation data
+// annotation.match() returns { id: "example_id" }
 ```
 
 Call `make()` to create a fresh instance with the same configuration

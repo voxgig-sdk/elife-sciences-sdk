@@ -13,6 +13,9 @@ require_relative 'config'
 require_relative 'feature/base_feature'
 require_relative 'features'
 
+# Load typed models (Struct value objects).
+require_relative 'ElifeSciences_types'
+
 
 class ElifeSciencesSDK
   attr_accessor :mode, :features, :options
@@ -131,7 +134,7 @@ class ElifeSciencesSDK
     end
 
     _, err = utility.prepare_auth.call(ctx)
-    return nil, err if err
+    raise err if err
 
     utility.make_fetch_def.call(ctx)
   end
@@ -139,8 +142,14 @@ class ElifeSciencesSDK
   def direct(fetchargs = {})
     utility = @_utility
 
-    fetchdef, err = prepare(fetchargs)
-    return { "ok" => false, "err" => err }, nil if err
+    # direct() is the raw-HTTP escape hatch: it always returns a result hash
+    # ({ "ok" => ..., ... }) and never raises. prepare() raises on error, so
+    # trap that and surface it in the hash.
+    begin
+      fetchdef = prepare(fetchargs)
+    rescue ElifeSciencesError => err
+      return { "ok" => false, "err" => err }
+    end
 
     fetchargs ||= {}
     ctrl = ElifeSciencesHelpers.to_map(VoxgigStruct.getprop(fetchargs, "ctrl")) || {}
@@ -153,13 +162,13 @@ class ElifeSciencesSDK
     url = fetchdef["url"] || ""
     fetched, fetch_err = utility.fetcher.call(ctx, url, fetchdef)
 
-    return { "ok" => false, "err" => fetch_err }, nil if fetch_err
+    return { "ok" => false, "err" => fetch_err } if fetch_err
 
     if fetched.nil?
       return {
         "ok" => false,
         "err" => ctx.make_error("direct_no_response", "response: undefined"),
-      }, nil
+      }
     end
 
     if fetched.is_a?(Hash)
@@ -189,46 +198,88 @@ class ElifeSciencesSDK
         "status" => status,
         "headers" => headers,
         "data" => json_data,
-      }, nil
+      }
     end
 
     return {
       "ok" => false,
       "err" => ctx.make_error("direct_invalid", "invalid response type"),
-    }, nil
+    }
   end
 
 
+  # Idiomatic facade: client.annotation.list / client.annotation.load({ "id" => ... })
+  def annotation
+    require_relative 'entity/annotation_entity'
+    @annotation ||= AnnotationEntity.new(self, nil)
+  end
+
+  # Deprecated: use client.annotation instead.
   def Annotation(data = nil)
     require_relative 'entity/annotation_entity'
     AnnotationEntity.new(self, data)
   end
 
 
+  # Idiomatic facade: client.article.list / client.article.load({ "id" => ... })
+  def article
+    require_relative 'entity/article_entity'
+    @article ||= ArticleEntity.new(self, nil)
+  end
+
+  # Deprecated: use client.article instead.
   def Article(data = nil)
     require_relative 'entity/article_entity'
     ArticleEntity.new(self, data)
   end
 
 
+  # Idiomatic facade: client.collection.list / client.collection.load({ "id" => ... })
+  def collection
+    require_relative 'entity/collection_entity'
+    @collection ||= CollectionEntity.new(self, nil)
+  end
+
+  # Deprecated: use client.collection instead.
   def Collection(data = nil)
     require_relative 'entity/collection_entity'
     CollectionEntity.new(self, data)
   end
 
 
+  # Idiomatic facade: client.person.list / client.person.load({ "id" => ... })
+  def person
+    require_relative 'entity/person_entity'
+    @person ||= PersonEntity.new(self, nil)
+  end
+
+  # Deprecated: use client.person instead.
   def Person(data = nil)
     require_relative 'entity/person_entity'
     PersonEntity.new(self, data)
   end
 
 
+  # Idiomatic facade: client.search.list / client.search.load({ "id" => ... })
+  def search
+    require_relative 'entity/search_entity'
+    @search ||= SearchEntity.new(self, nil)
+  end
+
+  # Deprecated: use client.search instead.
   def Search(data = nil)
     require_relative 'entity/search_entity'
     SearchEntity.new(self, data)
   end
 
 
+  # Idiomatic facade: client.subject.list / client.subject.load({ "id" => ... })
+  def subject
+    require_relative 'entity/subject_entity'
+    @subject ||= SubjectEntity.new(self, nil)
+  end
+
+  # Deprecated: use client.subject instead.
   def Subject(data = nil)
     require_relative 'entity/subject_entity'
     SubjectEntity.new(self, data)

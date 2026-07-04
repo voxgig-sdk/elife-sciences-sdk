@@ -14,9 +14,13 @@ import type {
   Control,
 } from '../types'
 
+import type {
+  Annotation,
+  AnnotationLoadMatch,
+} from '../ElifeSciencesTypes'
 
 // TODO: needs Entity superclass
-class AnnotationEntity extends ElifeSciencesEntityBase {
+class AnnotationEntity extends ElifeSciencesEntityBase<Annotation> {
 
   constructor(client: ElifeSciencesSDK, entopts: any) {
     super(client, entopts)
@@ -32,7 +36,7 @@ class AnnotationEntity extends ElifeSciencesEntityBase {
 
 
 
-  async load(this: any, reqmatch?: any, ctrl?: Control) {
+  async load(this: any, reqmatch?: AnnotationLoadMatch, ctrl?: Control): Promise<Annotation> {
 
     const utility = this._utility
 
@@ -136,7 +140,9 @@ class AnnotationEntity extends ElifeSciencesEntityBase {
         throw err
       }
       else {
-        return undefined
+        // Off-happy-path (throw disabled): typed as any so the method's
+        // Promise<Annotation> return stays clean under strict null checks.
+        return undefined as any
       }
     }
   }

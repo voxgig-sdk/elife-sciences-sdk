@@ -85,6 +85,27 @@ func (e *AnnotationEntity) Match(args ...any) any {
 	return out
 }
 
+// DataTyped is the statically-typed accessor for this entity's data. With no
+// argument it returns the current data as an Annotation; with an argument it
+// sets the data and returns the stored value. It delegates to the untyped Data
+// (identical runtime) and converts at the typed boundary.
+func (e *AnnotationEntity) DataTyped(data ...Annotation) Annotation {
+	if len(data) > 0 {
+		return typedFrom[Annotation](e.Data(asMap(data[0])))
+	}
+	return typedFrom[Annotation](e.Data())
+}
+
+// MatchTyped mirrors DataTyped for the entity's match filter. The match is a
+// partial of the entity, so it round-trips through Annotation (all fields
+// optional at the wire level).
+func (e *AnnotationEntity) MatchTyped(match ...Annotation) Annotation {
+	if len(match) > 0 {
+		return typedFrom[Annotation](e.Match(asMap(match[0])))
+	}
+	return typedFrom[Annotation](e.Match())
+}
+
 
 func (e *AnnotationEntity) Load(reqmatch map[string]any, ctrl map[string]any) (any, error) {
 	utility := e.utility
@@ -109,6 +130,17 @@ func (e *AnnotationEntity) Load(reqmatch map[string]any, ctrl map[string]any) (a
 			}
 		}
 	})
+}
+
+// LoadTyped is the statically-typed variant of Load: it takes an
+// AnnotationLoadMatch and returns an Annotation. It delegates to the untyped
+// Load (identical runtime) and converts at the typed boundary.
+func (e *AnnotationEntity) LoadTyped(reqmatch AnnotationLoadMatch, ctrl map[string]any) (Annotation, error) {
+	res, err := e.Load(asMap(reqmatch), ctrl)
+	if err != nil {
+		return Annotation{}, err
+	}
+	return typedFrom[Annotation](res), nil
 }
 
 

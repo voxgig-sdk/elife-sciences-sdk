@@ -49,8 +49,7 @@ class ArticleEntityTest extends TestCase
         // LOAD
         $article_ref01_ent = $client->Article(null);
         $article_ref01_match_dt0 = [];
-        [$article_ref01_data_dt0_loaded, $err] = $article_ref01_ent->load($article_ref01_match_dt0, null);
-        $this->assertNull($err);
+        $article_ref01_data_dt0_loaded = $article_ref01_ent->load($article_ref01_match_dt0, null);
         $this->assertNotNull($article_ref01_data_dt0_loaded);
 
     }
@@ -85,7 +84,6 @@ function article_basic_setup($extra)
         "ELIFESCIENCES_TEST_ARTICLE_ENTID" => $idmap,
         "ELIFESCIENCES_TEST_LIVE" => "FALSE",
         "ELIFESCIENCES_TEST_EXPLAIN" => "FALSE",
-        "ELIFESCIENCES_APIKEY" => "NONE",
     ]);
 
     $idmap_resolved = Helpers::to_map(
@@ -97,7 +95,6 @@ function article_basic_setup($extra)
     if ($env["ELIFESCIENCES_TEST_LIVE"] === "TRUE") {
         $merged_opts = Vs::merge([
             [
-                "apikey" => $env["ELIFESCIENCES_APIKEY"],
             ],
             $extra ?? [],
         ]);

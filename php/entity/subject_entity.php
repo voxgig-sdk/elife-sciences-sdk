@@ -55,6 +55,9 @@ class SubjectEntity
         return new SubjectEntity($this->_client, $opts);
     }
 
+    /**
+     * @param Subject|array $args Subject data (assoc-array) to store.
+     */
     public function data_set($args): void
     {
         if ($args) {
@@ -63,12 +66,18 @@ class SubjectEntity
         }
     }
 
+    /**
+     * @return Subject|array The current Subject data as an assoc-array.
+     */
     public function data_get()
     {
         ($this->_utility->feature_hook)($this->_entctx, "GetData");
         return Struct::clone($this->_data);
     }
 
+    /**
+     * @param array $args Match filter (any subset of Subject fields).
+     */
     public function match_set($args): void
     {
         if ($args) {
@@ -77,6 +86,9 @@ class SubjectEntity
         }
     }
 
+    /**
+     * @return array The current match filter (any subset of Subject fields).
+     */
     public function match_get()
     {
         ($this->_utility->feature_hook)($this->_entctx, "GetMatch");
@@ -84,7 +96,16 @@ class SubjectEntity
     }
 
     
-    public function load($reqmatch, $ctrl = null): array
+    /**
+     * Load a single Subject.
+     *
+     * @param SubjectLoadMatch|array|null $reqmatch Match criteria (id/query
+     *   fields) as an assoc-array; a typed SubjectLoadMatch names the shape.
+     * @param mixed $ctrl Optional per-call control overrides.
+     * @return Subject|array The loaded Subject as an assoc-array at the
+     *   SDK boundary; throws ElifeSciencesError on failure (item-5 convention).
+     */
+    public function load(?array $reqmatch = null, $ctrl = null): mixed
     {
         $utility = $this->_utility;
         $ctx = ($utility->make_context)([
@@ -117,7 +138,7 @@ class SubjectEntity
 
     
 
-    private function _run_op($ctx, callable $post_done): array
+    private function _run_op($ctx, callable $post_done): mixed
     {
         $utility = $this->_utility;
 

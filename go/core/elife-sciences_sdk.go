@@ -245,31 +245,49 @@ func (sdk *ElifeSciencesSDK) Direct(fetchargs map[string]any) (map[string]any, e
 }
 
 
+// Annotation returns a Annotation entity bound to this client.
+// Idiomatic usage: client.Annotation(nil).List(nil, nil) or
+// client.Annotation(nil).Load(map[string]any{"id": ...}, nil).
 func (sdk *ElifeSciencesSDK) Annotation(data map[string]any) ElifeSciencesEntity {
 	return NewAnnotationEntityFunc(sdk, data)
 }
 
 
+// Article returns a Article entity bound to this client.
+// Idiomatic usage: client.Article(nil).List(nil, nil) or
+// client.Article(nil).Load(map[string]any{"id": ...}, nil).
 func (sdk *ElifeSciencesSDK) Article(data map[string]any) ElifeSciencesEntity {
 	return NewArticleEntityFunc(sdk, data)
 }
 
 
+// Collection returns a Collection entity bound to this client.
+// Idiomatic usage: client.Collection(nil).List(nil, nil) or
+// client.Collection(nil).Load(map[string]any{"id": ...}, nil).
 func (sdk *ElifeSciencesSDK) Collection(data map[string]any) ElifeSciencesEntity {
 	return NewCollectionEntityFunc(sdk, data)
 }
 
 
+// Person returns a Person entity bound to this client.
+// Idiomatic usage: client.Person(nil).List(nil, nil) or
+// client.Person(nil).Load(map[string]any{"id": ...}, nil).
 func (sdk *ElifeSciencesSDK) Person(data map[string]any) ElifeSciencesEntity {
 	return NewPersonEntityFunc(sdk, data)
 }
 
 
+// Search returns a Search entity bound to this client.
+// Idiomatic usage: client.Search(nil).List(nil, nil) or
+// client.Search(nil).Load(map[string]any{"id": ...}, nil).
 func (sdk *ElifeSciencesSDK) Search(data map[string]any) ElifeSciencesEntity {
 	return NewSearchEntityFunc(sdk, data)
 }
 
 
+// Subject returns a Subject entity bound to this client.
+// Idiomatic usage: client.Subject(nil).List(nil, nil) or
+// client.Subject(nil).Load(map[string]any{"id": ...}, nil).
 func (sdk *ElifeSciencesSDK) Subject(data map[string]any) ElifeSciencesEntity {
 	return NewSubjectEntityFunc(sdk, data)
 }

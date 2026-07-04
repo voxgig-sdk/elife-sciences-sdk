@@ -144,16 +144,23 @@ class ElifeSciencesSDK:
 
         _, err = utility.prepare_auth(ctx)
         if err is not None:
-            return None, err
+            raise err
 
-        return utility.make_fetch_def(ctx)
+        fetchdef, err = utility.make_fetch_def(ctx)
+        if err is not None:
+            raise err
+
+        return fetchdef
 
     def direct(self, fetchargs=None):
         utility = self._utility
 
-        fetchdef, err = self.prepare(fetchargs)
-        if err is not None:
-            return {"ok": False, "err": err}, None
+        try:
+            fetchdef = self.prepare(fetchargs)
+        except Exception as err:
+            # direct() is the raw-HTTP escape hatch: it never raises, it
+            # returns a result object callers branch on via result["ok"].
+            return {"ok": False, "err": err}
 
         if fetchargs is None:
             fetchargs = {}
@@ -170,13 +177,13 @@ class ElifeSciencesSDK:
         fetched, fetch_err = utility.fetcher(ctx, url, fetchdef)
 
         if fetch_err is not None:
-            return {"ok": False, "err": fetch_err}, None
+            return {"ok": False, "err": fetch_err}
 
         if fetched is None:
             return {
                 "ok": False,
                 "err": ctx.make_error("direct_no_response", "response: undefined"),
-            }, None
+            }
 
         if isinstance(fetched, dict):
             status = helpers.to_int(vs.getprop(fetched, "status"))
@@ -205,40 +212,106 @@ class ElifeSciencesSDK:
                 "status": status,
                 "headers": headers,
                 "data": json_data,
-            }, None
+            }
 
         return {
             "ok": False,
             "err": ctx.make_error("direct_invalid", "invalid response type"),
-        }, None
+        }
 
+
+    @property
+    def annotation(self):
+        """Idiomatic facade: client.annotation.list() / client.annotation.load({"id": ...})."""
+        from entity.annotation_entity import AnnotationEntity
+        cached = getattr(self, "_annotation", None)
+        if cached is None:
+            cached = AnnotationEntity(self, None)
+            self._annotation = cached
+        return cached
 
     def Annotation(self, data=None):
+        # Deprecated: use client.annotation instead.
         from entity.annotation_entity import AnnotationEntity
         return AnnotationEntity(self, data)
 
 
+    @property
+    def article(self):
+        """Idiomatic facade: client.article.list() / client.article.load({"id": ...})."""
+        from entity.article_entity import ArticleEntity
+        cached = getattr(self, "_article", None)
+        if cached is None:
+            cached = ArticleEntity(self, None)
+            self._article = cached
+        return cached
+
     def Article(self, data=None):
+        # Deprecated: use client.article instead.
         from entity.article_entity import ArticleEntity
         return ArticleEntity(self, data)
 
 
+    @property
+    def collection(self):
+        """Idiomatic facade: client.collection.list() / client.collection.load({"id": ...})."""
+        from entity.collection_entity import CollectionEntity
+        cached = getattr(self, "_collection", None)
+        if cached is None:
+            cached = CollectionEntity(self, None)
+            self._collection = cached
+        return cached
+
     def Collection(self, data=None):
+        # Deprecated: use client.collection instead.
         from entity.collection_entity import CollectionEntity
         return CollectionEntity(self, data)
 
 
+    @property
+    def person(self):
+        """Idiomatic facade: client.person.list() / client.person.load({"id": ...})."""
+        from entity.person_entity import PersonEntity
+        cached = getattr(self, "_person", None)
+        if cached is None:
+            cached = PersonEntity(self, None)
+            self._person = cached
+        return cached
+
     def Person(self, data=None):
+        # Deprecated: use client.person instead.
         from entity.person_entity import PersonEntity
         return PersonEntity(self, data)
 
 
+    @property
+    def search(self):
+        """Idiomatic facade: client.search.list() / client.search.load({"id": ...})."""
+        from entity.search_entity import SearchEntity
+        cached = getattr(self, "_search", None)
+        if cached is None:
+            cached = SearchEntity(self, None)
+            self._search = cached
+        return cached
+
     def Search(self, data=None):
+        # Deprecated: use client.search instead.
         from entity.search_entity import SearchEntity
         return SearchEntity(self, data)
 
 
+    @property
+    def subject(self):
+        """Idiomatic facade: client.subject.list() / client.subject.load({"id": ...})."""
+        from entity.subject_entity import SubjectEntity
+        cached = getattr(self, "_subject", None)
+        if cached is None:
+            cached = SubjectEntity(self, None)
+            self._subject = cached
+        return cached
+
     def Subject(self, data=None):
+        # Deprecated: use client.subject instead.
         from entity.subject_entity import SubjectEntity
         return SubjectEntity(self, data)
 

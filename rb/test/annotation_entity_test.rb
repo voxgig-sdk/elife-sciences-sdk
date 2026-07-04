@@ -42,8 +42,7 @@ class AnnotationEntityTest < Minitest::Test
     # LOAD
     annotation_ref01_ent = client.Annotation(nil)
     annotation_ref01_match_dt0 = {}
-    annotation_ref01_data_dt0_loaded, err = annotation_ref01_ent.load(annotation_ref01_match_dt0, nil)
-    assert_nil err
+    annotation_ref01_data_dt0_loaded = annotation_ref01_ent.load(annotation_ref01_match_dt0, nil)
     assert !annotation_ref01_data_dt0_loaded.nil?
 
   end
@@ -82,7 +81,6 @@ def annotation_basic_setup(extra)
     "ELIFESCIENCES_TEST_ANNOTATION_ENTID" => idmap,
     "ELIFESCIENCES_TEST_LIVE" => "FALSE",
     "ELIFESCIENCES_TEST_EXPLAIN" => "FALSE",
-    "ELIFESCIENCES_APIKEY" => "NONE",
   })
 
   idmap_resolved = Helpers.to_map(
@@ -94,7 +92,6 @@ def annotation_basic_setup(extra)
   if env["ELIFESCIENCES_TEST_LIVE"] == "TRUE"
     merged_opts = Vs.merge([
       {
-        "apikey" => env["ELIFESCIENCES_APIKEY"],
       },
       extra || {},
     ])

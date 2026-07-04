@@ -42,8 +42,7 @@ class ArticleEntityTest < Minitest::Test
     # LOAD
     article_ref01_ent = client.Article(nil)
     article_ref01_match_dt0 = {}
-    article_ref01_data_dt0_loaded, err = article_ref01_ent.load(article_ref01_match_dt0, nil)
-    assert_nil err
+    article_ref01_data_dt0_loaded = article_ref01_ent.load(article_ref01_match_dt0, nil)
     assert !article_ref01_data_dt0_loaded.nil?
 
   end
@@ -82,7 +81,6 @@ def article_basic_setup(extra)
     "ELIFESCIENCES_TEST_ARTICLE_ENTID" => idmap,
     "ELIFESCIENCES_TEST_LIVE" => "FALSE",
     "ELIFESCIENCES_TEST_EXPLAIN" => "FALSE",
-    "ELIFESCIENCES_APIKEY" => "NONE",
   })
 
   idmap_resolved = Helpers.to_map(
@@ -94,7 +92,6 @@ def article_basic_setup(extra)
   if env["ELIFESCIENCES_TEST_LIVE"] == "TRUE"
     merged_opts = Vs.merge([
       {
-        "apikey" => env["ELIFESCIENCES_APIKEY"],
       },
       extra || {},
     ])

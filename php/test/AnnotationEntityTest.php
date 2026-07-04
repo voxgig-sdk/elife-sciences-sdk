@@ -49,8 +49,7 @@ class AnnotationEntityTest extends TestCase
         // LOAD
         $annotation_ref01_ent = $client->Annotation(null);
         $annotation_ref01_match_dt0 = [];
-        [$annotation_ref01_data_dt0_loaded, $err] = $annotation_ref01_ent->load($annotation_ref01_match_dt0, null);
-        $this->assertNull($err);
+        $annotation_ref01_data_dt0_loaded = $annotation_ref01_ent->load($annotation_ref01_match_dt0, null);
         $this->assertNotNull($annotation_ref01_data_dt0_loaded);
 
     }
@@ -85,7 +84,6 @@ function annotation_basic_setup($extra)
         "ELIFESCIENCES_TEST_ANNOTATION_ENTID" => $idmap,
         "ELIFESCIENCES_TEST_LIVE" => "FALSE",
         "ELIFESCIENCES_TEST_EXPLAIN" => "FALSE",
-        "ELIFESCIENCES_APIKEY" => "NONE",
     ]);
 
     $idmap_resolved = Helpers::to_map(
@@ -97,7 +95,6 @@ function annotation_basic_setup($extra)
     if ($env["ELIFESCIENCES_TEST_LIVE"] === "TRUE") {
         $merged_opts = Vs::merge([
             [
-                "apikey" => $env["ELIFESCIENCES_APIKEY"],
             ],
             $extra ?? [],
         ]);

@@ -79,6 +79,10 @@ end
 
 
 
+---@param reqmatch AnnotationLoadMatch
+---@param ctrl? table
+---@return Annotation
+---@return string? err
 function AnnotationEntity:load(reqmatch, ctrl)
   local utility = self._utility
   local ctx = utility.make_context({

@@ -42,8 +42,7 @@ class SubjectEntityTest < Minitest::Test
     # LOAD
     subject_ref01_ent = client.Subject(nil)
     subject_ref01_match_dt0 = {}
-    subject_ref01_data_dt0_loaded, err = subject_ref01_ent.load(subject_ref01_match_dt0, nil)
-    assert_nil err
+    subject_ref01_data_dt0_loaded = subject_ref01_ent.load(subject_ref01_match_dt0, nil)
     assert !subject_ref01_data_dt0_loaded.nil?
 
   end
@@ -82,7 +81,6 @@ def subject_basic_setup(extra)
     "ELIFESCIENCES_TEST_SUBJECT_ENTID" => idmap,
     "ELIFESCIENCES_TEST_LIVE" => "FALSE",
     "ELIFESCIENCES_TEST_EXPLAIN" => "FALSE",
-    "ELIFESCIENCES_APIKEY" => "NONE",
   })
 
   idmap_resolved = Helpers.to_map(
@@ -94,7 +92,6 @@ def subject_basic_setup(extra)
   if env["ELIFESCIENCES_TEST_LIVE"] == "TRUE"
     merged_opts = Vs.merge([
       {
-        "apikey" => env["ELIFESCIENCES_APIKEY"],
       },
       extra || {},
     ])
