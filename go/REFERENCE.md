@@ -120,7 +120,7 @@ annotation := client.Annotation(nil)
 Load a single entity matching the given criteria.
 
 ```go
-result, err := client.Annotation(nil).Load(map[string]any{"id": "annotation_id"}, nil)
+result, err := client.Annotation(nil).Load(nil, nil)
 ```
 
 ### Common Methods
@@ -280,7 +280,7 @@ search := client.Search(nil)
 Load a single entity matching the given criteria.
 
 ```go
-result, err := client.Search(nil).Load(map[string]any{"id": "search_id"}, nil)
+result, err := client.Search(nil).Load(nil, nil)
 ```
 
 ### Common Methods

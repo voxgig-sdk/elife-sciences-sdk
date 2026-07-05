@@ -8,7 +8,7 @@ Complete API reference for the ElifeSciences Ruby SDK.
 ### Constructor
 
 ```ruby
-require_relative 'elife-sciences_sdk'
+require_relative 'ElifeSciences_sdk'
 
 client = ElifeSciencesSDK.new(options)
 ```
@@ -116,7 +116,7 @@ annotation = client.Annotation
 Load a single entity matching the given criteria. Raises on error.
 
 ```ruby
-result = client.Annotation.load({ "id" => "annotation_id" })
+result = client.Annotation.load()
 ```
 
 ### Common Methods
@@ -300,7 +300,7 @@ search = client.Search
 Load a single entity matching the given criteria. Raises on error.
 
 ```ruby
-result = client.Search.load({ "id" => "search_id" })
+result = client.Search.load()
 ```
 
 ### Common Methods

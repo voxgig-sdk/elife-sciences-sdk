@@ -12,8 +12,7 @@ import "encoding/json"
 type Annotation struct {
 }
 
-// AnnotationLoadMatch mirrors the annotation fields as an all-optional match
-// filter (Go analog of Partial<Annotation>).
+// AnnotationLoadMatch is the typed request payload for Annotation.LoadTyped.
 type AnnotationLoadMatch struct {
 }
 
@@ -48,8 +47,7 @@ type PersonLoadMatch struct {
 type Search struct {
 }
 
-// SearchLoadMatch mirrors the search fields as an all-optional match
-// filter (Go analog of Partial<Search>).
+// SearchLoadMatch is the typed request payload for Search.LoadTyped.
 type SearchLoadMatch struct {
 }
 

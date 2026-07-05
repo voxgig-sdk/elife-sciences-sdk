@@ -8,7 +8,8 @@
 export interface Annotation {
 }
 
-export type AnnotationLoadMatch = Partial<Annotation>
+export interface AnnotationLoadMatch {
+}
 
 export interface Article {
 }
@@ -34,7 +35,8 @@ export interface PersonLoadMatch {
 export interface Search {
 }
 
-export type SearchLoadMatch = Partial<Search>
+export interface SearchLoadMatch {
+}
 
 export interface Subject {
 }

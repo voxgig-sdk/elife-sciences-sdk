@@ -179,7 +179,7 @@ const annotation = client.Annotation()
 Load a single entity matching the given criteria.
 
 ```ts
-const result = await client.Annotation().load({ id: 'annotation_id' })
+const result = await client.Annotation().load()
 ```
 
 ### Common Methods
@@ -355,7 +355,7 @@ const search = client.Search()
 Load a single entity matching the given criteria.
 
 ```ts
-const result = await client.Search().load({ id: 'search_id' })
+const result = await client.Search().load()
 ```
 
 ### Common Methods

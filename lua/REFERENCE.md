@@ -113,7 +113,7 @@ local annotation = client:Annotation(nil)
 Load a single entity matching the given criteria.
 
 ```lua
-local result, err = client:Annotation():load({ id = "annotation_id" })
+local result, err = client:Annotation():load()
 ```
 
 ### Common Methods
@@ -297,7 +297,7 @@ local search = client:Search(nil)
 Load a single entity matching the given criteria.
 
 ```lua
-local result, err = client:Search():load({ id = "search_id" })
+local result, err = client:Search():load()
 ```
 
 ### Common Methods

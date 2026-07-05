@@ -17,7 +17,7 @@ class Annotation
 {
 }
 
-/** Match filter for Annotation#load (any subset of Annotation fields). */
+/** Request payload for Annotation#load. */
 class AnnotationLoadMatch
 {
 }
@@ -60,7 +60,7 @@ class Search
 {
 }
 
-/** Match filter for Search#load (any subset of Search fields). */
+/** Request payload for Search#load. */
 class SearchLoadMatch
 {
 }

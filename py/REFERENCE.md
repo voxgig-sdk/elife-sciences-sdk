@@ -8,7 +8,7 @@ Complete API reference for the ElifeSciences Python SDK.
 ### Constructor
 
 ```python
-from elife-sciences_sdk import ElifeSciencesSDK
+from elifesciences_sdk import ElifeSciencesSDK
 
 client = ElifeSciencesSDK(options)
 ```
@@ -110,7 +110,7 @@ annotation = client.Annotation()
 Load a single entity matching the given criteria. Returns the entity data and raises on error.
 
 ```python
-result = client.Annotation().load({"id": "annotation_id"})
+result = client.Annotation().load()
 ```
 
 ### Common Methods
@@ -290,7 +290,7 @@ search = client.Search()
 Load a single entity matching the given criteria. Returns the entity data and raises on error.
 
 ```python
-result = client.Search().load({"id": "search_id"})
+result = client.Search().load()
 ```
 
 ### Common Methods

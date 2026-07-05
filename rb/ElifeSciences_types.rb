@@ -12,7 +12,7 @@
 class Annotation
 end
 
-# Match filter for Annotation#load (any subset of Annotation fields).
+# Request payload for Annotation#load.
 class AnnotationLoadMatch
 end
 
@@ -59,7 +59,7 @@ PersonLoadMatch = Struct.new(
 class Search
 end
 
-# Match filter for Search#load (any subset of Search fields).
+# Request payload for Search#load.
 class SearchLoadMatch
 end
 

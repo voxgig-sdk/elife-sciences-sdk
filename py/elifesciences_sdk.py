@@ -221,37 +221,37 @@ class ElifeSciencesSDK:
 
 
     def Annotation(self, data=None) -> "AnnotationEntity":
-        """Entity factory: client.Annotation().list({}) / client.Annotation().load({"id": ...})."""
+        """Entity factory: client.Annotation().list() / client.Annotation().load({"id": ...})."""
         from entity.annotation_entity import AnnotationEntity
         return AnnotationEntity(self, data)
 
 
     def Article(self, data=None) -> "ArticleEntity":
-        """Entity factory: client.Article().list({}) / client.Article().load({"id": ...})."""
+        """Entity factory: client.Article().list() / client.Article().load({"id": ...})."""
         from entity.article_entity import ArticleEntity
         return ArticleEntity(self, data)
 
 
     def Collection(self, data=None) -> "CollectionEntity":
-        """Entity factory: client.Collection().list({}) / client.Collection().load({"id": ...})."""
+        """Entity factory: client.Collection().list() / client.Collection().load({"id": ...})."""
         from entity.collection_entity import CollectionEntity
         return CollectionEntity(self, data)
 
 
     def Person(self, data=None) -> "PersonEntity":
-        """Entity factory: client.Person().list({}) / client.Person().load({"id": ...})."""
+        """Entity factory: client.Person().list() / client.Person().load({"id": ...})."""
         from entity.person_entity import PersonEntity
         return PersonEntity(self, data)
 
 
     def Search(self, data=None) -> "SearchEntity":
-        """Entity factory: client.Search().list({}) / client.Search().load({"id": ...})."""
+        """Entity factory: client.Search().list() / client.Search().load({"id": ...})."""
         from entity.search_entity import SearchEntity
         return SearchEntity(self, data)
 
 
     def Subject(self, data=None) -> "SubjectEntity":
-        """Entity factory: client.Subject().list({}) / client.Subject().load({"id": ...})."""
+        """Entity factory: client.Subject().list() / client.Subject().load({"id": ...})."""
         from entity.subject_entity import SubjectEntity
         return SubjectEntity(self, data)
 
