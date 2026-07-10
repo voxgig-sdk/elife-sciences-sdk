@@ -1,0 +1,8 @@
+# Entity Models
+
+@"annotation.aontu"
+@"article.aontu"
+@"collection.aontu"
+@"person.aontu"
+@"search.aontu"
+@"subject.aontu"

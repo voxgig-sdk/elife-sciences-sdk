@@ -13,17 +13,17 @@
 ---@class Article
 
 ---@class ArticleLoadMatch
----@field id string
+---@field id? string
 
 ---@class Collection
 
 ---@class CollectionLoadMatch
----@field id string
+---@field id? string
 
 ---@class Person
 
 ---@class PersonLoadMatch
----@field id string
+---@field id? string
 
 ---@class Search
 
@@ -32,7 +32,7 @@
 ---@class Subject
 
 ---@class SubjectLoadMatch
----@field id string
+---@field id? string
 
 local M = {}
 

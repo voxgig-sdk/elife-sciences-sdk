@@ -30,7 +30,7 @@ class Article
 /** Request payload for Article#load. */
 class ArticleLoadMatch
 {
-    public string $id;
+    public ?string $id = null;
 }
 
 /** Collection entity data model. */
@@ -41,7 +41,7 @@ class Collection
 /** Request payload for Collection#load. */
 class CollectionLoadMatch
 {
-    public string $id;
+    public ?string $id = null;
 }
 
 /** Person entity data model. */
@@ -52,7 +52,7 @@ class Person
 /** Request payload for Person#load. */
 class PersonLoadMatch
 {
-    public string $id;
+    public ?string $id = null;
 }
 
 /** Search entity data model. */
@@ -73,6 +73,6 @@ class Subject
 /** Request payload for Subject#load. */
 class SubjectLoadMatch
 {
-    public string $id;
+    public ?string $id = null;
 }
 

@@ -23,7 +23,7 @@ end
 # Request payload for Article#load.
 #
 # @!attribute [rw] id
-#   @return [String]
+#   @return [String, nil]
 ArticleLoadMatch = Struct.new(
   :id,
   keyword_init: true
@@ -36,7 +36,7 @@ end
 # Request payload for Collection#load.
 #
 # @!attribute [rw] id
-#   @return [String]
+#   @return [String, nil]
 CollectionLoadMatch = Struct.new(
   :id,
   keyword_init: true
@@ -49,7 +49,7 @@ end
 # Request payload for Person#load.
 #
 # @!attribute [rw] id
-#   @return [String]
+#   @return [String, nil]
 PersonLoadMatch = Struct.new(
   :id,
   keyword_init: true
@@ -70,7 +70,7 @@ end
 # Request payload for Subject#load.
 #
 # @!attribute [rw] id
-#   @return [String]
+#   @return [String, nil]
 SubjectLoadMatch = Struct.new(
   :id,
   keyword_init: true

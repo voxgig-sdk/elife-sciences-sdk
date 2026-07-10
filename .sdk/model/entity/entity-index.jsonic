@@ -1,8 +1,0 @@
-# Entity Models
-
-@"annotation.jsonic"
-@"article.jsonic"
-@"collection.jsonic"
-@"person.jsonic"
-@"search.jsonic"
-@"subject.jsonic"

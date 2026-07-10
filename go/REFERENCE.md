@@ -111,6 +111,7 @@ same parameters as `Direct()`.
 
 ```go
 annotation := client.Annotation(nil)
+fmt.Println(annotation.GetName()) // "annotation"
 ```
 
 ### Operations
@@ -121,6 +122,10 @@ Load a single entity matching the given criteria.
 
 ```go
 result, err := client.Annotation(nil).Load(nil, nil)
+if err != nil {
+    panic(err)
+}
+fmt.Println(result)
 ```
 
 ### Common Methods
@@ -151,6 +156,7 @@ Return the entity name.
 
 ```go
 article := client.Article(nil)
+fmt.Println(article.GetName()) // "article"
 ```
 
 ### Operations
@@ -161,6 +167,10 @@ Load a single entity matching the given criteria.
 
 ```go
 result, err := client.Article(nil).Load(map[string]any{"id": "article_id"}, nil)
+if err != nil {
+    panic(err)
+}
+fmt.Println(result)
 ```
 
 ### Common Methods
@@ -191,6 +201,7 @@ Return the entity name.
 
 ```go
 collection := client.Collection(nil)
+fmt.Println(collection.GetName()) // "collection"
 ```
 
 ### Operations
@@ -201,6 +212,10 @@ Load a single entity matching the given criteria.
 
 ```go
 result, err := client.Collection(nil).Load(map[string]any{"id": "collection_id"}, nil)
+if err != nil {
+    panic(err)
+}
+fmt.Println(result)
 ```
 
 ### Common Methods
@@ -231,6 +246,7 @@ Return the entity name.
 
 ```go
 person := client.Person(nil)
+fmt.Println(person.GetName()) // "person"
 ```
 
 ### Operations
@@ -241,6 +257,10 @@ Load a single entity matching the given criteria.
 
 ```go
 result, err := client.Person(nil).Load(map[string]any{"id": "person_id"}, nil)
+if err != nil {
+    panic(err)
+}
+fmt.Println(result)
 ```
 
 ### Common Methods
@@ -271,6 +291,7 @@ Return the entity name.
 
 ```go
 search := client.Search(nil)
+fmt.Println(search.GetName()) // "search"
 ```
 
 ### Operations
@@ -281,6 +302,10 @@ Load a single entity matching the given criteria.
 
 ```go
 result, err := client.Search(nil).Load(nil, nil)
+if err != nil {
+    panic(err)
+}
+fmt.Println(result)
 ```
 
 ### Common Methods
@@ -311,6 +336,7 @@ Return the entity name.
 
 ```go
 subject := client.Subject(nil)
+fmt.Println(subject.GetName()) // "subject"
 ```
 
 ### Operations
@@ -321,6 +347,10 @@ Load a single entity matching the given criteria.
 
 ```go
 result, err := client.Subject(nil).Load(map[string]any{"id": "subject_id"}, nil)
+if err != nil {
+    panic(err)
+}
+fmt.Println(result)
 ```
 
 ### Common Methods

@@ -15,21 +15,21 @@ export interface Article {
 }
 
 export interface ArticleLoadMatch {
-  id: string
+  id?: string
 }
 
 export interface Collection {
 }
 
 export interface CollectionLoadMatch {
-  id: string
+  id?: string
 }
 
 export interface Person {
 }
 
 export interface PersonLoadMatch {
-  id: string
+  id?: string
 }
 
 export interface Search {
@@ -42,6 +42,6 @@ export interface Subject {
 }
 
 export interface SubjectLoadMatch {
-  id: string
+  id?: string
 }
 

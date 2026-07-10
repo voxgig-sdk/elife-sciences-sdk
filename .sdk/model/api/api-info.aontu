@@ -20,9 +20,9 @@ main: {
           url: "https://api.elifesciences.org"
         }
       ]
+      summary: "The eLife Sciences API provides access to various resources related to scientific articles, annotations, reports, and more."
       title: "eLife Sciences API"
       version: "1.0.0"
+      website: "https://elifesciences.org"
     }
   }
-}
-

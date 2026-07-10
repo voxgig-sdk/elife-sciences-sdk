@@ -22,7 +22,7 @@ type Article struct {
 
 // ArticleLoadMatch is the typed request payload for Article.LoadTyped.
 type ArticleLoadMatch struct {
-	Id string `json:"id"`
+	Id *string `json:"id,omitempty"`
 }
 
 // Collection is the typed data model for the collection entity.
@@ -31,7 +31,7 @@ type Collection struct {
 
 // CollectionLoadMatch is the typed request payload for Collection.LoadTyped.
 type CollectionLoadMatch struct {
-	Id string `json:"id"`
+	Id *string `json:"id,omitempty"`
 }
 
 // Person is the typed data model for the person entity.
@@ -40,7 +40,7 @@ type Person struct {
 
 // PersonLoadMatch is the typed request payload for Person.LoadTyped.
 type PersonLoadMatch struct {
-	Id string `json:"id"`
+	Id *string `json:"id,omitempty"`
 }
 
 // Search is the typed data model for the search entity.
@@ -57,7 +57,7 @@ type Subject struct {
 
 // SubjectLoadMatch is the typed request payload for Subject.LoadTyped.
 type SubjectLoadMatch struct {
-	Id string `json:"id"`
+	Id *string `json:"id,omitempty"`
 }
 
 // asMap turns a typed request/data struct into the map[string]any the
