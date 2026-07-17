@@ -1,4 +1,4 @@
--- ProjectName SDK exists test
+-- ElifeSciences SDK exists test
 
 local sdk = require("elife-sciences_sdk")
 
