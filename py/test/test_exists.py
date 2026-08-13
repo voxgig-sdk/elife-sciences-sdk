@@ -1,4 +1,4 @@
-# ProjectName SDK exists test
+# ElifeSciences SDK exists test
 
 import pytest
 from elifesciences_sdk import ElifeSciencesSDK

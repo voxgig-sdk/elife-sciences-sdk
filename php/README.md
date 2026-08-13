@@ -35,7 +35,7 @@ $client = new ElifeSciencesSDK();
 
 ```php
 try {
-    // load() returns the bare Annotation record (throws on error).
+    // load() returns the ENTITY — call data_get() for the Annotation record (throws on error).
     $annotation = $client->Annotation()->load();
     print_r($annotation);
 } catch (\Throwable $err) {
@@ -51,7 +51,7 @@ Entity operations throw a `\Throwable` on failure, so wrap them in
 
 ```php
 try {
-    $annotation = $client->Annotation()->load();
+    $article = $client->Article()->load();
 } catch (\Throwable $err) {
     echo "Error: " . $err->getMessage();
 }
@@ -118,14 +118,18 @@ print_r($fetchdef["headers"]);
 
 ### Use test mode
 
-Create a mock client for unit testing — no server required:
+Create a mock client for unit testing — no server required. Seed fixture
+data via the `entity` option so offline calls resolve without a live server:
 
 ```php
-$client = ElifeSciencesSDK::test();
+$client = ElifeSciencesSDK::test([
+    "entity" => ["article" => ["test01" => ["id" => "test01"]]],
+]);
 
-// Entity ops return the bare mock record (throws on error).
-$annotation = $client->Annotation()->load();
-print_r($annotation);
+// Entity ops return the ENTITY (throws on error);
+// call data_get() for the mock record.
+$article = $client->Article()->load(["id" => "test01"]);
+print_r($article);
 ```
 
 ### Use a custom fetch function
@@ -227,7 +231,7 @@ All entities share the same interface.
 
 ### Result shape
 
-Entity operations return the bare result data (an `array` for single-entity
+Entity operations return the ENTITY (call data_get() for the record) (an `array` for single-entity
 ops, a `list` for `list`) and throw on error. Wrap calls in
 `try`/`catch` to handle failures.
 
@@ -317,7 +321,7 @@ Create an instance: `$annotation = $client->Annotation();`
 #### Example: Load
 
 ```php
-// load() returns the bare Annotation record (throws on error).
+// load() returns the ENTITY — call data_get() for the Annotation record (throws on error).
 $annotation = $client->Annotation()->load();
 ```
 
@@ -335,7 +339,7 @@ Create an instance: `$article = $client->Article();`
 #### Example: Load
 
 ```php
-// load() returns the bare Article record (throws on error).
+// load() returns the ENTITY — call data_get() for the Article record (throws on error).
 $article = $client->Article()->load(["id" => "article_id"]);
 ```
 
@@ -353,7 +357,7 @@ Create an instance: `$collection = $client->Collection();`
 #### Example: Load
 
 ```php
-// load() returns the bare Collection record (throws on error).
+// load() returns the ENTITY — call data_get() for the Collection record (throws on error).
 $collection = $client->Collection()->load(["id" => "collection_id"]);
 ```
 
@@ -371,7 +375,7 @@ Create an instance: `$person = $client->Person();`
 #### Example: Load
 
 ```php
-// load() returns the bare Person record (throws on error).
+// load() returns the ENTITY — call data_get() for the Person record (throws on error).
 $person = $client->Person()->load(["id" => "person_id"]);
 ```
 
@@ -389,7 +393,7 @@ Create an instance: `$search = $client->Search();`
 #### Example: Load
 
 ```php
-// load() returns the bare Search record (throws on error).
+// load() returns the ENTITY — call data_get() for the Search record (throws on error).
 $search = $client->Search()->load();
 ```
 
@@ -407,7 +411,7 @@ Create an instance: `$subject = $client->Subject();`
 #### Example: Load
 
 ```php
-// load() returns the bare Subject record (throws on error).
+// load() returns the ENTITY — call data_get() for the Subject record (throws on error).
 $subject = $client->Subject()->load(["id" => "subject_id"]);
 ```
 
@@ -488,11 +492,11 @@ Entity instances are stateful. After a successful `load`, the entity
 stores the returned data and match criteria internally.
 
 ```php
-$annotation = $client->Annotation();
-$annotation->load();
+$article = $client->Article();
+$article->load();
 
-// $annotation->data_get() now returns the annotation data from the last load
-// $annotation->match_get() returns the last match criteria
+// $article->data_get() now returns the article data from the last load
+// $article->match_get() returns the last match criteria
 ```
 
 Call `make()` to create a fresh instance with the same configuration

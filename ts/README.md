@@ -53,8 +53,8 @@ Entity operations reject on failure, so wrap them in `try` / `catch`:
 
 ```ts
 try {
-  const annotation = await client.Annotation().load()
-  console.log(annotation)
+  const article = await client.Article().load()
+  console.log(article)
 } catch (err) {
   console.error('load failed:', err)
 }
@@ -120,9 +120,10 @@ Create a mock client for unit testing — no server required:
 ```ts
 const client = ElifeSciencesSDK.test()
 
-const annotation = await client.Annotation().load()
-// annotation is a bare entity populated with mock response data
-console.log(annotation)
+const article = await client.Article().load({ id: 'test01' })
+// article is the entity, populated with mock response data
+// — call article.data() for the record itself
+console.log(article)
 ```
 
 You can also use the instance method:
@@ -137,10 +138,10 @@ const testClient = client.tester()
 Entity instances remember their last match and data:
 
 ```ts
-const entity = client.Annotation()
+const entity = client.Article()
 
 // First call runs the operation and stores its result
-await entity.load()
+await entity.load({ id: 'example' })
 
 // Subsequent calls reuse the stored state
 const data = entity.data()
@@ -515,11 +516,11 @@ stores the returned data and match criteria internally. Subsequent
 calls on the same instance can rely on this state.
 
 ```ts
-const annotation = client.Annotation()
-await annotation.load()
+const article = client.Article()
+await article.load()
 
-// annotation.data() now returns the annotation data from the last `load`
-// annotation.match() returns the last match criteria
+// article.data() now returns the article data from the last `load`
+// article.match() returns { id: "example_id" }
 ```
 
 Call `make()` to create a fresh instance with the same configuration

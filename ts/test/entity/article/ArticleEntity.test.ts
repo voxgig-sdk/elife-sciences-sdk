@@ -26,8 +26,8 @@ import {
 describe('ArticleEntity', async () => {
 
   // Per-test live pacing. Delay is read from sdk-test-control.json's
-  // `test.live.delayMs`; only sleeps when ELIFESCIENCES_TEST_LIVE=TRUE.
-  afterEach(liveDelay('ELIFESCIENCES_TEST_LIVE'))
+  // `test.live.delayMs`; only sleeps when ELIFE_SCIENCES_TEST_LIVE=TRUE.
+  afterEach(liveDelay('ELIFE_SCIENCES_TEST_LIVE'))
 
   test('instance', async () => {
     const testsdk = ElifeSciencesSDK.test()
@@ -62,7 +62,7 @@ describe('ArticleEntity', async () => {
     // LOAD
     const article_ref01_ent = client.Article()
     const article_ref01_match_dt0: any = {}
-    const article_ref01_data_dt0 = await article_ref01_ent.load(article_ref01_match_dt0)
+    const article_ref01_data_dt0 = (await article_ref01_ent.load(article_ref01_match_dt0)).data()
     assert(null != article_ref01_data_dt0)
 
 

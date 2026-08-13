@@ -23,6 +23,7 @@ require_once __DIR__ . '/MakeUrl.php';
 require_once __DIR__ . '/Param.php';
 require_once __DIR__ . '/PrepareAuth.php';
 require_once __DIR__ . '/PrepareBody.php';
+require_once __DIR__ . '/Graphql.php';
 require_once __DIR__ . '/PrepareHeaders.php';
 require_once __DIR__ . '/PrepareMethod.php';
 require_once __DIR__ . '/PrepareParams.php';
@@ -59,6 +60,8 @@ ElifeSciencesUtility::setRegistrar(function (ElifeSciencesUtility $u): void {
     $u->prepare_params = [ElifeSciencesPrepareParams::class, 'call'];
     $u->prepare_path = [ElifeSciencesPreparePath::class, 'call'];
     $u->prepare_query = [ElifeSciencesPrepareQuery::class, 'call'];
+    $u->graphql_body = [ElifeSciencesGraphql::class, 'body'];
+    $u->graphql_errors = [ElifeSciencesGraphql::class, 'errors'];
     $u->result_basic = [ElifeSciencesResultBasic::class, 'call'];
     $u->result_body = [ElifeSciencesResultBody::class, 'call'];
     $u->result_headers = [ElifeSciencesResultHeaders::class, 'call'];

@@ -16,11 +16,11 @@
 import pytest
 
 from elifesciences_sdk import ElifeSciencesSDK
-from core.error import ElifeSciencesError
-from core.result import ElifeSciencesResult
-from core.response import ElifeSciencesResponse
-from core.spec import ElifeSciencesSpec
-from feature.base_feature import ElifeSciencesBaseFeature
+from elifesciences_sdk.core.error import ElifeSciencesError
+from elifesciences_sdk.core.result import ElifeSciencesResult
+from elifesciences_sdk.core.response import ElifeSciencesResponse
+from elifesciences_sdk.core.spec import ElifeSciencesSpec
+from elifesciences_sdk.feature.base_feature import ElifeSciencesBaseFeature
 
 
 def _client():

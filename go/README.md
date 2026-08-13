@@ -66,12 +66,12 @@ Every entity operation returns `(value, error)`. Check `err` before
 using the value — there is no exception to catch:
 
 ```go
-annotation, err := client.Annotation(nil).Load(nil, nil)
+article, err := client.Article(nil).Load(nil, nil)
 if err != nil {
     // handle err
     return
 }
-_ = annotation
+_ = article
 ```
 
 `Direct` follows the same `(value, error)` convention:
@@ -135,13 +135,13 @@ Create a mock client for unit testing — no server required:
 ```go
 client := sdk.Test()
 
-annotation, err := client.Annotation(nil).Load(
-    nil, nil,
+article, err := client.Article(nil).Load(
+    map[string]any{"id": "test01"}, nil,
 )
 if err != nil {
     panic(err)
 }
-fmt.Println(annotation) // the returned mock data
+fmt.Println(article) // the returned mock data
 ```
 
 ### Use a custom fetch function
@@ -517,11 +517,11 @@ Entity instances are stateful. After a successful `Load`, the entity
 stores the returned data and match criteria internally.
 
 ```go
-annotation := client.Annotation(nil)
-annotation.Load(nil, nil)
+article := client.Article(nil)
+article.Load(nil, nil)
 
-// annotation.Data() now returns the annotation data from the last load
-// annotation.Match() returns the last match criteria
+// article.Data() now returns the article data from the last load
+// article.Match() returns the last match criteria
 ```
 
 Call `Make()` to create a fresh instance with the same configuration

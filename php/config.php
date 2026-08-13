@@ -82,6 +82,7 @@ class ElifeSciencesConfig
                       ],
                     ],
                   ],
+                  'kind' => 'http',
                   'method' => 'GET',
                   'orig' => '/annotations',
                   'parts' => [
@@ -150,6 +151,7 @@ class ElifeSciencesConfig
                       ],
                     ],
                   ],
+                  'kind' => 'http',
                   'method' => 'GET',
                   'orig' => '/articles',
                   'parts' => [
@@ -183,6 +185,7 @@ class ElifeSciencesConfig
                       ],
                     ],
                   ],
+                  'kind' => 'http',
                   'method' => 'GET',
                   'orig' => '/articles/{id}',
                   'parts' => [
@@ -249,6 +252,7 @@ class ElifeSciencesConfig
                       ],
                     ],
                   ],
+                  'kind' => 'http',
                   'method' => 'GET',
                   'orig' => '/collections',
                   'parts' => [
@@ -282,6 +286,7 @@ class ElifeSciencesConfig
                       ],
                     ],
                   ],
+                  'kind' => 'http',
                   'method' => 'GET',
                   'orig' => '/collections/{id}',
                   'parts' => [
@@ -347,6 +352,7 @@ class ElifeSciencesConfig
                       ],
                     ],
                   ],
+                  'kind' => 'http',
                   'method' => 'GET',
                   'orig' => '/people',
                   'parts' => [
@@ -380,6 +386,7 @@ class ElifeSciencesConfig
                       ],
                     ],
                   ],
+                  'kind' => 'http',
                   'method' => 'GET',
                   'orig' => '/people/{id}',
                   'parts' => [
@@ -479,6 +486,7 @@ class ElifeSciencesConfig
                       ],
                     ],
                   ],
+                  'kind' => 'http',
                   'method' => 'GET',
                   'orig' => '/search',
                   'parts' => [
@@ -541,6 +549,7 @@ class ElifeSciencesConfig
                       ],
                     ],
                   ],
+                  'kind' => 'http',
                   'method' => 'GET',
                   'orig' => '/subjects',
                   'parts' => [
@@ -573,6 +582,7 @@ class ElifeSciencesConfig
                       ],
                     ],
                   ],
+                  'kind' => 'http',
                   'method' => 'GET',
                   'orig' => '/subjects/{id}',
                   'parts' => [

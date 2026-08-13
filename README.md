@@ -38,18 +38,27 @@ network, and no credentials:
 ### TypeScript
 
 ```ts
-const client = ElifeSciencesSDK.test()
-const annotation = await client.Annotation().load()
-// annotation is a bare Annotation populated with mock data
-console.log(annotation)
+// The offline mock starts EMPTY — seed it with the records the test needs.
+// Shape: { entity: { <entity-name>: { <id>: <record> } } }
+const client = ElifeSciencesSDK.test({
+  entity: {
+    article: {
+      test01: { id: 'test01' },
+    },
+  },
+})
+const article = await client.Article().load({ id: 'test01' })
+// article is the Article entity, populated with mock data
+// — call article.data() for the record itself
+console.log(article)
 ```
 
 ### Python
 
 ```python
 client = ElifeSciencesSDK.test()
-annotation = client.Annotation().load()
-print(annotation)
+article = client.Article().load({"id": "test01"})
+print(article)
 ```
 
 ### PHP
@@ -57,17 +66,17 @@ print(annotation)
 ```php
 // Seed fixture data so offline calls resolve without a live server.
 $client = ElifeSciencesSDK::test([
-    "entity" => ["annotation" => ["test01" => []]],
+    "entity" => ["article" => ["test01" => ["id" => "test01"]]],
 ]);
-$annotation = $client->Annotation()->load();
+$article = $client->Article()->load(["id" => "test01"]);
 ```
 
 ### Golang
 
 ```go
 client := sdk.Test()
-result, err := client.Annotation(nil).Load(
-    nil, nil,
+result, err := client.Article(nil).Load(
+    map[string]any{"id": "test01"}, nil,
 )
 ```
 
@@ -76,16 +85,16 @@ result, err := client.Annotation(nil).Load(
 ```ruby
 # Seed fixture data so offline calls resolve without a live server.
 client = ElifeSciencesSDK.test({
-  "entity" => { "annotation" => { "test01" => {} } },
+  "entity" => { "article" => { "test01" => { "id" => "test01" } } },
 })
-annotation = client.Annotation.load()
+article = client.Article.load({ "id" => "test01" })
 ```
 
 ### Lua
 
 ```lua
 local client = sdk.test()
-local result, err = client:Annotation():load()
+local result, err = client:Article():load({ id = "test01" })
 ```
 
 ## Packages
@@ -187,7 +196,7 @@ require_once 'elifesciences_sdk.php';
 $client = new ElifeSciencesSDK();
 
 
-// Load a specific annotation (returns the bare record; throws on error)
+// Load a specific annotation (returns the ENTITY; call data_get() for the record; throws on error)
 $annotation = $client->Annotation()->load();
 print_r($annotation);
 ```
@@ -215,7 +224,7 @@ require_relative "ElifeSciences_sdk"
 client = ElifeSciencesSDK.new
 
 
-# Load a specific annotation (returns the bare record; raises on error)
+# Load a specific annotation (returns the ENTITY; call data_get for the record)
 annotation = client.Annotation.load()
 puts annotation
 ```
@@ -349,6 +358,9 @@ Pass custom features via the `extend` option at construction time.
 
 This SDK is generated from the upstream OpenAPI specification. It is an
 unofficial client and is not affiliated with the API provider.
+
+The OpenAPI spec(s) this SDK was generated from are kept in the
+[`.sdk/def/`](.sdk/def/) folder.
 
 - Upstream API: [https://elifesciences.org](https://elifesciences.org)
 

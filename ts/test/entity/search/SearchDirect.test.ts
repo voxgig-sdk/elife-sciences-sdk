@@ -19,11 +19,15 @@ import {
 describe('SearchDirect', async () => {
 
   // Per-test live pacing. Delay is read from sdk-test-control.json's
-  // `test.live.delayMs`; only sleeps when ELIFESCIENCES_TEST_LIVE=TRUE.
-  afterEach(liveDelay('ELIFESCIENCES_TEST_LIVE'))
+  // `test.live.delayMs`; only sleeps when ELIFE_SCIENCES_TEST_LIVE=TRUE.
+  afterEach(liveDelay('ELIFE_SCIENCES_TEST_LIVE'))
 
   test('direct-exists', async () => {
     const sdk = new ElifeSciencesSDK({
+      // Concrete base: a live construction must satisfy any server
+      // variables a templated base URL declares; overriding base with a
+      // literal (as the direct flow tests do) sidesteps the requirement.
+      base: 'http://localhost:8080',
       system: { fetch: async () => ({}) }
     })
     assert('function' === typeof sdk.direct)
@@ -72,17 +76,17 @@ function directSetup(mockres?: any) {
   const calls: any[] = []
 
   const env = envOverride({
-    'ELIFESCIENCES_TEST_SEARCH_ENTID': {},
-    'ELIFESCIENCES_TEST_LIVE': 'FALSE',
+    'ELIFE_SCIENCES_TEST_SEARCH_ENTID': {},
+    'ELIFE_SCIENCES_TEST_LIVE': 'FALSE',
   })
 
-  const live = 'TRUE' === env.ELIFESCIENCES_TEST_LIVE
+  const live = 'TRUE' === env.ELIFE_SCIENCES_TEST_LIVE
 
   if (live) {
     const client = new ElifeSciencesSDK({
     })
 
-    let idmap: any = env['ELIFESCIENCES_TEST_SEARCH_ENTID']
+    let idmap: any = env['ELIFE_SCIENCES_TEST_SEARCH_ENTID']
     if ('string' === typeof idmap && idmap.startsWith('{')) {
       idmap = JSON.parse(idmap)
     }

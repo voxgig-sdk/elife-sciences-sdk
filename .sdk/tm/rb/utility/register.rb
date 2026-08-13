@@ -24,6 +24,7 @@ require_relative 'prepare_method'
 require_relative 'prepare_params'
 require_relative 'prepare_path'
 require_relative 'prepare_query'
+require_relative 'graphql'
 require_relative 'result_basic'
 require_relative 'result_body'
 require_relative 'result_headers'
@@ -55,6 +56,8 @@ ElifeSciencesUtility.registrar = ->(u) {
   u.prepare_params = ElifeSciencesUtilities::PrepareParams
   u.prepare_path = ElifeSciencesUtilities::PreparePath
   u.prepare_query = ElifeSciencesUtilities::PrepareQuery
+  u.graphql_body = ElifeSciencesUtilities::GraphqlBody
+  u.graphql_errors = ElifeSciencesUtilities::GraphqlErrors
   u.result_basic = ElifeSciencesUtilities::ResultBasic
   u.result_body = ElifeSciencesUtilities::ResultBody
   u.result_headers = ElifeSciencesUtilities::ResultHeaders

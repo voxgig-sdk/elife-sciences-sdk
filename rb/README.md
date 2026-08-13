@@ -34,7 +34,7 @@ client = ElifeSciencesSDK.new
 
 ```ruby
 begin
-  # load returns the bare Annotation record (raises on error).
+  # load returns the ENTITY — call data_get for the Annotation record (raises on error).
   annotation = client.Annotation.load()
   puts annotation
 rescue => err
@@ -49,7 +49,7 @@ Entity operations raise on failure, so rescue them:
 
 ```ruby
 begin
-  annotation = client.Annotation.load()
+  article = client.Article.load()
 rescue => err
   warn "load failed: #{err}"
 end
@@ -112,14 +112,18 @@ end
 
 ### Use test mode
 
-Create a mock client for unit testing — no server required:
+Create a mock client for unit testing — no server required. Seed fixture
+data via the `entity` option so offline calls resolve without a live server:
 
 ```ruby
-client = ElifeSciencesSDK.test
+client = ElifeSciencesSDK.test({
+  "entity" => { "article" => { "test01" => { "id" => "test01" } } },
+})
 
-# Entity ops return the bare mock record (raises on error).
-annotation = client.Annotation.load()
-puts annotation
+# Entity ops return the ENTITY (raises on error);
+# call data_get for the mock record.
+article = client.Article.load({ "id" => "test01" })
+puts article
 ```
 
 ### Use a custom fetch function
@@ -307,7 +311,7 @@ Create an instance: `annotation = client.Annotation`
 #### Example: Load
 
 ```ruby
-# load returns the bare Annotation record (raises on error).
+# load returns the ENTITY — call data_get for the Annotation record (raises on error).
 annotation = client.Annotation.load()
 ```
 
@@ -325,7 +329,7 @@ Create an instance: `article = client.Article`
 #### Example: Load
 
 ```ruby
-# load returns the bare Article record (raises on error).
+# load returns the ENTITY — call data_get for the Article record (raises on error).
 article = client.Article.load({ "id" => "article_id" })
 ```
 
@@ -343,7 +347,7 @@ Create an instance: `collection = client.Collection`
 #### Example: Load
 
 ```ruby
-# load returns the bare Collection record (raises on error).
+# load returns the ENTITY — call data_get for the Collection record (raises on error).
 collection = client.Collection.load({ "id" => "collection_id" })
 ```
 
@@ -361,7 +365,7 @@ Create an instance: `person = client.Person`
 #### Example: Load
 
 ```ruby
-# load returns the bare Person record (raises on error).
+# load returns the ENTITY — call data_get for the Person record (raises on error).
 person = client.Person.load({ "id" => "person_id" })
 ```
 
@@ -379,7 +383,7 @@ Create an instance: `search = client.Search`
 #### Example: Load
 
 ```ruby
-# load returns the bare Search record (raises on error).
+# load returns the ENTITY — call data_get for the Search record (raises on error).
 search = client.Search.load()
 ```
 
@@ -397,7 +401,7 @@ Create an instance: `subject = client.Subject`
 #### Example: Load
 
 ```ruby
-# load returns the bare Subject record (raises on error).
+# load returns the ENTITY — call data_get for the Subject record (raises on error).
 subject = client.Subject.load({ "id" => "subject_id" })
 ```
 
@@ -478,11 +482,11 @@ Entity instances are stateful. After a successful `load`, the entity
 stores the returned data and match criteria internally.
 
 ```ruby
-annotation = client.Annotation
-annotation.load()
+article = client.Article
+article.load()
 
-# annotation.data_get now returns the annotation data from the last load
-# annotation.match_get returns the last match criteria
+# article.data_get now returns the article data from the last load
+# article.match_get returns the last match criteria
 ```
 
 Call `make` to create a fresh instance with the same configuration

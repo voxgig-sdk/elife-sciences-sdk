@@ -3,9 +3,9 @@
 import json
 import pytest
 
-from utility.voxgig_struct import voxgig_struct as vs
+from elifesciences_sdk.utility.voxgig_struct import voxgig_struct as vs
 from elifesciences_sdk import ElifeSciencesSDK
-from core import helpers
+from elifesciences_sdk.core import helpers
 from test import runner
 
 
@@ -56,11 +56,11 @@ def _article_direct_setup(mockres):
     calls = []
 
     env = runner.env_override({
-        "ELIFESCIENCES_TEST_ARTICLE_ENTID": {},
-        "ELIFESCIENCES_TEST_LIVE": "FALSE",
+        "ELIFE_SCIENCES_TEST_ARTICLE_ENTID": {},
+        "ELIFE_SCIENCES_TEST_LIVE": "FALSE",
     })
 
-    live = env.get("ELIFESCIENCES_TEST_LIVE") == "TRUE"
+    live = env.get("ELIFE_SCIENCES_TEST_LIVE") == "TRUE"
 
     if live:
         merged_opts = {

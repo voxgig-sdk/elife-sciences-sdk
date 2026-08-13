@@ -26,8 +26,8 @@ import {
 describe('AnnotationEntity', async () => {
 
   // Per-test live pacing. Delay is read from sdk-test-control.json's
-  // `test.live.delayMs`; only sleeps when ELIFESCIENCES_TEST_LIVE=TRUE.
-  afterEach(liveDelay('ELIFESCIENCES_TEST_LIVE'))
+  // `test.live.delayMs`; only sleeps when ELIFE_SCIENCES_TEST_LIVE=TRUE.
+  afterEach(liveDelay('ELIFE_SCIENCES_TEST_LIVE'))
 
   test('instance', async () => {
     const testsdk = ElifeSciencesSDK.test()
@@ -62,7 +62,7 @@ describe('AnnotationEntity', async () => {
     // LOAD
     const annotation_ref01_ent = client.Annotation()
     const annotation_ref01_match_dt0: any = {}
-    const annotation_ref01_data_dt0 = await annotation_ref01_ent.load(annotation_ref01_match_dt0)
+    const annotation_ref01_data_dt0 = (await annotation_ref01_ent.load(annotation_ref01_match_dt0)).data()
     assert(null != annotation_ref01_data_dt0)
 
 

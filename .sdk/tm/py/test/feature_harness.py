@@ -14,12 +14,12 @@ from __future__ import annotations
 
 from urllib.parse import quote
 
-from config import make_config
-from features import _make_feature
-from core.control import ElifeSciencesControl
-from core.error import ElifeSciencesError
-from core.result import ElifeSciencesResult
-from core.spec import ElifeSciencesSpec
+from projectname_sdk.config import make_config
+from projectname_sdk.features import _make_feature
+from projectname_sdk.core.control import ElifeSciencesControl
+from projectname_sdk.core.error import ElifeSciencesError
+from projectname_sdk.core.result import ElifeSciencesResult
+from projectname_sdk.core.spec import ElifeSciencesSpec
 
 
 # True when this SDK was generated with the named feature.

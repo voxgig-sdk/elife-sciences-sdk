@@ -60,11 +60,11 @@ function annotation_direct_setup(mockres)
   local calls = {}
 
   local env = runner.env_override({
-    ["ELIFESCIENCES_TEST_ANNOTATION_ENTID"] = {},
-    ["ELIFESCIENCES_TEST_LIVE"] = "FALSE",
+    ["ELIFE_SCIENCES_TEST_ANNOTATION_ENTID"] = {},
+    ["ELIFE_SCIENCES_TEST_LIVE"] = "FALSE",
   })
 
-  local live = env["ELIFESCIENCES_TEST_LIVE"] == "TRUE"
+  local live = env["ELIFE_SCIENCES_TEST_LIVE"] == "TRUE"
 
   if live then
     local merged_opts = {

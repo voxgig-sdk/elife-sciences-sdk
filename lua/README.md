@@ -48,7 +48,7 @@ Entity operations return `(value, err)`. Check `err` before using
 the value:
 
 ```lua
-local annotation, err = client:Annotation():load()
+local article, err = client:Article():load()
 if err then error(err) end
 ```
 
@@ -106,7 +106,7 @@ Create a mock client for unit testing — no server required:
 ```lua
 local client = sdk.test()
 
-local result, err = client:Annotation():load()
+local result, err = client:Article():load({ id = "test01" })
 -- result is the returned data; err is set on failure
 ```
 
@@ -463,11 +463,11 @@ Entity instances are stateful. After a successful `load`, the entity
 stores the returned data and match criteria internally.
 
 ```lua
-local annotation = client:Annotation()
-annotation:load()
+local article = client:Article()
+article:load()
 
--- annotation:data_get() now returns the annotation data from the last load
--- annotation:match_get() returns the last match criteria
+-- article:data_get() now returns the article data from the last load
+-- article:match_get() returns the last match criteria
 ```
 
 Call `make()` to create a fresh instance with the same configuration

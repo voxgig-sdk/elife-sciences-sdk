@@ -43,8 +43,8 @@ class ElifeSciencesTestRunner
 
     public static function env_override(array $m): array
     {
-        $live = self::getenv('ELIFESCIENCES_TEST_LIVE');
-        $override = self::getenv('ELIFESCIENCES_TEST_OVERRIDE');
+        $live = self::getenv('ELIFE_SCIENCES_TEST_LIVE');
+        $override = self::getenv('ELIFE_SCIENCES_TEST_OVERRIDE');
 
         if ($live === 'TRUE' || $override === 'TRUE') {
             foreach (array_keys($m) as $key) {
@@ -63,9 +63,9 @@ class ElifeSciencesTestRunner
             }
         }
 
-        $explain = self::getenv('ELIFESCIENCES_TEST_EXPLAIN');
+        $explain = self::getenv('ELIFE_SCIENCES_TEST_EXPLAIN');
         if ($explain !== null && $explain !== '') {
-            $m['ELIFESCIENCES_TEST_EXPLAIN'] = $explain;
+            $m['ELIFE_SCIENCES_TEST_EXPLAIN'] = $explain;
         }
 
         return $m;

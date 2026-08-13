@@ -65,11 +65,11 @@ function collection_direct_setup($mockres)
     $calls = new \ArrayObject();
 
     $env = Runner::env_override([
-        "ELIFESCIENCES_TEST_COLLECTION_ENTID" => [],
-        "ELIFESCIENCES_TEST_LIVE" => "FALSE",
+        "ELIFE_SCIENCES_TEST_COLLECTION_ENTID" => [],
+        "ELIFE_SCIENCES_TEST_LIVE" => "FALSE",
     ]);
 
-    $live = $env["ELIFESCIENCES_TEST_LIVE"] === "TRUE";
+    $live = $env["ELIFE_SCIENCES_TEST_LIVE"] === "TRUE";
 
     if ($live) {
         $merged_opts = [

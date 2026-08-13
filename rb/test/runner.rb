@@ -23,8 +23,8 @@ module ElifeSciencesTestRunner
   end
 
   def self.env_override(m)
-    live = getenv("ELIFESCIENCES_TEST_LIVE")
-    override = getenv("ELIFESCIENCES_TEST_OVERRIDE")
+    live = getenv("ELIFE_SCIENCES_TEST_LIVE")
+    override = getenv("ELIFE_SCIENCES_TEST_OVERRIDE")
 
     if live == "TRUE" || override == "TRUE"
       m.each_key do |key|
@@ -44,8 +44,8 @@ module ElifeSciencesTestRunner
       end
     end
 
-    explain = getenv("ELIFESCIENCES_TEST_EXPLAIN")
-    m["ELIFESCIENCES_TEST_EXPLAIN"] = explain if explain && !explain.empty?
+    explain = getenv("ELIFE_SCIENCES_TEST_EXPLAIN")
+    m["ELIFE_SCIENCES_TEST_EXPLAIN"] = explain if explain && !explain.empty?
 
     m
   end

@@ -33,7 +33,7 @@ class SubjectEntityTest extends TestCase
         // The basic flow consumes synthetic IDs from the fixture. In live mode
         // without an *_ENTID env override, those IDs hit the live API and 4xx.
         if (!empty($setup["synthetic_only"])) {
-            $this->markTestSkipped("live entity test uses synthetic IDs from fixture — set ELIFESCIENCES_TEST_SUBJECT_ENTID JSON to run live");
+            $this->markTestSkipped("live entity test uses synthetic IDs from fixture — set ELIFE_SCIENCES_TEST_SUBJECT_ENTID JSON to run live");
             return;
         }
         $client = $setup["client"];
@@ -77,22 +77,22 @@ function subject_basic_setup($extra)
     // Detect ENTID env override before envOverride consumes it. When live
     // mode is on without a real override, the basic test runs against synthetic
     // IDs from the fixture and 4xx's. Surface this so the test can skip.
-    $entid_env_raw = getenv("ELIFESCIENCES_TEST_SUBJECT_ENTID");
+    $entid_env_raw = getenv("ELIFE_SCIENCES_TEST_SUBJECT_ENTID");
     $idmap_overridden = $entid_env_raw !== false && str_starts_with(trim($entid_env_raw), "{");
 
     $env = Runner::env_override([
-        "ELIFESCIENCES_TEST_SUBJECT_ENTID" => $idmap,
-        "ELIFESCIENCES_TEST_LIVE" => "FALSE",
-        "ELIFESCIENCES_TEST_EXPLAIN" => "FALSE",
+        "ELIFE_SCIENCES_TEST_SUBJECT_ENTID" => $idmap,
+        "ELIFE_SCIENCES_TEST_LIVE" => "FALSE",
+        "ELIFE_SCIENCES_TEST_EXPLAIN" => "FALSE",
     ]);
 
     $idmap_resolved = Helpers::to_map(
-        $env["ELIFESCIENCES_TEST_SUBJECT_ENTID"]);
+        $env["ELIFE_SCIENCES_TEST_SUBJECT_ENTID"]);
     if ($idmap_resolved === null) {
         $idmap_resolved = Helpers::to_map($idmap);
     }
 
-    if ($env["ELIFESCIENCES_TEST_LIVE"] === "TRUE") {
+    if ($env["ELIFE_SCIENCES_TEST_LIVE"] === "TRUE") {
         $merged_opts = Vs::merge([
             [
             ],
@@ -101,13 +101,13 @@ function subject_basic_setup($extra)
         $client = new ElifeSciencesSDK(Helpers::to_map($merged_opts));
     }
 
-    $live = $env["ELIFESCIENCES_TEST_LIVE"] === "TRUE";
+    $live = $env["ELIFE_SCIENCES_TEST_LIVE"] === "TRUE";
     return [
         "client" => $client,
         "data" => $entity_data,
         "idmap" => $idmap_resolved,
         "env" => $env,
-        "explain" => $env["ELIFESCIENCES_TEST_EXPLAIN"] === "TRUE",
+        "explain" => $env["ELIFE_SCIENCES_TEST_EXPLAIN"] === "TRUE",
         "live" => $live,
         "synthetic_only" => $live && !$idmap_overridden,
         "now" => (int)(microtime(true) * 1000),
