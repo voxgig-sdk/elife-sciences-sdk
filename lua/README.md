@@ -48,7 +48,7 @@ Entity operations return `(value, err)`. Check `err` before using
 the value:
 
 ```lua
-local article, err = client:Article():load()
+local article, err = client:Article():load({ id = "example_id" })
 if err then error(err) end
 ```
 
@@ -464,7 +464,7 @@ stores the returned data and match criteria internally.
 
 ```lua
 local article = client:Article()
-article:load()
+article:load({ id = "example_id" })
 
 -- article:data_get() now returns the article data from the last load
 -- article:match_get() returns the last match criteria

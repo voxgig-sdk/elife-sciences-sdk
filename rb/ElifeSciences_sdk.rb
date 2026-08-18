@@ -28,7 +28,7 @@ class ElifeSciencesSDK
     utility = ElifeSciencesUtility.new
     @_utility = utility
 
-    config = ElifeSciencesConfig.make_config
+    config = ElifeSciencesConfig.shared_config
 
     @_rootctx = utility.make_context.call({
       "client" => self,

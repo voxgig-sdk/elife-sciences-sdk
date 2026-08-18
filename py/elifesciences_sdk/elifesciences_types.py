@@ -28,7 +28,7 @@ class Article(TypedDict):
     pass
 
 
-class ArticleLoadMatch(TypedDict, total=False):
+class ArticleLoadMatch(TypedDict):
     id: str
 
 
@@ -36,7 +36,7 @@ class Collection(TypedDict):
     pass
 
 
-class CollectionLoadMatch(TypedDict, total=False):
+class CollectionLoadMatch(TypedDict):
     id: str
 
 
@@ -44,7 +44,7 @@ class Person(TypedDict):
     pass
 
 
-class PersonLoadMatch(TypedDict, total=False):
+class PersonLoadMatch(TypedDict):
     id: str
 
 
@@ -60,5 +60,5 @@ class Subject(TypedDict):
     pass
 
 
-class SubjectLoadMatch(TypedDict, total=False):
+class SubjectLoadMatch(TypedDict):
     id: str

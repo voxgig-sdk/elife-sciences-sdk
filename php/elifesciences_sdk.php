@@ -40,7 +40,7 @@ class ElifeSciencesSDK
         $utility = new ElifeSciencesUtility();
         $this->_utility = $utility;
 
-        $config = ElifeSciencesConfig::make_config();
+        $config = ElifeSciencesConfig::shared_config();
 
         $this->_rootctx = ($utility->make_context)([
             "client" => $this,

@@ -23,8 +23,8 @@ class ElifeSciencesSDK:
         utility = ElifeSciencesUtility()
         self._utility = utility
 
-        from elifesciences_sdk.config import make_config
-        config = make_config()
+        from elifesciences_sdk.config import shared_config
+        config = shared_config()
 
         self._rootctx = utility.make_context({
             "client": self,
