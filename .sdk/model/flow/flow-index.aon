@@ -1,0 +1,8 @@
+# Flows
+
+@"BasicAnnotationFlow.aon"
+@"BasicArticleFlow.aon"
+@"BasicCollectionFlow.aon"
+@"BasicPersonFlow.aon"
+@"BasicSearchFlow.aon"
+@"BasicSubjectFlow.aon"

@@ -1,8 +1,0 @@
-# Flows
-
-@"BasicAnnotationFlow.aontu"
-@"BasicArticleFlow.aontu"
-@"BasicCollectionFlow.aontu"
-@"BasicPersonFlow.aontu"
-@"BasicSearchFlow.aontu"
-@"BasicSubjectFlow.aontu"

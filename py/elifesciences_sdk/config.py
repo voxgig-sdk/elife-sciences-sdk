@@ -28,6 +28,9 @@ def make_config():
     return {
         "main": {
             "name": "ElifeSciences",
+            "slug": "elife-sciences",
+            "version": "0.0.1",
+            "target": "py",
         },
         "feature": {
             "test": {
