@@ -44,10 +44,14 @@ describe("CollectionEntity", function()
 
     -- LOAD
     local collection_ref01_ent = client:Collection(nil)
-    local collection_ref01_match_dt0 = {}
+    local collection_ref01_match_dt0 = {
+      id = collection_ref01_data["id"],
+    }
     local collection_ref01_data_dt0_loaded, err = collection_ref01_ent:load(collection_ref01_match_dt0, nil)
     assert.is_nil(err)
-    assert.is_not_nil(collection_ref01_data_dt0_loaded)
+    local collection_ref01_data_dt0_load_result = helpers.to_map(type(collection_ref01_data_dt0_loaded) == 'table' and collection_ref01_data_dt0_loaded.data_get and collection_ref01_data_dt0_loaded:data_get() or collection_ref01_data_dt0_loaded)
+    assert.is_not_nil(collection_ref01_data_dt0_load_result)
+    assert.are.equal(collection_ref01_data_dt0_load_result["id"], collection_ref01_data["id"])
 
   end)
 end)

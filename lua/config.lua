@@ -16,6 +16,7 @@ local function make_config()
         ["options"] = {
           ["active"] = false,
         },
+        ["transport"] = "base",
       },
     },
     options = {
@@ -100,7 +101,12 @@ local function make_config()
         },
       },
       ["article"] = {
-        ["fields"] = {},
+        ["fields"] = {
+          {
+            ["name"] = "id",
+            ["type"] = "`$STRING`",
+          },
+        },
         ["name"] = "article",
         ["op"] = {
           ["load"] = {
@@ -188,7 +194,12 @@ local function make_config()
         },
       },
       ["collection"] = {
-        ["fields"] = {},
+        ["fields"] = {
+          {
+            ["name"] = "id",
+            ["type"] = "`$STRING`",
+          },
+        },
         ["name"] = "collection",
         ["op"] = {
           ["load"] = {
@@ -276,7 +287,12 @@ local function make_config()
         },
       },
       ["person"] = {
-        ["fields"] = {},
+        ["fields"] = {
+          {
+            ["name"] = "id",
+            ["type"] = "`$STRING`",
+          },
+        },
         ["name"] = "person",
         ["op"] = {
           ["load"] = {
@@ -452,7 +468,12 @@ local function make_config()
         },
       },
       ["subject"] = {
-        ["fields"] = {},
+        ["fields"] = {
+          {
+            ["name"] = "id",
+            ["type"] = "`$STRING`",
+          },
+        },
         ["name"] = "subject",
         ["op"] = {
           ["load"] = {

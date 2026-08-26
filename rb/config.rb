@@ -28,6 +28,7 @@ module ElifeSciencesConfig
           "options" => {
             "active" => false,
           },
+          "transport" => "base",
         },
       },
       "options" => {
@@ -112,7 +113,12 @@ module ElifeSciencesConfig
           },
         },
         "article" => {
-          "fields" => [],
+          "fields" => [
+            {
+              "name" => "id",
+              "type" => "`$STRING`",
+            },
+          ],
           "name" => "article",
           "op" => {
             "load" => {
@@ -200,7 +206,12 @@ module ElifeSciencesConfig
           },
         },
         "collection" => {
-          "fields" => [],
+          "fields" => [
+            {
+              "name" => "id",
+              "type" => "`$STRING`",
+            },
+          ],
           "name" => "collection",
           "op" => {
             "load" => {
@@ -288,7 +299,12 @@ module ElifeSciencesConfig
           },
         },
         "person" => {
-          "fields" => [],
+          "fields" => [
+            {
+              "name" => "id",
+              "type" => "`$STRING`",
+            },
+          ],
           "name" => "person",
           "op" => {
             "load" => {
@@ -464,7 +480,12 @@ module ElifeSciencesConfig
           },
         },
         "subject" => {
-          "fields" => [],
+          "fields" => [
+            {
+              "name" => "id",
+              "type" => "`$STRING`",
+            },
+          ],
           "name" => "subject",
           "op" => {
             "load" => {

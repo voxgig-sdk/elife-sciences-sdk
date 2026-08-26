@@ -48,9 +48,13 @@ class CollectionEntityTest extends TestCase
 
         // LOAD
         $collection_ref01_ent = $client->Collection(null);
-        $collection_ref01_match_dt0 = [];
+        $collection_ref01_match_dt0 = [
+            "id" => $collection_ref01_data["id"],
+        ];
         $collection_ref01_data_dt0_loaded = $collection_ref01_ent->load($collection_ref01_match_dt0, null);
-        $this->assertNotNull($collection_ref01_data_dt0_loaded);
+        $collection_ref01_data_dt0_load_result = Helpers::to_map(is_object($collection_ref01_data_dt0_loaded) && method_exists($collection_ref01_data_dt0_loaded, 'data_get') ? $collection_ref01_data_dt0_loaded->data_get() : $collection_ref01_data_dt0_loaded);
+        $this->assertNotNull($collection_ref01_data_dt0_load_result);
+        $this->assertEquals($collection_ref01_data_dt0_load_result["id"], $collection_ref01_data["id"]);
 
     }
 }

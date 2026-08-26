@@ -37,6 +37,7 @@ def make_config():
         "options": {
           "active": False,
         },
+        "transport": "base",
       },
         },
         "options": {
@@ -121,7 +122,12 @@ def make_config():
         },
       },
       "article": {
-        "fields": [],
+        "fields": [
+          {
+            "name": "id",
+            "type": "`$STRING`",
+          },
+        ],
         "name": "article",
         "op": {
           "load": {
@@ -209,7 +215,12 @@ def make_config():
         },
       },
       "collection": {
-        "fields": [],
+        "fields": [
+          {
+            "name": "id",
+            "type": "`$STRING`",
+          },
+        ],
         "name": "collection",
         "op": {
           "load": {
@@ -297,7 +308,12 @@ def make_config():
         },
       },
       "person": {
-        "fields": [],
+        "fields": [
+          {
+            "name": "id",
+            "type": "`$STRING`",
+          },
+        ],
         "name": "person",
         "op": {
           "load": {
@@ -473,7 +489,12 @@ def make_config():
         },
       },
       "subject": {
-        "fields": [],
+        "fields": [
+          {
+            "name": "id",
+            "type": "`$STRING`",
+          },
+        ],
         "name": "subject",
         "op": {
           "load": {

@@ -62,8 +62,9 @@ describe('ArticleEntity', async () => {
     // LOAD
     const article_ref01_ent = client.Article()
     const article_ref01_match_dt0: any = {}
+    article_ref01_match_dt0.id = article_ref01_data.id
     const article_ref01_data_dt0 = (await article_ref01_ent.load(article_ref01_match_dt0)).data()
-    assert(null != article_ref01_data_dt0)
+    assert(article_ref01_data_dt0.id === article_ref01_data.id)
 
 
   })

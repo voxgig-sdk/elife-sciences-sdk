@@ -12,6 +12,7 @@ export interface AnnotationLoadMatch {
 }
 
 export interface Article {
+  id?: string
 }
 
 export interface ArticleLoadMatch {
@@ -19,6 +20,7 @@ export interface ArticleLoadMatch {
 }
 
 export interface Collection {
+  id?: string
 }
 
 export interface CollectionLoadMatch {
@@ -26,6 +28,7 @@ export interface CollectionLoadMatch {
 }
 
 export interface Person {
+  id?: string
 }
 
 export interface PersonLoadMatch {
@@ -39,6 +42,7 @@ export interface SearchLoadMatch {
 }
 
 export interface Subject {
+  id?: string
 }
 
 export interface SubjectLoadMatch {

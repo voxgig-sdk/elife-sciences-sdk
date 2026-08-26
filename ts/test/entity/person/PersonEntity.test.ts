@@ -62,8 +62,9 @@ describe('PersonEntity', async () => {
     // LOAD
     const person_ref01_ent = client.Person()
     const person_ref01_match_dt0: any = {}
+    person_ref01_match_dt0.id = person_ref01_data.id
     const person_ref01_data_dt0 = (await person_ref01_ent.load(person_ref01_match_dt0)).data()
-    assert(null != person_ref01_data_dt0)
+    assert(person_ref01_data_dt0.id === person_ref01_data.id)
 
 
   })

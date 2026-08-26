@@ -41,9 +41,13 @@ class CollectionEntityTest < Minitest::Test
 
     # LOAD
     collection_ref01_ent = client.Collection(nil)
-    collection_ref01_match_dt0 = {}
+    collection_ref01_match_dt0 = {
+      "id" => collection_ref01_data["id"],
+    }
     collection_ref01_data_dt0_loaded = collection_ref01_ent.load(collection_ref01_match_dt0, nil)
-    assert !collection_ref01_data_dt0_loaded.nil?
+    collection_ref01_data_dt0_load_result = Helpers.to_map(collection_ref01_data_dt0_loaded.respond_to?(:data_get) ? collection_ref01_data_dt0_loaded.data_get : collection_ref01_data_dt0_loaded)
+    assert !collection_ref01_data_dt0_load_result.nil?
+    assert_equal collection_ref01_data_dt0_load_result["id"], collection_ref01_data["id"]
 
   end
 end

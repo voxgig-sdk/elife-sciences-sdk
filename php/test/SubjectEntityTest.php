@@ -48,9 +48,13 @@ class SubjectEntityTest extends TestCase
 
         // LOAD
         $subject_ref01_ent = $client->Subject(null);
-        $subject_ref01_match_dt0 = [];
+        $subject_ref01_match_dt0 = [
+            "id" => $subject_ref01_data["id"],
+        ];
         $subject_ref01_data_dt0_loaded = $subject_ref01_ent->load($subject_ref01_match_dt0, null);
-        $this->assertNotNull($subject_ref01_data_dt0_loaded);
+        $subject_ref01_data_dt0_load_result = Helpers::to_map(is_object($subject_ref01_data_dt0_loaded) && method_exists($subject_ref01_data_dt0_loaded, 'data_get') ? $subject_ref01_data_dt0_loaded->data_get() : $subject_ref01_data_dt0_loaded);
+        $this->assertNotNull($subject_ref01_data_dt0_load_result);
+        $this->assertEquals($subject_ref01_data_dt0_load_result["id"], $subject_ref01_data["id"]);
 
     }
 }

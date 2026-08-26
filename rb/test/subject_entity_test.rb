@@ -41,9 +41,13 @@ class SubjectEntityTest < Minitest::Test
 
     # LOAD
     subject_ref01_ent = client.Subject(nil)
-    subject_ref01_match_dt0 = {}
+    subject_ref01_match_dt0 = {
+      "id" => subject_ref01_data["id"],
+    }
     subject_ref01_data_dt0_loaded = subject_ref01_ent.load(subject_ref01_match_dt0, nil)
-    assert !subject_ref01_data_dt0_loaded.nil?
+    subject_ref01_data_dt0_load_result = Helpers.to_map(subject_ref01_data_dt0_loaded.respond_to?(:data_get) ? subject_ref01_data_dt0_loaded.data_get : subject_ref01_data_dt0_loaded)
+    assert !subject_ref01_data_dt0_load_result.nil?
+    assert_equal subject_ref01_data_dt0_load_result["id"], subject_ref01_data["id"]
 
   end
 end

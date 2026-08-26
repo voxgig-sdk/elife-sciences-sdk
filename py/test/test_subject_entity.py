@@ -48,9 +48,13 @@ class TestSubjectEntity:
 
         # LOAD
         subject_ref01_ent = client.Subject(None)
-        subject_ref01_match_dt0 = {}
+        subject_ref01_match_dt0 = {
+            "id": subject_ref01_data["id"],
+        }
         subject_ref01_data_dt0_loaded = subject_ref01_ent.load(subject_ref01_match_dt0, None)
-        assert subject_ref01_data_dt0_loaded is not None
+        subject_ref01_data_dt0_load_result = helpers.to_map(runner.entity_data(subject_ref01_data_dt0_loaded))
+        assert subject_ref01_data_dt0_load_result is not None
+        assert subject_ref01_data_dt0_load_result["id"] == subject_ref01_data["id"]
 
 
 

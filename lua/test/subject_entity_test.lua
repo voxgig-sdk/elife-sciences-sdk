@@ -44,10 +44,14 @@ describe("SubjectEntity", function()
 
     -- LOAD
     local subject_ref01_ent = client:Subject(nil)
-    local subject_ref01_match_dt0 = {}
+    local subject_ref01_match_dt0 = {
+      id = subject_ref01_data["id"],
+    }
     local subject_ref01_data_dt0_loaded, err = subject_ref01_ent:load(subject_ref01_match_dt0, nil)
     assert.is_nil(err)
-    assert.is_not_nil(subject_ref01_data_dt0_loaded)
+    local subject_ref01_data_dt0_load_result = helpers.to_map(type(subject_ref01_data_dt0_loaded) == 'table' and subject_ref01_data_dt0_loaded.data_get and subject_ref01_data_dt0_loaded:data_get() or subject_ref01_data_dt0_loaded)
+    assert.is_not_nil(subject_ref01_data_dt0_load_result)
+    assert.are.equal(subject_ref01_data_dt0_load_result["id"], subject_ref01_data["id"])
 
   end)
 end)

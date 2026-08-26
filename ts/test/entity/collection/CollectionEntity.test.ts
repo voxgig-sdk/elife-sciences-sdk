@@ -62,8 +62,9 @@ describe('CollectionEntity', async () => {
     // LOAD
     const collection_ref01_ent = client.Collection()
     const collection_ref01_match_dt0: any = {}
+    collection_ref01_match_dt0.id = collection_ref01_data.id
     const collection_ref01_data_dt0 = (await collection_ref01_ent.load(collection_ref01_match_dt0)).data()
-    assert(null != collection_ref01_data_dt0)
+    assert(collection_ref01_data_dt0.id === collection_ref01_data.id)
 
 
   })

@@ -25,6 +25,7 @@ class AnnotationLoadMatch
 /** Article entity data model. */
 class Article
 {
+    public ?string $id = null;
 }
 
 /** Request payload for Article#load. */
@@ -36,6 +37,7 @@ class ArticleLoadMatch
 /** Collection entity data model. */
 class Collection
 {
+    public ?string $id = null;
 }
 
 /** Request payload for Collection#load. */
@@ -47,6 +49,7 @@ class CollectionLoadMatch
 /** Person entity data model. */
 class Person
 {
+    public ?string $id = null;
 }
 
 /** Request payload for Person#load. */
@@ -68,6 +71,7 @@ class SearchLoadMatch
 /** Subject entity data model. */
 class Subject
 {
+    public ?string $id = null;
 }
 
 /** Request payload for Subject#load. */

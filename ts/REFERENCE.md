@@ -216,6 +216,12 @@ Return a copy of the entity options.
 const article = client.Article()
 ```
 
+### Fields
+
+| Field | Type | Required | Description |
+| --- | --- | --- | --- |
+| `id` | `string` | No |  |
+
 ### Operations
 
 #### `load(match: object, ctrl?: object)`
@@ -260,6 +266,12 @@ Return a copy of the entity options.
 const collection = client.Collection()
 ```
 
+### Fields
+
+| Field | Type | Required | Description |
+| --- | --- | --- | --- |
+| `id` | `string` | No |  |
+
 ### Operations
 
 #### `load(match: object, ctrl?: object)`
@@ -303,6 +315,12 @@ Return a copy of the entity options.
 ```ts
 const person = client.Person()
 ```
+
+### Fields
+
+| Field | Type | Required | Description |
+| --- | --- | --- | --- |
+| `id` | `string` | No |  |
 
 ### Operations
 
@@ -391,6 +409,12 @@ Return a copy of the entity options.
 ```ts
 const subject = client.Subject()
 ```
+
+### Fields
+
+| Field | Type | Required | Description |
+| --- | --- | --- | --- |
+| `id` | `string` | No |  |
 
 ### Operations
 

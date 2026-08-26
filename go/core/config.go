@@ -20,6 +20,7 @@ func MakeConfig() map[string]any {
 				"options": map[string]any{
 					"active": false,
 				},
+				"transport": "base",
 			},
 		},
 		"options": map[string]any{
@@ -104,7 +105,12 @@ func MakeConfig() map[string]any {
 				},
 			},
 			"article": map[string]any{
-				"fields": []any{},
+				"fields": []any{
+					map[string]any{
+						"name": "id",
+						"type": "`$STRING`",
+					},
+				},
 				"name": "article",
 				"op": map[string]any{
 					"load": map[string]any{
@@ -192,7 +198,12 @@ func MakeConfig() map[string]any {
 				},
 			},
 			"collection": map[string]any{
-				"fields": []any{},
+				"fields": []any{
+					map[string]any{
+						"name": "id",
+						"type": "`$STRING`",
+					},
+				},
 				"name": "collection",
 				"op": map[string]any{
 					"load": map[string]any{
@@ -280,7 +291,12 @@ func MakeConfig() map[string]any {
 				},
 			},
 			"person": map[string]any{
-				"fields": []any{},
+				"fields": []any{
+					map[string]any{
+						"name": "id",
+						"type": "`$STRING`",
+					},
+				},
 				"name": "person",
 				"op": map[string]any{
 					"load": map[string]any{
@@ -456,7 +472,12 @@ func MakeConfig() map[string]any {
 				},
 			},
 			"subject": map[string]any{
-				"fields": []any{},
+				"fields": []any{
+					map[string]any{
+						"name": "id",
+						"type": "`$STRING`",
+					},
+				},
 				"name": "subject",
 				"op": map[string]any{
 					"load": map[string]any{

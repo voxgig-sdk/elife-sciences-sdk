@@ -61,13 +61,19 @@ func TestCollectionEntity(t *testing.T) {
 
 		// LOAD
 		collectionRef01Ent := client.Collection(nil)
-		collectionRef01MatchDt0 := map[string]any{}
+		collectionRef01MatchDt0 := map[string]any{
+			"id": collectionRef01Data["id"],
+		}
 		collectionRef01DataDt0Loaded, err := collectionRef01Ent.Load(collectionRef01MatchDt0, nil)
 		if err != nil {
 			t.Fatalf("load failed: %v", err)
 		}
-		if collectionRef01DataDt0Loaded == nil {
-			t.Fatal("expected load result to be non-nil")
+		collectionRef01DataDt0LoadResult := core.ToMapAny(entityData(collectionRef01DataDt0Loaded))
+		if collectionRef01DataDt0LoadResult == nil {
+			t.Fatal("expected load result to be a map")
+		}
+		if collectionRef01DataDt0LoadResult["id"] != collectionRef01Data["id"] {
+			t.Fatal("expected load result id to match")
 		}
 
 	})

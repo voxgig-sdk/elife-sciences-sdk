@@ -41,9 +41,13 @@ class ArticleEntityTest < Minitest::Test
 
     # LOAD
     article_ref01_ent = client.Article(nil)
-    article_ref01_match_dt0 = {}
+    article_ref01_match_dt0 = {
+      "id" => article_ref01_data["id"],
+    }
     article_ref01_data_dt0_loaded = article_ref01_ent.load(article_ref01_match_dt0, nil)
-    assert !article_ref01_data_dt0_loaded.nil?
+    article_ref01_data_dt0_load_result = Helpers.to_map(article_ref01_data_dt0_loaded.respond_to?(:data_get) ? article_ref01_data_dt0_loaded.data_get : article_ref01_data_dt0_loaded)
+    assert !article_ref01_data_dt0_load_result.nil?
+    assert_equal article_ref01_data_dt0_load_result["id"], article_ref01_data["id"]
 
   end
 end

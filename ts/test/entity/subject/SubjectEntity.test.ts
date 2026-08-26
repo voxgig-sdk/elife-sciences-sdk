@@ -62,8 +62,9 @@ describe('SubjectEntity', async () => {
     // LOAD
     const subject_ref01_ent = client.Subject()
     const subject_ref01_match_dt0: any = {}
+    subject_ref01_match_dt0.id = subject_ref01_data.id
     const subject_ref01_data_dt0 = (await subject_ref01_ent.load(subject_ref01_match_dt0)).data()
-    assert(null != subject_ref01_data_dt0)
+    assert(subject_ref01_data_dt0.id === subject_ref01_data.id)
 
 
   })

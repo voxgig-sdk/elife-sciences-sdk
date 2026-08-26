@@ -24,24 +24,24 @@ class AnnotationLoadMatch(TypedDict):
     pass
 
 
-class Article(TypedDict):
-    pass
+class Article(TypedDict, total=False):
+    id: str
 
 
 class ArticleLoadMatch(TypedDict):
     id: str
 
 
-class Collection(TypedDict):
-    pass
+class Collection(TypedDict, total=False):
+    id: str
 
 
 class CollectionLoadMatch(TypedDict):
     id: str
 
 
-class Person(TypedDict):
-    pass
+class Person(TypedDict, total=False):
+    id: str
 
 
 class PersonLoadMatch(TypedDict):
@@ -56,8 +56,8 @@ class SearchLoadMatch(TypedDict):
     pass
 
 
-class Subject(TypedDict):
-    pass
+class Subject(TypedDict, total=False):
+    id: str
 
 
 class SubjectLoadMatch(TypedDict):

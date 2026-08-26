@@ -42,6 +42,7 @@ class ElifeSciencesConfig
           'options' => [
             'active' => false,
           ],
+          'transport' => 'base',
         ],
             ],
             "options" => [
@@ -126,7 +127,12 @@ class ElifeSciencesConfig
           ],
         ],
         'article' => [
-          'fields' => [],
+          'fields' => [
+            [
+              'name' => 'id',
+              'type' => '`$STRING`',
+            ],
+          ],
           'name' => 'article',
           'op' => [
             'load' => [
@@ -214,7 +220,12 @@ class ElifeSciencesConfig
           ],
         ],
         'collection' => [
-          'fields' => [],
+          'fields' => [
+            [
+              'name' => 'id',
+              'type' => '`$STRING`',
+            ],
+          ],
           'name' => 'collection',
           'op' => [
             'load' => [
@@ -302,7 +313,12 @@ class ElifeSciencesConfig
           ],
         ],
         'person' => [
-          'fields' => [],
+          'fields' => [
+            [
+              'name' => 'id',
+              'type' => '`$STRING`',
+            ],
+          ],
           'name' => 'person',
           'op' => [
             'load' => [
@@ -478,7 +494,12 @@ class ElifeSciencesConfig
           ],
         ],
         'subject' => [
-          'fields' => [],
+          'fields' => [
+            [
+              'name' => 'id',
+              'type' => '`$STRING`',
+            ],
+          ],
           'name' => 'subject',
           'op' => [
             'load' => [

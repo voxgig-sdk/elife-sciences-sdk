@@ -48,9 +48,13 @@ class TestArticleEntity:
 
         # LOAD
         article_ref01_ent = client.Article(None)
-        article_ref01_match_dt0 = {}
+        article_ref01_match_dt0 = {
+            "id": article_ref01_data["id"],
+        }
         article_ref01_data_dt0_loaded = article_ref01_ent.load(article_ref01_match_dt0, None)
-        assert article_ref01_data_dt0_loaded is not None
+        article_ref01_data_dt0_load_result = helpers.to_map(runner.entity_data(article_ref01_data_dt0_loaded))
+        assert article_ref01_data_dt0_load_result is not None
+        assert article_ref01_data_dt0_load_result["id"] == article_ref01_data["id"]
 
 
 

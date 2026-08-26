@@ -40,7 +40,8 @@ class Config {
      test:     {
       "options": {
         "active": false
-      }
+      },
+      "transport": "base"
     },
 
   }
@@ -145,7 +146,12 @@ class Config {
       }
     },
     "article": {
-      "fields": [],
+      "fields": [
+        {
+          "name": "id",
+          "type": "`$STRING`"
+        }
+      ],
       "name": "article",
       "op": {
         "load": {
@@ -233,7 +239,12 @@ class Config {
       }
     },
     "collection": {
-      "fields": [],
+      "fields": [
+        {
+          "name": "id",
+          "type": "`$STRING`"
+        }
+      ],
       "name": "collection",
       "op": {
         "load": {
@@ -321,7 +332,12 @@ class Config {
       }
     },
     "person": {
-      "fields": [],
+      "fields": [
+        {
+          "name": "id",
+          "type": "`$STRING`"
+        }
+      ],
       "name": "person",
       "op": {
         "load": {
@@ -497,7 +513,12 @@ class Config {
       }
     },
     "subject": {
-      "fields": [],
+      "fields": [
+        {
+          "name": "id",
+          "type": "`$STRING`"
+        }
+      ],
       "name": "subject",
       "op": {
         "load": {

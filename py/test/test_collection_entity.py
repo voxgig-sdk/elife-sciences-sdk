@@ -48,9 +48,13 @@ class TestCollectionEntity:
 
         # LOAD
         collection_ref01_ent = client.Collection(None)
-        collection_ref01_match_dt0 = {}
+        collection_ref01_match_dt0 = {
+            "id": collection_ref01_data["id"],
+        }
         collection_ref01_data_dt0_loaded = collection_ref01_ent.load(collection_ref01_match_dt0, None)
-        assert collection_ref01_data_dt0_loaded is not None
+        collection_ref01_data_dt0_load_result = helpers.to_map(runner.entity_data(collection_ref01_data_dt0_loaded))
+        assert collection_ref01_data_dt0_load_result is not None
+        assert collection_ref01_data_dt0_load_result["id"] == collection_ref01_data["id"]
 
 
 

@@ -48,9 +48,13 @@ class ArticleEntityTest extends TestCase
 
         // LOAD
         $article_ref01_ent = $client->Article(null);
-        $article_ref01_match_dt0 = [];
+        $article_ref01_match_dt0 = [
+            "id" => $article_ref01_data["id"],
+        ];
         $article_ref01_data_dt0_loaded = $article_ref01_ent->load($article_ref01_match_dt0, null);
-        $this->assertNotNull($article_ref01_data_dt0_loaded);
+        $article_ref01_data_dt0_load_result = Helpers::to_map(is_object($article_ref01_data_dt0_loaded) && method_exists($article_ref01_data_dt0_loaded, 'data_get') ? $article_ref01_data_dt0_loaded->data_get() : $article_ref01_data_dt0_loaded);
+        $this->assertNotNull($article_ref01_data_dt0_load_result);
+        $this->assertEquals($article_ref01_data_dt0_load_result["id"], $article_ref01_data["id"]);
 
     }
 }

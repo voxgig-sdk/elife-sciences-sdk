@@ -11,16 +11,19 @@
 ---@class AnnotationLoadMatch
 
 ---@class Article
+---@field id? string
 
 ---@class ArticleLoadMatch
 ---@field id string
 
 ---@class Collection
+---@field id? string
 
 ---@class CollectionLoadMatch
 ---@field id string
 
 ---@class Person
+---@field id? string
 
 ---@class PersonLoadMatch
 ---@field id string
@@ -30,6 +33,7 @@
 ---@class SearchLoadMatch
 
 ---@class Subject
+---@field id? string
 
 ---@class SubjectLoadMatch
 ---@field id string

@@ -159,6 +159,12 @@ article := client.Article(nil)
 fmt.Println(article.GetName()) // "article"
 ```
 
+### Fields
+
+| Field | Type | Required | Description |
+| --- | --- | --- | --- |
+| `id` | `string` | No |  |
+
 ### Operations
 
 #### `Load(reqmatch, ctrl map[string]any) (any, error)`
@@ -204,6 +210,12 @@ collection := client.Collection(nil)
 fmt.Println(collection.GetName()) // "collection"
 ```
 
+### Fields
+
+| Field | Type | Required | Description |
+| --- | --- | --- | --- |
+| `id` | `string` | No |  |
+
 ### Operations
 
 #### `Load(reqmatch, ctrl map[string]any) (any, error)`
@@ -248,6 +260,12 @@ Return the entity name.
 person := client.Person(nil)
 fmt.Println(person.GetName()) // "person"
 ```
+
+### Fields
+
+| Field | Type | Required | Description |
+| --- | --- | --- | --- |
+| `id` | `string` | No |  |
 
 ### Operations
 
@@ -338,6 +356,12 @@ Return the entity name.
 subject := client.Subject(nil)
 fmt.Println(subject.GetName()) // "subject"
 ```
+
+### Fields
+
+| Field | Type | Required | Description |
+| --- | --- | --- | --- |
+| `id` | `string` | No |  |
 
 ### Operations
 

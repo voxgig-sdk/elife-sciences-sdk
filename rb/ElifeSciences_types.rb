@@ -17,8 +17,13 @@ class AnnotationLoadMatch
 end
 
 # Article entity data model.
-class Article
-end
+#
+# @!attribute [rw] id
+#   @return [String, nil]
+Article = Struct.new(
+  :id,
+  keyword_init: true
+)
 
 # Request payload for Article#load.
 #
@@ -30,8 +35,13 @@ ArticleLoadMatch = Struct.new(
 )
 
 # Collection entity data model.
-class Collection
-end
+#
+# @!attribute [rw] id
+#   @return [String, nil]
+Collection = Struct.new(
+  :id,
+  keyword_init: true
+)
 
 # Request payload for Collection#load.
 #
@@ -43,8 +53,13 @@ CollectionLoadMatch = Struct.new(
 )
 
 # Person entity data model.
-class Person
-end
+#
+# @!attribute [rw] id
+#   @return [String, nil]
+Person = Struct.new(
+  :id,
+  keyword_init: true
+)
 
 # Request payload for Person#load.
 #
@@ -64,8 +79,13 @@ class SearchLoadMatch
 end
 
 # Subject entity data model.
-class Subject
-end
+#
+# @!attribute [rw] id
+#   @return [String, nil]
+Subject = Struct.new(
+  :id,
+  keyword_init: true
+)
 
 # Request payload for Subject#load.
 #
