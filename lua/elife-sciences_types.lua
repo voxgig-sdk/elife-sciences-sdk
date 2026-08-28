@@ -9,6 +9,10 @@
 ---@class Annotation
 
 ---@class AnnotationLoadMatch
+---@field by? string
+---@field order? string
+---@field page? number
+---@field per_page? number
 
 ---@class Article
 ---@field id? string
@@ -31,6 +35,13 @@
 ---@class Search
 
 ---@class SearchLoadMatch
+---@field for string
+---@field order? string
+---@field page? number
+---@field per_page? number
+---@field sort? string
+---@field subject? table
+---@field type? table
 
 ---@class Subject
 ---@field id? string

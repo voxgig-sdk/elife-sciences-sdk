@@ -9,6 +9,10 @@ export interface Annotation {
 }
 
 export interface AnnotationLoadMatch {
+  by?: string
+  order?: string
+  page?: number
+  per_page?: number
 }
 
 export interface Article {
@@ -39,6 +43,13 @@ export interface Search {
 }
 
 export interface SearchLoadMatch {
+  for: string
+  order?: string
+  page?: number
+  per_page?: number
+  sort?: string
+  subject?: any[]
+  type?: any[]
 }
 
 export interface Subject {

@@ -20,6 +20,10 @@ class Annotation
 /** Request payload for Annotation#load. */
 class AnnotationLoadMatch
 {
+    public ?string $by = null;
+    public ?string $order = null;
+    public ?int $page = null;
+    public ?int $per_page = null;
 }
 
 /** Article entity data model. */
@@ -66,6 +70,13 @@ class Search
 /** Request payload for Search#load. */
 class SearchLoadMatch
 {
+    public string $for;
+    public ?string $order = null;
+    public ?int $page = null;
+    public ?int $per_page = null;
+    public ?string $sort = null;
+    public ?array $subject = null;
+    public ?array $type = null;
 }
 
 /** Subject entity data model. */

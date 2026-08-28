@@ -13,8 +13,25 @@ class Annotation
 end
 
 # Request payload for Annotation#load.
-class AnnotationLoadMatch
-end
+#
+# @!attribute [rw] by
+#   @return [String, nil]
+#
+# @!attribute [rw] order
+#   @return [String, nil]
+#
+# @!attribute [rw] page
+#   @return [Integer, nil]
+#
+# @!attribute [rw] per_page
+#   @return [Integer, nil]
+AnnotationLoadMatch = Struct.new(
+  :by,
+  :order,
+  :page,
+  :per_page,
+  keyword_init: true
+)
 
 # Article entity data model.
 #
@@ -75,8 +92,37 @@ class Search
 end
 
 # Request payload for Search#load.
-class SearchLoadMatch
-end
+#
+# @!attribute [rw] for
+#   @return [String]
+#
+# @!attribute [rw] order
+#   @return [String, nil]
+#
+# @!attribute [rw] page
+#   @return [Integer, nil]
+#
+# @!attribute [rw] per_page
+#   @return [Integer, nil]
+#
+# @!attribute [rw] sort
+#   @return [String, nil]
+#
+# @!attribute [rw] subject
+#   @return [Array, nil]
+#
+# @!attribute [rw] type
+#   @return [Array, nil]
+SearchLoadMatch = Struct.new(
+  :for,
+  :order,
+  :page,
+  :per_page,
+  :sort,
+  :subject,
+  :type,
+  keyword_init: true
+)
 
 # Subject entity data model.
 #

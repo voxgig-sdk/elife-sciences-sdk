@@ -18,6 +18,10 @@ type Annotation struct {
 
 // AnnotationLoadMatch is the typed request payload for Annotation.LoadTyped.
 type AnnotationLoadMatch struct {
+	By *string `json:"by,omitempty"`
+	Order *string `json:"order,omitempty"`
+	Page *int `json:"page,omitempty"`
+	PerPage *int `json:"per_page,omitempty"`
 }
 
 // Article is the typed data model for the article entity.
@@ -56,6 +60,13 @@ type Search struct {
 
 // SearchLoadMatch is the typed request payload for Search.LoadTyped.
 type SearchLoadMatch struct {
+	For string `json:"for"`
+	Order *string `json:"order,omitempty"`
+	Page *int `json:"page,omitempty"`
+	PerPage *int `json:"per_page,omitempty"`
+	Sort *string `json:"sort,omitempty"`
+	Subject *[]any `json:"subject,omitempty"`
+	Type *[]any `json:"type,omitempty"`
 }
 
 // Subject is the typed data model for the subject entity.

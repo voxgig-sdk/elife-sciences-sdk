@@ -20,8 +20,11 @@ class Annotation(TypedDict):
     pass
 
 
-class AnnotationLoadMatch(TypedDict):
-    pass
+class AnnotationLoadMatch(TypedDict, total=False):
+    by: str
+    order: str
+    page: int
+    per_page: int
 
 
 class Article(TypedDict, total=False):
@@ -52,8 +55,13 @@ class Search(TypedDict):
     pass
 
 
-class SearchLoadMatch(TypedDict):
-    pass
+class SearchLoadMatch(TypedDict, total=False):
+    order: str
+    page: int
+    per_page: int
+    sort: str
+    subject: list
+    type: list
 
 
 class Subject(TypedDict, total=False):
