@@ -103,8 +103,10 @@ class ElifeSciencesConfig
                   'kind' => 'http',
                   'method' => 'GET',
                   'orig' => '/annotations',
-                  'parts' => [
-                    'annotations',
+                  'segments' => [
+                    [
+                      'lit' => 'annotations',
+                    ],
                   ],
                   'select' => [
                     'exist' => [
@@ -117,6 +119,9 @@ class ElifeSciencesConfig
                   'transform' => [
                     'req' => '`reqdata`',
                     'res' => '`body`',
+                  ],
+                  'parts' => [
+                    'annotations',
                   ],
                 ],
               ],
@@ -132,6 +137,10 @@ class ElifeSciencesConfig
               'name' => 'id',
               'type' => '`$STRING`',
             ],
+          ],
+          'id' => [
+            'field' => 'id',
+            'name' => 'id',
           ],
           'name' => 'article',
           'op' => [
@@ -168,8 +177,10 @@ class ElifeSciencesConfig
                   'kind' => 'http',
                   'method' => 'GET',
                   'orig' => '/articles',
-                  'parts' => [
-                    'articles',
+                  'segments' => [
+                    [
+                      'lit' => 'articles',
+                    ],
                   ],
                   'select' => [
                     'exist' => [
@@ -181,6 +192,9 @@ class ElifeSciencesConfig
                   'transform' => [
                     'req' => '`reqdata`',
                     'res' => '`body`',
+                  ],
+                  'parts' => [
+                    'articles',
                   ],
                 ],
                 [
@@ -198,9 +212,13 @@ class ElifeSciencesConfig
                   'kind' => 'http',
                   'method' => 'GET',
                   'orig' => '/articles/{id}',
-                  'parts' => [
-                    'articles',
-                    '{id}',
+                  'segments' => [
+                    [
+                      'lit' => 'articles',
+                    ],
+                    [
+                      'var' => 'id',
+                    ],
                   ],
                   'select' => [
                     'exist' => [
@@ -210,6 +228,10 @@ class ElifeSciencesConfig
                   'transform' => [
                     'req' => '`reqdata`',
                     'res' => '`body`',
+                  ],
+                  'parts' => [
+                    'articles',
+                    '{id}',
                   ],
                 ],
               ],
@@ -225,6 +247,10 @@ class ElifeSciencesConfig
               'name' => 'id',
               'type' => '`$STRING`',
             ],
+          ],
+          'id' => [
+            'field' => 'id',
+            'name' => 'id',
           ],
           'name' => 'collection',
           'op' => [
@@ -261,8 +287,10 @@ class ElifeSciencesConfig
                   'kind' => 'http',
                   'method' => 'GET',
                   'orig' => '/collections',
-                  'parts' => [
-                    'collections',
+                  'segments' => [
+                    [
+                      'lit' => 'collections',
+                    ],
                   ],
                   'select' => [
                     'exist' => [
@@ -274,6 +302,9 @@ class ElifeSciencesConfig
                   'transform' => [
                     'req' => '`reqdata`',
                     'res' => '`body`',
+                  ],
+                  'parts' => [
+                    'collections',
                   ],
                 ],
                 [
@@ -291,9 +322,13 @@ class ElifeSciencesConfig
                   'kind' => 'http',
                   'method' => 'GET',
                   'orig' => '/collections/{id}',
-                  'parts' => [
-                    'collections',
-                    '{id}',
+                  'segments' => [
+                    [
+                      'lit' => 'collections',
+                    ],
+                    [
+                      'var' => 'id',
+                    ],
                   ],
                   'select' => [
                     'exist' => [
@@ -303,6 +338,10 @@ class ElifeSciencesConfig
                   'transform' => [
                     'req' => '`reqdata`',
                     'res' => '`body`',
+                  ],
+                  'parts' => [
+                    'collections',
+                    '{id}',
                   ],
                 ],
               ],
@@ -318,6 +357,10 @@ class ElifeSciencesConfig
               'name' => 'id',
               'type' => '`$STRING`',
             ],
+          ],
+          'id' => [
+            'field' => 'id',
+            'name' => 'id',
           ],
           'name' => 'person',
           'op' => [
@@ -353,8 +396,10 @@ class ElifeSciencesConfig
                   'kind' => 'http',
                   'method' => 'GET',
                   'orig' => '/people',
-                  'parts' => [
-                    'people',
+                  'segments' => [
+                    [
+                      'lit' => 'people',
+                    ],
                   ],
                   'select' => [
                     'exist' => [
@@ -366,6 +411,9 @@ class ElifeSciencesConfig
                   'transform' => [
                     'req' => '`reqdata`',
                     'res' => '`body`',
+                  ],
+                  'parts' => [
+                    'people',
                   ],
                 ],
                 [
@@ -383,9 +431,13 @@ class ElifeSciencesConfig
                   'kind' => 'http',
                   'method' => 'GET',
                   'orig' => '/people/{id}',
-                  'parts' => [
-                    'people',
-                    '{id}',
+                  'segments' => [
+                    [
+                      'lit' => 'people',
+                    ],
+                    [
+                      'var' => 'id',
+                    ],
                   ],
                   'select' => [
                     'exist' => [
@@ -395,6 +447,10 @@ class ElifeSciencesConfig
                   'transform' => [
                     'req' => '`reqdata`',
                     'res' => '`body`',
+                  ],
+                  'parts' => [
+                    'people',
+                    '{id}',
                   ],
                 ],
               ],
@@ -467,8 +523,10 @@ class ElifeSciencesConfig
                   'kind' => 'http',
                   'method' => 'GET',
                   'orig' => '/search',
-                  'parts' => [
-                    'search',
+                  'segments' => [
+                    [
+                      'lit' => 'search',
+                    ],
                   ],
                   'select' => [
                     'exist' => [
@@ -485,6 +543,9 @@ class ElifeSciencesConfig
                     'req' => '`reqdata`',
                     'res' => '`body`',
                   ],
+                  'parts' => [
+                    'search',
+                  ],
                 ],
               ],
             ],
@@ -499,6 +560,10 @@ class ElifeSciencesConfig
               'name' => 'id',
               'type' => '`$STRING`',
             ],
+          ],
+          'id' => [
+            'field' => 'id',
+            'name' => 'id',
           ],
           'name' => 'subject',
           'op' => [
@@ -528,8 +593,10 @@ class ElifeSciencesConfig
                   'kind' => 'http',
                   'method' => 'GET',
                   'orig' => '/subjects',
-                  'parts' => [
-                    'subjects',
+                  'segments' => [
+                    [
+                      'lit' => 'subjects',
+                    ],
                   ],
                   'select' => [
                     'exist' => [
@@ -540,6 +607,9 @@ class ElifeSciencesConfig
                   'transform' => [
                     'req' => '`reqdata`',
                     'res' => '`body`',
+                  ],
+                  'parts' => [
+                    'subjects',
                   ],
                 ],
                 [
@@ -557,9 +627,13 @@ class ElifeSciencesConfig
                   'kind' => 'http',
                   'method' => 'GET',
                   'orig' => '/subjects/{id}',
-                  'parts' => [
-                    'subjects',
-                    '{id}',
+                  'segments' => [
+                    [
+                      'lit' => 'subjects',
+                    ],
+                    [
+                      'var' => 'id',
+                    ],
                   ],
                   'select' => [
                     'exist' => [
@@ -569,6 +643,10 @@ class ElifeSciencesConfig
                   'transform' => [
                     'req' => '`reqdata`',
                     'res' => '`body`',
+                  ],
+                  'parts' => [
+                    'subjects',
+                    '{id}',
                   ],
                 ],
               ],

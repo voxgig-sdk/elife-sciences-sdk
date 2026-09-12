@@ -388,7 +388,7 @@ Create an instance: `local search = client:Search(nil)`
 #### Example: Load
 
 ```lua
-local search, err = client:Search():load({ for = "for" })
+local search, err = client:Search():load({ ["for"] = "for" })
 ```
 
 

@@ -315,7 +315,7 @@ local search = client:Search(nil)
 Load a single entity matching the given criteria.
 
 ```lua
-local result, err = client:Search():load({ for = "for" })
+local result, err = client:Search():load({ ["for"] = "for" })
 ```
 
 ### Common Methods

@@ -10,6 +10,17 @@ const FEATURE_CLASS: Record<string, typeof BaseFeature> = {
 }
 
 
+// Per-feature plugin DEFINITIONS (voxgig/plugin `Definition` values), from
+// the model's active plugin groups. A feature that takes a `plugins` option
+// (secrets over sekreto) reads its own entry; a feature with no plugins has
+// none. Named imports above make each definition statically reachable, so
+// an SDK carries exactly the plugin modules its model selects — the same
+// leanness the old side-effect registry imports bought, without a registry.
+const FEATURE_PLUGINS: Record<string, any[]> = {
+  
+}
+
+
 class Config {
 
   makeFeature(this: any, fn: string) {
@@ -122,8 +133,10 @@ class Config {
               "kind": "http",
               "method": "GET",
               "orig": "/annotations",
-              "parts": [
-                "annotations"
+              "segments": [
+                {
+                  "lit": "annotations"
+                }
               ],
               "select": {
                 "exist": [
@@ -136,7 +149,10 @@ class Config {
               "transform": {
                 "req": "`reqdata`",
                 "res": "`body`"
-              }
+              },
+              "parts": [
+                "annotations"
+              ]
             }
           ]
         }
@@ -152,6 +168,10 @@ class Config {
           "type": "`$STRING`"
         }
       ],
+      "id": {
+        "field": "id",
+        "name": "id"
+      },
       "name": "article",
       "op": {
         "load": {
@@ -187,8 +207,10 @@ class Config {
               "kind": "http",
               "method": "GET",
               "orig": "/articles",
-              "parts": [
-                "articles"
+              "segments": [
+                {
+                  "lit": "articles"
+                }
               ],
               "select": {
                 "exist": [
@@ -200,7 +222,10 @@ class Config {
               "transform": {
                 "req": "`reqdata`",
                 "res": "`body`"
-              }
+              },
+              "parts": [
+                "articles"
+              ]
             },
             {
               "args": {
@@ -217,9 +242,13 @@ class Config {
               "kind": "http",
               "method": "GET",
               "orig": "/articles/{id}",
-              "parts": [
-                "articles",
-                "{id}"
+              "segments": [
+                {
+                  "lit": "articles"
+                },
+                {
+                  "var": "id"
+                }
               ],
               "select": {
                 "exist": [
@@ -229,7 +258,11 @@ class Config {
               "transform": {
                 "req": "`reqdata`",
                 "res": "`body`"
-              }
+              },
+              "parts": [
+                "articles",
+                "{id}"
+              ]
             }
           ]
         }
@@ -245,6 +278,10 @@ class Config {
           "type": "`$STRING`"
         }
       ],
+      "id": {
+        "field": "id",
+        "name": "id"
+      },
       "name": "collection",
       "op": {
         "load": {
@@ -280,8 +317,10 @@ class Config {
               "kind": "http",
               "method": "GET",
               "orig": "/collections",
-              "parts": [
-                "collections"
+              "segments": [
+                {
+                  "lit": "collections"
+                }
               ],
               "select": {
                 "exist": [
@@ -293,7 +332,10 @@ class Config {
               "transform": {
                 "req": "`reqdata`",
                 "res": "`body`"
-              }
+              },
+              "parts": [
+                "collections"
+              ]
             },
             {
               "args": {
@@ -310,9 +352,13 @@ class Config {
               "kind": "http",
               "method": "GET",
               "orig": "/collections/{id}",
-              "parts": [
-                "collections",
-                "{id}"
+              "segments": [
+                {
+                  "lit": "collections"
+                },
+                {
+                  "var": "id"
+                }
               ],
               "select": {
                 "exist": [
@@ -322,7 +368,11 @@ class Config {
               "transform": {
                 "req": "`reqdata`",
                 "res": "`body`"
-              }
+              },
+              "parts": [
+                "collections",
+                "{id}"
+              ]
             }
           ]
         }
@@ -338,6 +388,10 @@ class Config {
           "type": "`$STRING`"
         }
       ],
+      "id": {
+        "field": "id",
+        "name": "id"
+      },
       "name": "person",
       "op": {
         "load": {
@@ -372,8 +426,10 @@ class Config {
               "kind": "http",
               "method": "GET",
               "orig": "/people",
-              "parts": [
-                "people"
+              "segments": [
+                {
+                  "lit": "people"
+                }
               ],
               "select": {
                 "exist": [
@@ -385,7 +441,10 @@ class Config {
               "transform": {
                 "req": "`reqdata`",
                 "res": "`body`"
-              }
+              },
+              "parts": [
+                "people"
+              ]
             },
             {
               "args": {
@@ -402,9 +461,13 @@ class Config {
               "kind": "http",
               "method": "GET",
               "orig": "/people/{id}",
-              "parts": [
-                "people",
-                "{id}"
+              "segments": [
+                {
+                  "lit": "people"
+                },
+                {
+                  "var": "id"
+                }
               ],
               "select": {
                 "exist": [
@@ -414,7 +477,11 @@ class Config {
               "transform": {
                 "req": "`reqdata`",
                 "res": "`body`"
-              }
+              },
+              "parts": [
+                "people",
+                "{id}"
+              ]
             }
           ]
         }
@@ -486,8 +553,10 @@ class Config {
               "kind": "http",
               "method": "GET",
               "orig": "/search",
-              "parts": [
-                "search"
+              "segments": [
+                {
+                  "lit": "search"
+                }
               ],
               "select": {
                 "exist": [
@@ -503,7 +572,10 @@ class Config {
               "transform": {
                 "req": "`reqdata`",
                 "res": "`body`"
-              }
+              },
+              "parts": [
+                "search"
+              ]
             }
           ]
         }
@@ -519,6 +591,10 @@ class Config {
           "type": "`$STRING`"
         }
       ],
+      "id": {
+        "field": "id",
+        "name": "id"
+      },
       "name": "subject",
       "op": {
         "load": {
@@ -547,8 +623,10 @@ class Config {
               "kind": "http",
               "method": "GET",
               "orig": "/subjects",
-              "parts": [
-                "subjects"
+              "segments": [
+                {
+                  "lit": "subjects"
+                }
               ],
               "select": {
                 "exist": [
@@ -559,7 +637,10 @@ class Config {
               "transform": {
                 "req": "`reqdata`",
                 "res": "`body`"
-              }
+              },
+              "parts": [
+                "subjects"
+              ]
             },
             {
               "args": {
@@ -576,9 +657,13 @@ class Config {
               "kind": "http",
               "method": "GET",
               "orig": "/subjects/{id}",
-              "parts": [
-                "subjects",
-                "{id}"
+              "segments": [
+                {
+                  "lit": "subjects"
+                },
+                {
+                  "var": "id"
+                }
               ],
               "select": {
                 "exist": [
@@ -588,7 +673,11 @@ class Config {
               "transform": {
                 "req": "`reqdata`",
                 "res": "`body`"
-              }
+              },
+              "parts": [
+                "subjects",
+                "{id}"
+              ]
             }
           ]
         }
@@ -604,6 +693,7 @@ class Config {
 const config = new Config()
 
 export {
-  config
+  config,
+  FEATURE_PLUGINS,
 }
 

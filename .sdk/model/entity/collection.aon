@@ -53,8 +53,10 @@ main: kit: entity: collection: {
           }
           method: "GET"
           orig: "/collections"
-          parts: [
-            "collections"
+          segments: [
+            {
+              lit: "collections"
+            }
           ]
           select: {
             exist: [
@@ -82,9 +84,13 @@ main: kit: entity: collection: {
           }
           method: "GET"
           orig: "/collections/{id}"
-          parts: [
-            "collections"
-            "{id}"
+          segments: [
+            {
+              lit: "collections"
+            }
+            {
+              var: "id"
+            }
           ]
           select: {
             exist: [

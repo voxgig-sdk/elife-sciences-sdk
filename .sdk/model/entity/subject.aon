@@ -45,8 +45,10 @@ main: kit: entity: subject: {
           }
           method: "GET"
           orig: "/subjects"
-          parts: [
-            "subjects"
+          segments: [
+            {
+              lit: "subjects"
+            }
           ]
           select: {
             exist: [
@@ -73,9 +75,13 @@ main: kit: entity: subject: {
           }
           method: "GET"
           orig: "/subjects/{id}"
-          parts: [
-            "subjects"
-            "{id}"
+          segments: [
+            {
+              lit: "subjects"
+            }
+            {
+              var: "id"
+            }
           ]
           select: {
             exist: [

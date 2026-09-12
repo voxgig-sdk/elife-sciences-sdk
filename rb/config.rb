@@ -89,8 +89,10 @@ module ElifeSciencesConfig
                   "kind" => "http",
                   "method" => "GET",
                   "orig" => "/annotations",
-                  "parts" => [
-                    "annotations",
+                  "segments" => [
+                    {
+                      "lit" => "annotations",
+                    },
                   ],
                   "select" => {
                     "exist" => [
@@ -104,6 +106,9 @@ module ElifeSciencesConfig
                     "req" => "`reqdata`",
                     "res" => "`body`",
                   },
+                  "parts" => [
+                    "annotations",
+                  ],
                 },
               ],
             },
@@ -119,6 +124,10 @@ module ElifeSciencesConfig
               "type" => "`$STRING`",
             },
           ],
+          "id" => {
+            "field" => "id",
+            "name" => "id",
+          },
           "name" => "article",
           "op" => {
             "load" => {
@@ -154,8 +163,10 @@ module ElifeSciencesConfig
                   "kind" => "http",
                   "method" => "GET",
                   "orig" => "/articles",
-                  "parts" => [
-                    "articles",
+                  "segments" => [
+                    {
+                      "lit" => "articles",
+                    },
                   ],
                   "select" => {
                     "exist" => [
@@ -168,6 +179,9 @@ module ElifeSciencesConfig
                     "req" => "`reqdata`",
                     "res" => "`body`",
                   },
+                  "parts" => [
+                    "articles",
+                  ],
                 },
                 {
                   "args" => {
@@ -184,9 +198,13 @@ module ElifeSciencesConfig
                   "kind" => "http",
                   "method" => "GET",
                   "orig" => "/articles/{id}",
-                  "parts" => [
-                    "articles",
-                    "{id}",
+                  "segments" => [
+                    {
+                      "lit" => "articles",
+                    },
+                    {
+                      "var" => "id",
+                    },
                   ],
                   "select" => {
                     "exist" => [
@@ -197,6 +215,10 @@ module ElifeSciencesConfig
                     "req" => "`reqdata`",
                     "res" => "`body`",
                   },
+                  "parts" => [
+                    "articles",
+                    "{id}",
+                  ],
                 },
               ],
             },
@@ -212,6 +234,10 @@ module ElifeSciencesConfig
               "type" => "`$STRING`",
             },
           ],
+          "id" => {
+            "field" => "id",
+            "name" => "id",
+          },
           "name" => "collection",
           "op" => {
             "load" => {
@@ -247,8 +273,10 @@ module ElifeSciencesConfig
                   "kind" => "http",
                   "method" => "GET",
                   "orig" => "/collections",
-                  "parts" => [
-                    "collections",
+                  "segments" => [
+                    {
+                      "lit" => "collections",
+                    },
                   ],
                   "select" => {
                     "exist" => [
@@ -261,6 +289,9 @@ module ElifeSciencesConfig
                     "req" => "`reqdata`",
                     "res" => "`body`",
                   },
+                  "parts" => [
+                    "collections",
+                  ],
                 },
                 {
                   "args" => {
@@ -277,9 +308,13 @@ module ElifeSciencesConfig
                   "kind" => "http",
                   "method" => "GET",
                   "orig" => "/collections/{id}",
-                  "parts" => [
-                    "collections",
-                    "{id}",
+                  "segments" => [
+                    {
+                      "lit" => "collections",
+                    },
+                    {
+                      "var" => "id",
+                    },
                   ],
                   "select" => {
                     "exist" => [
@@ -290,6 +325,10 @@ module ElifeSciencesConfig
                     "req" => "`reqdata`",
                     "res" => "`body`",
                   },
+                  "parts" => [
+                    "collections",
+                    "{id}",
+                  ],
                 },
               ],
             },
@@ -305,6 +344,10 @@ module ElifeSciencesConfig
               "type" => "`$STRING`",
             },
           ],
+          "id" => {
+            "field" => "id",
+            "name" => "id",
+          },
           "name" => "person",
           "op" => {
             "load" => {
@@ -339,8 +382,10 @@ module ElifeSciencesConfig
                   "kind" => "http",
                   "method" => "GET",
                   "orig" => "/people",
-                  "parts" => [
-                    "people",
+                  "segments" => [
+                    {
+                      "lit" => "people",
+                    },
                   ],
                   "select" => {
                     "exist" => [
@@ -353,6 +398,9 @@ module ElifeSciencesConfig
                     "req" => "`reqdata`",
                     "res" => "`body`",
                   },
+                  "parts" => [
+                    "people",
+                  ],
                 },
                 {
                   "args" => {
@@ -369,9 +417,13 @@ module ElifeSciencesConfig
                   "kind" => "http",
                   "method" => "GET",
                   "orig" => "/people/{id}",
-                  "parts" => [
-                    "people",
-                    "{id}",
+                  "segments" => [
+                    {
+                      "lit" => "people",
+                    },
+                    {
+                      "var" => "id",
+                    },
                   ],
                   "select" => {
                     "exist" => [
@@ -382,6 +434,10 @@ module ElifeSciencesConfig
                     "req" => "`reqdata`",
                     "res" => "`body`",
                   },
+                  "parts" => [
+                    "people",
+                    "{id}",
+                  ],
                 },
               ],
             },
@@ -453,8 +509,10 @@ module ElifeSciencesConfig
                   "kind" => "http",
                   "method" => "GET",
                   "orig" => "/search",
-                  "parts" => [
-                    "search",
+                  "segments" => [
+                    {
+                      "lit" => "search",
+                    },
                   ],
                   "select" => {
                     "exist" => [
@@ -471,6 +529,9 @@ module ElifeSciencesConfig
                     "req" => "`reqdata`",
                     "res" => "`body`",
                   },
+                  "parts" => [
+                    "search",
+                  ],
                 },
               ],
             },
@@ -486,6 +547,10 @@ module ElifeSciencesConfig
               "type" => "`$STRING`",
             },
           ],
+          "id" => {
+            "field" => "id",
+            "name" => "id",
+          },
           "name" => "subject",
           "op" => {
             "load" => {
@@ -514,8 +579,10 @@ module ElifeSciencesConfig
                   "kind" => "http",
                   "method" => "GET",
                   "orig" => "/subjects",
-                  "parts" => [
-                    "subjects",
+                  "segments" => [
+                    {
+                      "lit" => "subjects",
+                    },
                   ],
                   "select" => {
                     "exist" => [
@@ -527,6 +594,9 @@ module ElifeSciencesConfig
                     "req" => "`reqdata`",
                     "res" => "`body`",
                   },
+                  "parts" => [
+                    "subjects",
+                  ],
                 },
                 {
                   "args" => {
@@ -543,9 +613,13 @@ module ElifeSciencesConfig
                   "kind" => "http",
                   "method" => "GET",
                   "orig" => "/subjects/{id}",
-                  "parts" => [
-                    "subjects",
-                    "{id}",
+                  "segments" => [
+                    {
+                      "lit" => "subjects",
+                    },
+                    {
+                      "var" => "id",
+                    },
                   ],
                   "select" => {
                     "exist" => [
@@ -556,6 +630,10 @@ module ElifeSciencesConfig
                     "req" => "`reqdata`",
                     "res" => "`body`",
                   },
+                  "parts" => [
+                    "subjects",
+                    "{id}",
+                  ],
                 },
               ],
             },

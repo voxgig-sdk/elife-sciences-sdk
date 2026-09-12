@@ -14,7 +14,7 @@ class ElifeSciencesPrepareMethod
         'patch' => 'PATCH',
     ];
 
-    public static function call(ElifeSciencesContext $ctx): string
+    public static function call(ElifeSciencesContext $ctx): ?string
     {
         // The API definition is authoritative: a POST-only or PATCH-based API
         // exposes `update` as POST or PATCH, not the PUT the op name implies.
@@ -27,6 +27,10 @@ class ElifeSciencesPrepareMethod
             }
         }
 
-        return self::METHOD_MAP[$ctx->op->name] ?? 'GET';
+        // No default: an op name outside the convention resolves to no method,
+        // exactly as the ts reference (`methodMap[key]` is undefined there).
+        // The silent-pass inline runner hid a stray 'GET' fallback here; the
+        // shared corpus (prepareMethod, opname "bad" -> null) pins it now.
+        return self::METHOD_MAP[$ctx->op->name] ?? null;
     }
 }

@@ -47,8 +47,10 @@ main: kit: entity: annotation: {
           }
           method: "GET"
           orig: "/annotations"
-          parts: [
-            "annotations"
+          segments: [
+            {
+              lit: "annotations"
+            }
           ]
           select: {
             exist: [

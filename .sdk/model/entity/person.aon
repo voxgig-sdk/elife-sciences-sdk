@@ -52,8 +52,10 @@ main: kit: entity: person: {
           }
           method: "GET"
           orig: "/people"
-          parts: [
-            "people"
+          segments: [
+            {
+              lit: "people"
+            }
           ]
           select: {
             exist: [
@@ -81,9 +83,13 @@ main: kit: entity: person: {
           }
           method: "GET"
           orig: "/people/{id}"
-          parts: [
-            "people"
-            "{id}"
+          segments: [
+            {
+              lit: "people"
+            }
+            {
+              var: "id"
+            }
           ]
           select: {
             exist: [
