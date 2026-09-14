@@ -105,7 +105,7 @@ local result, err = client:Article():load({ id = "test01" })
 
 | Language | Package | Install |
 | --- | --- | --- |
-| TypeScript | `@voxgig-sdk/elife-sciences` | publish pending — [install from git tag](https://github.com/voxgig-sdk/elife-sciences-sdk/releases) |
+| TypeScript | `@voxgig-sdk/elife-sciences-sdk` | publish pending — [install from git tag](https://github.com/voxgig-sdk/elife-sciences-sdk/releases) |
 | Python | `voxgig-sdk-elife-sciences` | publish pending — [install from git tag](https://github.com/voxgig-sdk/elife-sciences-sdk/releases) |
 | PHP | `voxgig-sdk/elife-sciences` | publish pending — [install from git tag](https://github.com/voxgig-sdk/elife-sciences-sdk/releases) |
 | Golang | `github.com/voxgig-sdk/elife-sciences-sdk/go` | `go get github.com/voxgig-sdk/elife-sciences-sdk/go@latest` |
@@ -119,7 +119,7 @@ local result, err = client:Article():load({ id = "test01" })
 ### TypeScript
 
 ```ts
-import { ElifeSciencesSDK } from '@voxgig-sdk/elife-sciences'
+import { ElifeSciencesSDK } from '@voxgig-sdk/elife-sciences-sdk'
 
 const client = new ElifeSciencesSDK()
 

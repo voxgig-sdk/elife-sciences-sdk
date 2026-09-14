@@ -28,7 +28,7 @@ loading a specific record.
 ### 1. Create a client
 
 ```ts
-import { ElifeSciencesSDK } from '@voxgig-sdk/elife-sciences'
+import { ElifeSciencesSDK } from '@voxgig-sdk/elife-sciences-sdk'
 
 const client = new ElifeSciencesSDK()
 ```
@@ -557,7 +557,7 @@ elife-sciences/
 Import the SDK from the package root:
 
 ```ts
-import { ElifeSciencesSDK } from '@voxgig-sdk/elife-sciences'
+import { ElifeSciencesSDK } from '@voxgig-sdk/elife-sciences-sdk'
 ```
 
 ### Entity state
