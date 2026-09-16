@@ -4,7 +4,10 @@ declare(strict_types=1);
 // ElifeSciences SDK feature factory
 
 require_once __DIR__ . '/feature/BaseFeature.php';
+require_once __DIR__ . '/feature/RatelimitFeature.php';
+require_once __DIR__ . '/feature/RetryFeature.php';
 require_once __DIR__ . '/feature/TestFeature.php';
+require_once __DIR__ . '/feature/TimeoutFeature.php';
 
 
 class ElifeSciencesFeatures
@@ -14,8 +17,14 @@ class ElifeSciencesFeatures
         switch ($name) {
             case "base":
                 return new ElifeSciencesBaseFeature();
+            case "ratelimit":
+                return new ElifeSciencesRatelimitFeature();
+            case "retry":
+                return new ElifeSciencesRetryFeature();
             case "test":
                 return new ElifeSciencesTestFeature();
+            case "timeout":
+                return new ElifeSciencesTimeoutFeature();
             default:
                 return new ElifeSciencesBaseFeature();
         }
@@ -31,7 +40,10 @@ class ElifeSciencesFeatures
     {
         switch ($name) {
             case "base":
+            case "ratelimit":
+            case "retry":
             case "test":
+            case "timeout":
                 return true;
             default:
                 return false;
