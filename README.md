@@ -105,12 +105,12 @@ local result, err = client:Article():load({ id = "test01" })
 
 | Language | Package | Install |
 | --- | --- | --- |
-| TypeScript | `@voxgig-sdk/elife-sciences-sdk` | publish pending — [install from git tag](https://github.com/voxgig-sdk/elife-sciences-sdk/releases) |
-| Python | `voxgig-sdk-elife-sciences` | publish pending — [install from git tag](https://github.com/voxgig-sdk/elife-sciences-sdk/releases) |
-| PHP | `voxgig-sdk/elife-sciences` | publish pending — [install from git tag](https://github.com/voxgig-sdk/elife-sciences-sdk/releases) |
+| TypeScript | `@voxgig-sdk/elife-sciences-sdk` | publish pending — [install from git tag](https://github.com/voxgig-sdk/elife-sciences-sdk/tags) |
+| Python | `voxgig-sdk-elife-sciences` | publish pending — [install from git tag](https://github.com/voxgig-sdk/elife-sciences-sdk/tags) |
+| PHP | `voxgig-sdk/elife-sciences` | publish pending — [install from git tag](https://github.com/voxgig-sdk/elife-sciences-sdk/tags) |
 | Golang | `github.com/voxgig-sdk/elife-sciences-sdk/go` | `go get github.com/voxgig-sdk/elife-sciences-sdk/go@latest` |
-| Ruby | `voxgig-sdk-elife-sciences` | publish pending — [install from git tag](https://github.com/voxgig-sdk/elife-sciences-sdk/releases) |
-| Lua | `voxgig-sdk-elife-sciences` | publish pending — [install from git tag](https://github.com/voxgig-sdk/elife-sciences-sdk/releases) |
+| Ruby | `voxgig-sdk-elife-sciences` | publish pending — [install from git tag](https://github.com/voxgig-sdk/elife-sciences-sdk/tags) |
+| Lua | `voxgig-sdk-elife-sciences` | publish pending — [install from git tag](https://github.com/voxgig-sdk/elife-sciences-sdk/tags) |
 | Go CLI | `github.com/voxgig-sdk/elife-sciences-sdk/go-cli` | `go install github.com/voxgig-sdk/elife-sciences-sdk/go-cli/cmd/elife-sciences@latest` |
 | Go MCP server | `github.com/voxgig-sdk/elife-sciences-sdk/go-mcp` | `go get github.com/voxgig-sdk/elife-sciences-sdk/go-mcp@latest` |
 

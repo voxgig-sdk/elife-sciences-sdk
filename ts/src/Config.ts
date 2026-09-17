@@ -127,24 +127,24 @@ class Config {
 
     entity: {
       
-      annotation: {
-      },
-
-      article: {
-      },
-
-      collection: {
-      },
-
-      person: {
-      },
-
-      search: {
-      },
-
-      subject: {
-      },
-
+        annotation: {
+        },
+  
+        article: {
+        },
+  
+        collection: {
+        },
+  
+        person: {
+        },
+  
+        search: {
+        },
+  
+        subject: {
+        },
+  
     }
   }
 

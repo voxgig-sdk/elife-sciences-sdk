@@ -1,8 +1,8 @@
 # Entity Models
 
-@"annotation.aon"
-@"article.aon"
-@"collection.aon"
-@"person.aon"
-@"search.aon"
-@"subject.aon"
+@"./annotation.aon"
+@"./article.aon"
+@"./collection.aon"
+@"./person.aon"
+@"./search.aon"
+@"./subject.aon"
