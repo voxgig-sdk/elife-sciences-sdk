@@ -1,0 +1,82 @@
+# Entity: annotation
+
+main: kit: entity: annotation: {
+
+  alias: field: {}
+
+  name: "annotation"
+  op: {
+    load: {
+      name: "load"
+      points: [
+        {
+          co: {
+            id: "GET /annotations"
+            source: "openapi3"
+            version: 2
+          }
+          g: {
+            query: [
+              {
+                k: "query"
+                n: "by"
+                or: "by"
+                r: false
+                t: "`$STRING`"
+              }
+              {
+                ex: "desc"
+                k: "query"
+                n: "order"
+                or: "order"
+                r: false
+                t: "`$STRING`"
+              }
+              {
+                ex: 1
+                k: "query"
+                n: "page"
+                or: "page"
+                r: false
+                t: "`$INTEGER`"
+              }
+              {
+                ex: 20
+                k: "query"
+                n: "per_page"
+                or: "per_page"
+                r: false
+                t: "`$INTEGER`"
+              }
+            ]
+          }
+          m: "GET"
+          o: "/annotations"
+          q: {
+            exist: [
+              "by"
+              "order"
+              "page"
+              "per_page"
+            ]
+          }
+          s: [
+            {
+              lit: "annotations"
+            }
+          ]
+          t: {
+            req: "`reqdata`"
+            res: "`body`"
+          }
+        }
+      ]
+    }
+  }
+
+  fields: {
+  }
+
+
+
+}

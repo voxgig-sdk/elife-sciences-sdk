@@ -109,37 +109,6 @@ module ElifeSciencesConfig
               "name" => "load",
               "points" => [
                 {
-                  "args" => {
-                    "query" => [
-                      {
-                        "kind" => "query",
-                        "name" => "by",
-                        "orig" => "by",
-                        "type" => "`$STRING`",
-                      },
-                      {
-                        "example" => "desc",
-                        "kind" => "query",
-                        "name" => "order",
-                        "orig" => "order",
-                        "type" => "`$STRING`",
-                      },
-                      {
-                        "example" => 1,
-                        "kind" => "query",
-                        "name" => "page",
-                        "orig" => "page",
-                        "type" => "`$INTEGER`",
-                      },
-                      {
-                        "example" => 20,
-                        "kind" => "query",
-                        "name" => "per_page",
-                        "orig" => "per_page",
-                        "type" => "`$INTEGER`",
-                      },
-                    ],
-                  },
                   "kind" => "http",
                   "method" => "GET",
                   "orig" => "/annotations",
@@ -148,6 +117,45 @@ module ElifeSciencesConfig
                       "lit" => "annotations",
                     },
                   ],
+                  "parts" => [
+                    "annotations",
+                  ],
+                  "rename" => {},
+                  "transform" => {
+                    "req" => "`reqdata`",
+                    "res" => "`body`",
+                  },
+                  "args" => {
+                    "query" => [
+                      {
+                        "name" => "by",
+                        "orig" => "by",
+                        "type" => "`$STRING`",
+                        "kind" => "query",
+                      },
+                      {
+                        "name" => "order",
+                        "orig" => "order",
+                        "type" => "`$STRING`",
+                        "kind" => "query",
+                        "example" => "desc",
+                      },
+                      {
+                        "name" => "page",
+                        "orig" => "page",
+                        "type" => "`$INTEGER`",
+                        "kind" => "query",
+                        "example" => 1,
+                      },
+                      {
+                        "name" => "per_page",
+                        "orig" => "per_page",
+                        "type" => "`$INTEGER`",
+                        "kind" => "query",
+                        "example" => 20,
+                      },
+                    ],
+                  },
                   "select" => {
                     "exist" => [
                       "by",
@@ -156,13 +164,6 @@ module ElifeSciencesConfig
                       "per_page",
                     ],
                   },
-                  "transform" => {
-                    "req" => "`reqdata`",
-                    "res" => "`body`",
-                  },
-                  "parts" => [
-                    "annotations",
-                  ],
                 },
               ],
             },
@@ -175,6 +176,7 @@ module ElifeSciencesConfig
           "fields" => [
             {
               "name" => "id",
+              "title" => "Id",
               "type" => "`$STRING`",
             },
           ],
@@ -189,31 +191,6 @@ module ElifeSciencesConfig
               "name" => "load",
               "points" => [
                 {
-                  "args" => {
-                    "query" => [
-                      {
-                        "example" => "desc",
-                        "kind" => "query",
-                        "name" => "order",
-                        "orig" => "order",
-                        "type" => "`$STRING`",
-                      },
-                      {
-                        "example" => 1,
-                        "kind" => "query",
-                        "name" => "page",
-                        "orig" => "page",
-                        "type" => "`$INTEGER`",
-                      },
-                      {
-                        "example" => 20,
-                        "kind" => "query",
-                        "name" => "per_page",
-                        "orig" => "per_page",
-                        "type" => "`$INTEGER`",
-                      },
-                    ],
-                  },
                   "kind" => "http",
                   "method" => "GET",
                   "orig" => "/articles",
@@ -222,6 +199,39 @@ module ElifeSciencesConfig
                       "lit" => "articles",
                     },
                   ],
+                  "parts" => [
+                    "articles",
+                  ],
+                  "rename" => {},
+                  "transform" => {
+                    "req" => "`reqdata`",
+                    "res" => "`body`",
+                  },
+                  "args" => {
+                    "query" => [
+                      {
+                        "name" => "order",
+                        "orig" => "order",
+                        "type" => "`$STRING`",
+                        "kind" => "query",
+                        "example" => "desc",
+                      },
+                      {
+                        "name" => "page",
+                        "orig" => "page",
+                        "type" => "`$INTEGER`",
+                        "kind" => "query",
+                        "example" => 1,
+                      },
+                      {
+                        "name" => "per_page",
+                        "orig" => "per_page",
+                        "type" => "`$INTEGER`",
+                        "kind" => "query",
+                        "example" => 20,
+                      },
+                    ],
+                  },
                   "select" => {
                     "exist" => [
                       "order",
@@ -229,26 +239,8 @@ module ElifeSciencesConfig
                       "per_page",
                     ],
                   },
-                  "transform" => {
-                    "req" => "`reqdata`",
-                    "res" => "`body`",
-                  },
-                  "parts" => [
-                    "articles",
-                  ],
                 },
                 {
-                  "args" => {
-                    "params" => [
-                      {
-                        "kind" => "param",
-                        "name" => "id",
-                        "orig" => "id",
-                        "reqd" => true,
-                        "type" => "`$STRING`",
-                      },
-                    ],
-                  },
                   "kind" => "http",
                   "method" => "GET",
                   "orig" => "/articles/{id}",
@@ -260,19 +252,31 @@ module ElifeSciencesConfig
                       "var" => "id",
                     },
                   ],
+                  "parts" => [
+                    "articles",
+                    "{id}",
+                  ],
+                  "rename" => {},
+                  "transform" => {
+                    "req" => "`reqdata`",
+                    "res" => "`body`",
+                  },
+                  "args" => {
+                    "params" => [
+                      {
+                        "name" => "id",
+                        "orig" => "id",
+                        "type" => "`$STRING`",
+                        "kind" => "param",
+                        "reqd" => true,
+                      },
+                    ],
+                  },
                   "select" => {
                     "exist" => [
                       "id",
                     ],
                   },
-                  "transform" => {
-                    "req" => "`reqdata`",
-                    "res" => "`body`",
-                  },
-                  "parts" => [
-                    "articles",
-                    "{id}",
-                  ],
                 },
               ],
             },
@@ -285,6 +289,7 @@ module ElifeSciencesConfig
           "fields" => [
             {
               "name" => "id",
+              "title" => "Id",
               "type" => "`$STRING`",
             },
           ],
@@ -299,31 +304,6 @@ module ElifeSciencesConfig
               "name" => "load",
               "points" => [
                 {
-                  "args" => {
-                    "query" => [
-                      {
-                        "example" => "desc",
-                        "kind" => "query",
-                        "name" => "order",
-                        "orig" => "order",
-                        "type" => "`$STRING`",
-                      },
-                      {
-                        "example" => 1,
-                        "kind" => "query",
-                        "name" => "page",
-                        "orig" => "page",
-                        "type" => "`$INTEGER`",
-                      },
-                      {
-                        "example" => 20,
-                        "kind" => "query",
-                        "name" => "per_page",
-                        "orig" => "per_page",
-                        "type" => "`$INTEGER`",
-                      },
-                    ],
-                  },
                   "kind" => "http",
                   "method" => "GET",
                   "orig" => "/collections",
@@ -332,6 +312,39 @@ module ElifeSciencesConfig
                       "lit" => "collections",
                     },
                   ],
+                  "parts" => [
+                    "collections",
+                  ],
+                  "rename" => {},
+                  "transform" => {
+                    "req" => "`reqdata`",
+                    "res" => "`body`",
+                  },
+                  "args" => {
+                    "query" => [
+                      {
+                        "name" => "order",
+                        "orig" => "order",
+                        "type" => "`$STRING`",
+                        "kind" => "query",
+                        "example" => "desc",
+                      },
+                      {
+                        "name" => "page",
+                        "orig" => "page",
+                        "type" => "`$INTEGER`",
+                        "kind" => "query",
+                        "example" => 1,
+                      },
+                      {
+                        "name" => "per_page",
+                        "orig" => "per_page",
+                        "type" => "`$INTEGER`",
+                        "kind" => "query",
+                        "example" => 20,
+                      },
+                    ],
+                  },
                   "select" => {
                     "exist" => [
                       "order",
@@ -339,26 +352,8 @@ module ElifeSciencesConfig
                       "per_page",
                     ],
                   },
-                  "transform" => {
-                    "req" => "`reqdata`",
-                    "res" => "`body`",
-                  },
-                  "parts" => [
-                    "collections",
-                  ],
                 },
                 {
-                  "args" => {
-                    "params" => [
-                      {
-                        "kind" => "param",
-                        "name" => "id",
-                        "orig" => "id",
-                        "reqd" => true,
-                        "type" => "`$STRING`",
-                      },
-                    ],
-                  },
                   "kind" => "http",
                   "method" => "GET",
                   "orig" => "/collections/{id}",
@@ -370,19 +365,31 @@ module ElifeSciencesConfig
                       "var" => "id",
                     },
                   ],
+                  "parts" => [
+                    "collections",
+                    "{id}",
+                  ],
+                  "rename" => {},
+                  "transform" => {
+                    "req" => "`reqdata`",
+                    "res" => "`body`",
+                  },
+                  "args" => {
+                    "params" => [
+                      {
+                        "name" => "id",
+                        "orig" => "id",
+                        "type" => "`$STRING`",
+                        "kind" => "param",
+                        "reqd" => true,
+                      },
+                    ],
+                  },
                   "select" => {
                     "exist" => [
                       "id",
                     ],
                   },
-                  "transform" => {
-                    "req" => "`reqdata`",
-                    "res" => "`body`",
-                  },
-                  "parts" => [
-                    "collections",
-                    "{id}",
-                  ],
                 },
               ],
             },
@@ -395,6 +402,7 @@ module ElifeSciencesConfig
           "fields" => [
             {
               "name" => "id",
+              "title" => "Id",
               "type" => "`$STRING`",
             },
           ],
@@ -409,30 +417,6 @@ module ElifeSciencesConfig
               "name" => "load",
               "points" => [
                 {
-                  "args" => {
-                    "query" => [
-                      {
-                        "example" => 1,
-                        "kind" => "query",
-                        "name" => "page",
-                        "orig" => "page",
-                        "type" => "`$INTEGER`",
-                      },
-                      {
-                        "example" => 20,
-                        "kind" => "query",
-                        "name" => "per_page",
-                        "orig" => "per_page",
-                        "type" => "`$INTEGER`",
-                      },
-                      {
-                        "kind" => "query",
-                        "name" => "type",
-                        "orig" => "type",
-                        "type" => "`$STRING`",
-                      },
-                    ],
-                  },
                   "kind" => "http",
                   "method" => "GET",
                   "orig" => "/people",
@@ -441,6 +425,38 @@ module ElifeSciencesConfig
                       "lit" => "people",
                     },
                   ],
+                  "parts" => [
+                    "people",
+                  ],
+                  "rename" => {},
+                  "transform" => {
+                    "req" => "`reqdata`",
+                    "res" => "`body`",
+                  },
+                  "args" => {
+                    "query" => [
+                      {
+                        "name" => "page",
+                        "orig" => "page",
+                        "type" => "`$INTEGER`",
+                        "kind" => "query",
+                        "example" => 1,
+                      },
+                      {
+                        "name" => "per_page",
+                        "orig" => "per_page",
+                        "type" => "`$INTEGER`",
+                        "kind" => "query",
+                        "example" => 20,
+                      },
+                      {
+                        "name" => "type",
+                        "orig" => "type",
+                        "type" => "`$STRING`",
+                        "kind" => "query",
+                      },
+                    ],
+                  },
                   "select" => {
                     "exist" => [
                       "page",
@@ -448,26 +464,8 @@ module ElifeSciencesConfig
                       "type",
                     ],
                   },
-                  "transform" => {
-                    "req" => "`reqdata`",
-                    "res" => "`body`",
-                  },
-                  "parts" => [
-                    "people",
-                  ],
                 },
                 {
-                  "args" => {
-                    "params" => [
-                      {
-                        "kind" => "param",
-                        "name" => "id",
-                        "orig" => "id",
-                        "reqd" => true,
-                        "type" => "`$STRING`",
-                      },
-                    ],
-                  },
                   "kind" => "http",
                   "method" => "GET",
                   "orig" => "/people/{id}",
@@ -479,19 +477,31 @@ module ElifeSciencesConfig
                       "var" => "id",
                     },
                   ],
+                  "parts" => [
+                    "people",
+                    "{id}",
+                  ],
+                  "rename" => {},
+                  "transform" => {
+                    "req" => "`reqdata`",
+                    "res" => "`body`",
+                  },
+                  "args" => {
+                    "params" => [
+                      {
+                        "name" => "id",
+                        "orig" => "id",
+                        "type" => "`$STRING`",
+                        "kind" => "param",
+                        "reqd" => true,
+                      },
+                    ],
+                  },
                   "select" => {
                     "exist" => [
                       "id",
                     ],
                   },
-                  "transform" => {
-                    "req" => "`reqdata`",
-                    "res" => "`body`",
-                  },
-                  "parts" => [
-                    "people",
-                    "{id}",
-                  ],
                 },
               ],
             },
@@ -509,57 +519,6 @@ module ElifeSciencesConfig
               "name" => "load",
               "points" => [
                 {
-                  "args" => {
-                    "query" => [
-                      {
-                        "kind" => "query",
-                        "name" => "for",
-                        "orig" => "for",
-                        "reqd" => true,
-                        "type" => "`$STRING`",
-                      },
-                      {
-                        "example" => "desc",
-                        "kind" => "query",
-                        "name" => "order",
-                        "orig" => "order",
-                        "type" => "`$STRING`",
-                      },
-                      {
-                        "example" => 1,
-                        "kind" => "query",
-                        "name" => "page",
-                        "orig" => "page",
-                        "type" => "`$INTEGER`",
-                      },
-                      {
-                        "example" => 10,
-                        "kind" => "query",
-                        "name" => "per_page",
-                        "orig" => "per_page",
-                        "type" => "`$INTEGER`",
-                      },
-                      {
-                        "example" => "relevance",
-                        "kind" => "query",
-                        "name" => "sort",
-                        "orig" => "sort",
-                        "type" => "`$STRING`",
-                      },
-                      {
-                        "kind" => "query",
-                        "name" => "subject",
-                        "orig" => "subject",
-                        "type" => "`$ARRAY`",
-                      },
-                      {
-                        "kind" => "query",
-                        "name" => "type",
-                        "orig" => "type",
-                        "type" => "`$ARRAY`",
-                      },
-                    ],
-                  },
                   "kind" => "http",
                   "method" => "GET",
                   "orig" => "/search",
@@ -568,6 +527,65 @@ module ElifeSciencesConfig
                       "lit" => "search",
                     },
                   ],
+                  "parts" => [
+                    "search",
+                  ],
+                  "rename" => {},
+                  "transform" => {
+                    "req" => "`reqdata`",
+                    "res" => "`body`",
+                  },
+                  "args" => {
+                    "query" => [
+                      {
+                        "name" => "for",
+                        "orig" => "for",
+                        "type" => "`$STRING`",
+                        "kind" => "query",
+                        "reqd" => true,
+                      },
+                      {
+                        "name" => "order",
+                        "orig" => "order",
+                        "type" => "`$STRING`",
+                        "kind" => "query",
+                        "example" => "desc",
+                      },
+                      {
+                        "name" => "page",
+                        "orig" => "page",
+                        "type" => "`$INTEGER`",
+                        "kind" => "query",
+                        "example" => 1,
+                      },
+                      {
+                        "name" => "per_page",
+                        "orig" => "per_page",
+                        "type" => "`$INTEGER`",
+                        "kind" => "query",
+                        "example" => 10,
+                      },
+                      {
+                        "name" => "sort",
+                        "orig" => "sort",
+                        "type" => "`$STRING`",
+                        "kind" => "query",
+                        "example" => "relevance",
+                      },
+                      {
+                        "name" => "subject",
+                        "orig" => "subject",
+                        "type" => "`$ARRAY`",
+                        "kind" => "query",
+                      },
+                      {
+                        "name" => "type",
+                        "orig" => "type",
+                        "type" => "`$ARRAY`",
+                        "kind" => "query",
+                      },
+                    ],
+                  },
                   "select" => {
                     "exist" => [
                       "for",
@@ -579,13 +597,6 @@ module ElifeSciencesConfig
                       "type",
                     ],
                   },
-                  "transform" => {
-                    "req" => "`reqdata`",
-                    "res" => "`body`",
-                  },
-                  "parts" => [
-                    "search",
-                  ],
                 },
               ],
             },
@@ -598,6 +609,7 @@ module ElifeSciencesConfig
           "fields" => [
             {
               "name" => "id",
+              "title" => "Id",
               "type" => "`$STRING`",
             },
           ],
@@ -612,24 +624,6 @@ module ElifeSciencesConfig
               "name" => "load",
               "points" => [
                 {
-                  "args" => {
-                    "query" => [
-                      {
-                        "example" => 1,
-                        "kind" => "query",
-                        "name" => "page",
-                        "orig" => "page",
-                        "type" => "`$INTEGER`",
-                      },
-                      {
-                        "example" => 20,
-                        "kind" => "query",
-                        "name" => "per_page",
-                        "orig" => "per_page",
-                        "type" => "`$INTEGER`",
-                      },
-                    ],
-                  },
                   "kind" => "http",
                   "method" => "GET",
                   "orig" => "/subjects",
@@ -638,32 +632,40 @@ module ElifeSciencesConfig
                       "lit" => "subjects",
                     },
                   ],
+                  "parts" => [
+                    "subjects",
+                  ],
+                  "rename" => {},
+                  "transform" => {
+                    "req" => "`reqdata`",
+                    "res" => "`body`",
+                  },
+                  "args" => {
+                    "query" => [
+                      {
+                        "name" => "page",
+                        "orig" => "page",
+                        "type" => "`$INTEGER`",
+                        "kind" => "query",
+                        "example" => 1,
+                      },
+                      {
+                        "name" => "per_page",
+                        "orig" => "per_page",
+                        "type" => "`$INTEGER`",
+                        "kind" => "query",
+                        "example" => 20,
+                      },
+                    ],
+                  },
                   "select" => {
                     "exist" => [
                       "page",
                       "per_page",
                     ],
                   },
-                  "transform" => {
-                    "req" => "`reqdata`",
-                    "res" => "`body`",
-                  },
-                  "parts" => [
-                    "subjects",
-                  ],
                 },
                 {
-                  "args" => {
-                    "params" => [
-                      {
-                        "kind" => "param",
-                        "name" => "id",
-                        "orig" => "id",
-                        "reqd" => true,
-                        "type" => "`$STRING`",
-                      },
-                    ],
-                  },
                   "kind" => "http",
                   "method" => "GET",
                   "orig" => "/subjects/{id}",
@@ -675,19 +677,31 @@ module ElifeSciencesConfig
                       "var" => "id",
                     },
                   ],
+                  "parts" => [
+                    "subjects",
+                    "{id}",
+                  ],
+                  "rename" => {},
+                  "transform" => {
+                    "req" => "`reqdata`",
+                    "res" => "`body`",
+                  },
+                  "args" => {
+                    "params" => [
+                      {
+                        "name" => "id",
+                        "orig" => "id",
+                        "type" => "`$STRING`",
+                        "kind" => "param",
+                        "reqd" => true,
+                      },
+                    ],
+                  },
                   "select" => {
                     "exist" => [
                       "id",
                     ],
                   },
-                  "transform" => {
-                    "req" => "`reqdata`",
-                    "res" => "`body`",
-                  },
-                  "parts" => [
-                    "subjects",
-                    "{id}",
-                  ],
                 },
               ],
             },

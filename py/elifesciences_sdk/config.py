@@ -126,37 +126,6 @@ def make_config():
             "name": "load",
             "points": [
               {
-                "args": {
-                  "query": [
-                    {
-                      "kind": "query",
-                      "name": "by",
-                      "orig": "by",
-                      "type": "`$STRING`",
-                    },
-                    {
-                      "example": "desc",
-                      "kind": "query",
-                      "name": "order",
-                      "orig": "order",
-                      "type": "`$STRING`",
-                    },
-                    {
-                      "example": 1,
-                      "kind": "query",
-                      "name": "page",
-                      "orig": "page",
-                      "type": "`$INTEGER`",
-                    },
-                    {
-                      "example": 20,
-                      "kind": "query",
-                      "name": "per_page",
-                      "orig": "per_page",
-                      "type": "`$INTEGER`",
-                    },
-                  ],
-                },
                 "kind": "http",
                 "method": "GET",
                 "orig": "/annotations",
@@ -165,6 +134,45 @@ def make_config():
                     "lit": "annotations",
                   },
                 ],
+                "parts": [
+                  "annotations",
+                ],
+                "rename": {},
+                "transform": {
+                  "req": "`reqdata`",
+                  "res": "`body`",
+                },
+                "args": {
+                  "query": [
+                    {
+                      "name": "by",
+                      "orig": "by",
+                      "type": "`$STRING`",
+                      "kind": "query",
+                    },
+                    {
+                      "name": "order",
+                      "orig": "order",
+                      "type": "`$STRING`",
+                      "kind": "query",
+                      "example": "desc",
+                    },
+                    {
+                      "name": "page",
+                      "orig": "page",
+                      "type": "`$INTEGER`",
+                      "kind": "query",
+                      "example": 1,
+                    },
+                    {
+                      "name": "per_page",
+                      "orig": "per_page",
+                      "type": "`$INTEGER`",
+                      "kind": "query",
+                      "example": 20,
+                    },
+                  ],
+                },
                 "select": {
                   "exist": [
                     "by",
@@ -173,13 +181,6 @@ def make_config():
                     "per_page",
                   ],
                 },
-                "transform": {
-                  "req": "`reqdata`",
-                  "res": "`body`",
-                },
-                "parts": [
-                  "annotations",
-                ],
               },
             ],
           },
@@ -192,6 +193,7 @@ def make_config():
         "fields": [
           {
             "name": "id",
+            "title": "Id",
             "type": "`$STRING`",
           },
         ],
@@ -206,31 +208,6 @@ def make_config():
             "name": "load",
             "points": [
               {
-                "args": {
-                  "query": [
-                    {
-                      "example": "desc",
-                      "kind": "query",
-                      "name": "order",
-                      "orig": "order",
-                      "type": "`$STRING`",
-                    },
-                    {
-                      "example": 1,
-                      "kind": "query",
-                      "name": "page",
-                      "orig": "page",
-                      "type": "`$INTEGER`",
-                    },
-                    {
-                      "example": 20,
-                      "kind": "query",
-                      "name": "per_page",
-                      "orig": "per_page",
-                      "type": "`$INTEGER`",
-                    },
-                  ],
-                },
                 "kind": "http",
                 "method": "GET",
                 "orig": "/articles",
@@ -239,6 +216,39 @@ def make_config():
                     "lit": "articles",
                   },
                 ],
+                "parts": [
+                  "articles",
+                ],
+                "rename": {},
+                "transform": {
+                  "req": "`reqdata`",
+                  "res": "`body`",
+                },
+                "args": {
+                  "query": [
+                    {
+                      "name": "order",
+                      "orig": "order",
+                      "type": "`$STRING`",
+                      "kind": "query",
+                      "example": "desc",
+                    },
+                    {
+                      "name": "page",
+                      "orig": "page",
+                      "type": "`$INTEGER`",
+                      "kind": "query",
+                      "example": 1,
+                    },
+                    {
+                      "name": "per_page",
+                      "orig": "per_page",
+                      "type": "`$INTEGER`",
+                      "kind": "query",
+                      "example": 20,
+                    },
+                  ],
+                },
                 "select": {
                   "exist": [
                     "order",
@@ -246,26 +256,8 @@ def make_config():
                     "per_page",
                   ],
                 },
-                "transform": {
-                  "req": "`reqdata`",
-                  "res": "`body`",
-                },
-                "parts": [
-                  "articles",
-                ],
               },
               {
-                "args": {
-                  "params": [
-                    {
-                      "kind": "param",
-                      "name": "id",
-                      "orig": "id",
-                      "reqd": True,
-                      "type": "`$STRING`",
-                    },
-                  ],
-                },
                 "kind": "http",
                 "method": "GET",
                 "orig": "/articles/{id}",
@@ -277,19 +269,31 @@ def make_config():
                     "var": "id",
                   },
                 ],
+                "parts": [
+                  "articles",
+                  "{id}",
+                ],
+                "rename": {},
+                "transform": {
+                  "req": "`reqdata`",
+                  "res": "`body`",
+                },
+                "args": {
+                  "params": [
+                    {
+                      "name": "id",
+                      "orig": "id",
+                      "type": "`$STRING`",
+                      "kind": "param",
+                      "reqd": True,
+                    },
+                  ],
+                },
                 "select": {
                   "exist": [
                     "id",
                   ],
                 },
-                "transform": {
-                  "req": "`reqdata`",
-                  "res": "`body`",
-                },
-                "parts": [
-                  "articles",
-                  "{id}",
-                ],
               },
             ],
           },
@@ -302,6 +306,7 @@ def make_config():
         "fields": [
           {
             "name": "id",
+            "title": "Id",
             "type": "`$STRING`",
           },
         ],
@@ -316,31 +321,6 @@ def make_config():
             "name": "load",
             "points": [
               {
-                "args": {
-                  "query": [
-                    {
-                      "example": "desc",
-                      "kind": "query",
-                      "name": "order",
-                      "orig": "order",
-                      "type": "`$STRING`",
-                    },
-                    {
-                      "example": 1,
-                      "kind": "query",
-                      "name": "page",
-                      "orig": "page",
-                      "type": "`$INTEGER`",
-                    },
-                    {
-                      "example": 20,
-                      "kind": "query",
-                      "name": "per_page",
-                      "orig": "per_page",
-                      "type": "`$INTEGER`",
-                    },
-                  ],
-                },
                 "kind": "http",
                 "method": "GET",
                 "orig": "/collections",
@@ -349,6 +329,39 @@ def make_config():
                     "lit": "collections",
                   },
                 ],
+                "parts": [
+                  "collections",
+                ],
+                "rename": {},
+                "transform": {
+                  "req": "`reqdata`",
+                  "res": "`body`",
+                },
+                "args": {
+                  "query": [
+                    {
+                      "name": "order",
+                      "orig": "order",
+                      "type": "`$STRING`",
+                      "kind": "query",
+                      "example": "desc",
+                    },
+                    {
+                      "name": "page",
+                      "orig": "page",
+                      "type": "`$INTEGER`",
+                      "kind": "query",
+                      "example": 1,
+                    },
+                    {
+                      "name": "per_page",
+                      "orig": "per_page",
+                      "type": "`$INTEGER`",
+                      "kind": "query",
+                      "example": 20,
+                    },
+                  ],
+                },
                 "select": {
                   "exist": [
                     "order",
@@ -356,26 +369,8 @@ def make_config():
                     "per_page",
                   ],
                 },
-                "transform": {
-                  "req": "`reqdata`",
-                  "res": "`body`",
-                },
-                "parts": [
-                  "collections",
-                ],
               },
               {
-                "args": {
-                  "params": [
-                    {
-                      "kind": "param",
-                      "name": "id",
-                      "orig": "id",
-                      "reqd": True,
-                      "type": "`$STRING`",
-                    },
-                  ],
-                },
                 "kind": "http",
                 "method": "GET",
                 "orig": "/collections/{id}",
@@ -387,19 +382,31 @@ def make_config():
                     "var": "id",
                   },
                 ],
+                "parts": [
+                  "collections",
+                  "{id}",
+                ],
+                "rename": {},
+                "transform": {
+                  "req": "`reqdata`",
+                  "res": "`body`",
+                },
+                "args": {
+                  "params": [
+                    {
+                      "name": "id",
+                      "orig": "id",
+                      "type": "`$STRING`",
+                      "kind": "param",
+                      "reqd": True,
+                    },
+                  ],
+                },
                 "select": {
                   "exist": [
                     "id",
                   ],
                 },
-                "transform": {
-                  "req": "`reqdata`",
-                  "res": "`body`",
-                },
-                "parts": [
-                  "collections",
-                  "{id}",
-                ],
               },
             ],
           },
@@ -412,6 +419,7 @@ def make_config():
         "fields": [
           {
             "name": "id",
+            "title": "Id",
             "type": "`$STRING`",
           },
         ],
@@ -426,30 +434,6 @@ def make_config():
             "name": "load",
             "points": [
               {
-                "args": {
-                  "query": [
-                    {
-                      "example": 1,
-                      "kind": "query",
-                      "name": "page",
-                      "orig": "page",
-                      "type": "`$INTEGER`",
-                    },
-                    {
-                      "example": 20,
-                      "kind": "query",
-                      "name": "per_page",
-                      "orig": "per_page",
-                      "type": "`$INTEGER`",
-                    },
-                    {
-                      "kind": "query",
-                      "name": "type",
-                      "orig": "type",
-                      "type": "`$STRING`",
-                    },
-                  ],
-                },
                 "kind": "http",
                 "method": "GET",
                 "orig": "/people",
@@ -458,6 +442,38 @@ def make_config():
                     "lit": "people",
                   },
                 ],
+                "parts": [
+                  "people",
+                ],
+                "rename": {},
+                "transform": {
+                  "req": "`reqdata`",
+                  "res": "`body`",
+                },
+                "args": {
+                  "query": [
+                    {
+                      "name": "page",
+                      "orig": "page",
+                      "type": "`$INTEGER`",
+                      "kind": "query",
+                      "example": 1,
+                    },
+                    {
+                      "name": "per_page",
+                      "orig": "per_page",
+                      "type": "`$INTEGER`",
+                      "kind": "query",
+                      "example": 20,
+                    },
+                    {
+                      "name": "type",
+                      "orig": "type",
+                      "type": "`$STRING`",
+                      "kind": "query",
+                    },
+                  ],
+                },
                 "select": {
                   "exist": [
                     "page",
@@ -465,26 +481,8 @@ def make_config():
                     "type",
                   ],
                 },
-                "transform": {
-                  "req": "`reqdata`",
-                  "res": "`body`",
-                },
-                "parts": [
-                  "people",
-                ],
               },
               {
-                "args": {
-                  "params": [
-                    {
-                      "kind": "param",
-                      "name": "id",
-                      "orig": "id",
-                      "reqd": True,
-                      "type": "`$STRING`",
-                    },
-                  ],
-                },
                 "kind": "http",
                 "method": "GET",
                 "orig": "/people/{id}",
@@ -496,19 +494,31 @@ def make_config():
                     "var": "id",
                   },
                 ],
+                "parts": [
+                  "people",
+                  "{id}",
+                ],
+                "rename": {},
+                "transform": {
+                  "req": "`reqdata`",
+                  "res": "`body`",
+                },
+                "args": {
+                  "params": [
+                    {
+                      "name": "id",
+                      "orig": "id",
+                      "type": "`$STRING`",
+                      "kind": "param",
+                      "reqd": True,
+                    },
+                  ],
+                },
                 "select": {
                   "exist": [
                     "id",
                   ],
                 },
-                "transform": {
-                  "req": "`reqdata`",
-                  "res": "`body`",
-                },
-                "parts": [
-                  "people",
-                  "{id}",
-                ],
               },
             ],
           },
@@ -526,57 +536,6 @@ def make_config():
             "name": "load",
             "points": [
               {
-                "args": {
-                  "query": [
-                    {
-                      "kind": "query",
-                      "name": "for",
-                      "orig": "for",
-                      "reqd": True,
-                      "type": "`$STRING`",
-                    },
-                    {
-                      "example": "desc",
-                      "kind": "query",
-                      "name": "order",
-                      "orig": "order",
-                      "type": "`$STRING`",
-                    },
-                    {
-                      "example": 1,
-                      "kind": "query",
-                      "name": "page",
-                      "orig": "page",
-                      "type": "`$INTEGER`",
-                    },
-                    {
-                      "example": 10,
-                      "kind": "query",
-                      "name": "per_page",
-                      "orig": "per_page",
-                      "type": "`$INTEGER`",
-                    },
-                    {
-                      "example": "relevance",
-                      "kind": "query",
-                      "name": "sort",
-                      "orig": "sort",
-                      "type": "`$STRING`",
-                    },
-                    {
-                      "kind": "query",
-                      "name": "subject",
-                      "orig": "subject",
-                      "type": "`$ARRAY`",
-                    },
-                    {
-                      "kind": "query",
-                      "name": "type",
-                      "orig": "type",
-                      "type": "`$ARRAY`",
-                    },
-                  ],
-                },
                 "kind": "http",
                 "method": "GET",
                 "orig": "/search",
@@ -585,6 +544,65 @@ def make_config():
                     "lit": "search",
                   },
                 ],
+                "parts": [
+                  "search",
+                ],
+                "rename": {},
+                "transform": {
+                  "req": "`reqdata`",
+                  "res": "`body`",
+                },
+                "args": {
+                  "query": [
+                    {
+                      "name": "for",
+                      "orig": "for",
+                      "type": "`$STRING`",
+                      "kind": "query",
+                      "reqd": True,
+                    },
+                    {
+                      "name": "order",
+                      "orig": "order",
+                      "type": "`$STRING`",
+                      "kind": "query",
+                      "example": "desc",
+                    },
+                    {
+                      "name": "page",
+                      "orig": "page",
+                      "type": "`$INTEGER`",
+                      "kind": "query",
+                      "example": 1,
+                    },
+                    {
+                      "name": "per_page",
+                      "orig": "per_page",
+                      "type": "`$INTEGER`",
+                      "kind": "query",
+                      "example": 10,
+                    },
+                    {
+                      "name": "sort",
+                      "orig": "sort",
+                      "type": "`$STRING`",
+                      "kind": "query",
+                      "example": "relevance",
+                    },
+                    {
+                      "name": "subject",
+                      "orig": "subject",
+                      "type": "`$ARRAY`",
+                      "kind": "query",
+                    },
+                    {
+                      "name": "type",
+                      "orig": "type",
+                      "type": "`$ARRAY`",
+                      "kind": "query",
+                    },
+                  ],
+                },
                 "select": {
                   "exist": [
                     "for",
@@ -596,13 +614,6 @@ def make_config():
                     "type",
                   ],
                 },
-                "transform": {
-                  "req": "`reqdata`",
-                  "res": "`body`",
-                },
-                "parts": [
-                  "search",
-                ],
               },
             ],
           },
@@ -615,6 +626,7 @@ def make_config():
         "fields": [
           {
             "name": "id",
+            "title": "Id",
             "type": "`$STRING`",
           },
         ],
@@ -629,24 +641,6 @@ def make_config():
             "name": "load",
             "points": [
               {
-                "args": {
-                  "query": [
-                    {
-                      "example": 1,
-                      "kind": "query",
-                      "name": "page",
-                      "orig": "page",
-                      "type": "`$INTEGER`",
-                    },
-                    {
-                      "example": 20,
-                      "kind": "query",
-                      "name": "per_page",
-                      "orig": "per_page",
-                      "type": "`$INTEGER`",
-                    },
-                  ],
-                },
                 "kind": "http",
                 "method": "GET",
                 "orig": "/subjects",
@@ -655,32 +649,40 @@ def make_config():
                     "lit": "subjects",
                   },
                 ],
+                "parts": [
+                  "subjects",
+                ],
+                "rename": {},
+                "transform": {
+                  "req": "`reqdata`",
+                  "res": "`body`",
+                },
+                "args": {
+                  "query": [
+                    {
+                      "name": "page",
+                      "orig": "page",
+                      "type": "`$INTEGER`",
+                      "kind": "query",
+                      "example": 1,
+                    },
+                    {
+                      "name": "per_page",
+                      "orig": "per_page",
+                      "type": "`$INTEGER`",
+                      "kind": "query",
+                      "example": 20,
+                    },
+                  ],
+                },
                 "select": {
                   "exist": [
                     "page",
                     "per_page",
                   ],
                 },
-                "transform": {
-                  "req": "`reqdata`",
-                  "res": "`body`",
-                },
-                "parts": [
-                  "subjects",
-                ],
               },
               {
-                "args": {
-                  "params": [
-                    {
-                      "kind": "param",
-                      "name": "id",
-                      "orig": "id",
-                      "reqd": True,
-                      "type": "`$STRING`",
-                    },
-                  ],
-                },
                 "kind": "http",
                 "method": "GET",
                 "orig": "/subjects/{id}",
@@ -692,19 +694,31 @@ def make_config():
                     "var": "id",
                   },
                 ],
+                "parts": [
+                  "subjects",
+                  "{id}",
+                ],
+                "rename": {},
+                "transform": {
+                  "req": "`reqdata`",
+                  "res": "`body`",
+                },
+                "args": {
+                  "params": [
+                    {
+                      "name": "id",
+                      "orig": "id",
+                      "type": "`$STRING`",
+                      "kind": "param",
+                      "reqd": True,
+                    },
+                  ],
+                },
                 "select": {
                   "exist": [
                     "id",
                   ],
                 },
-                "transform": {
-                  "req": "`reqdata`",
-                  "res": "`body`",
-                },
-                "parts": [
-                  "subjects",
-                  "{id}",
-                ],
               },
             ],
           },

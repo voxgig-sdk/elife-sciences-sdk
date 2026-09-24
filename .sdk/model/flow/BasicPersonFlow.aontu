@@ -1,0 +1,32 @@
+# BasicPersonFlow
+
+main: kit: flow: BasicPersonFlow:
+{
+  entity: "person",
+  kind: "basic",
+  name: "BasicPersonFlow",
+  step: [
+    {
+      i: {
+        ref: "person_ref01",
+        srcdatavar: "person_ref01_data",
+        suffix: "_dt0"
+      }
+
+      m: {
+        id: "person01"
+      }
+
+      o: "load",
+      v: [
+        {
+          apply: "TextFieldMark",
+          def: {
+            mark: "Mark01-person_ref01"
+          }
+        }
+      ]
+    }
+  ],
+  "key$": "BasicPersonFlow"
+}

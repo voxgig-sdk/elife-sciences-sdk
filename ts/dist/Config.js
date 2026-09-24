@@ -11,19 +11,12 @@ const FEATURE_CLASS = {
     test: TestFeature_1.TestFeature,
     timeout: TimeoutFeature_1.TimeoutFeature,
 };
-// Per-feature plugin DEFINITIONS (voxgig/plugin `Definition` values), from
-// the model's active plugin groups. A feature that takes a `plugins` option
-// (secrets over sekreto) reads its own entry; a feature with no plugins has
-// none. Named imports above make each definition statically reachable, so
-// an SDK carries exactly the plugin modules its model selects — the same
-// leanness the old side-effect registry imports bought, without a registry.
 const FEATURE_PLUGINS = {};
 exports.FEATURE_PLUGINS = FEATURE_PLUGINS;
 class Config {
     makeFeature(fn) {
         const fc = FEATURE_CLASS[fn];
         const fi = new fc();
-        // TODO: errors etc
         return fi;
     }
     // False for a feature added at runtime via options.extend (station's
@@ -124,37 +117,6 @@ class Config {
                     "name": "load",
                     "points": [
                         {
-                            "args": {
-                                "query": [
-                                    {
-                                        "kind": "query",
-                                        "name": "by",
-                                        "orig": "by",
-                                        "type": "`$STRING`"
-                                    },
-                                    {
-                                        "example": "desc",
-                                        "kind": "query",
-                                        "name": "order",
-                                        "orig": "order",
-                                        "type": "`$STRING`"
-                                    },
-                                    {
-                                        "example": 1,
-                                        "kind": "query",
-                                        "name": "page",
-                                        "orig": "page",
-                                        "type": "`$INTEGER`"
-                                    },
-                                    {
-                                        "example": 20,
-                                        "kind": "query",
-                                        "name": "per_page",
-                                        "orig": "per_page",
-                                        "type": "`$INTEGER`"
-                                    }
-                                ]
-                            },
                             "kind": "http",
                             "method": "GET",
                             "orig": "/annotations",
@@ -163,6 +125,45 @@ class Config {
                                     "lit": "annotations"
                                 }
                             ],
+                            "parts": [
+                                "annotations"
+                            ],
+                            "rename": {},
+                            "transform": {
+                                "req": "`reqdata`",
+                                "res": "`body`"
+                            },
+                            "args": {
+                                "query": [
+                                    {
+                                        "name": "by",
+                                        "orig": "by",
+                                        "type": "`$STRING`",
+                                        "kind": "query"
+                                    },
+                                    {
+                                        "name": "order",
+                                        "orig": "order",
+                                        "type": "`$STRING`",
+                                        "kind": "query",
+                                        "example": "desc"
+                                    },
+                                    {
+                                        "name": "page",
+                                        "orig": "page",
+                                        "type": "`$INTEGER`",
+                                        "kind": "query",
+                                        "example": 1
+                                    },
+                                    {
+                                        "name": "per_page",
+                                        "orig": "per_page",
+                                        "type": "`$INTEGER`",
+                                        "kind": "query",
+                                        "example": 20
+                                    }
+                                ]
+                            },
                             "select": {
                                 "exist": [
                                     "by",
@@ -170,14 +171,7 @@ class Config {
                                     "page",
                                     "per_page"
                                 ]
-                            },
-                            "transform": {
-                                "req": "`reqdata`",
-                                "res": "`body`"
-                            },
-                            "parts": [
-                                "annotations"
-                            ]
+                            }
                         }
                     ]
                 }
@@ -190,6 +184,7 @@ class Config {
             "fields": [
                 {
                     "name": "id",
+                    "title": "Id",
                     "type": "`$STRING`"
                 }
             ],
@@ -204,31 +199,6 @@ class Config {
                     "name": "load",
                     "points": [
                         {
-                            "args": {
-                                "query": [
-                                    {
-                                        "example": "desc",
-                                        "kind": "query",
-                                        "name": "order",
-                                        "orig": "order",
-                                        "type": "`$STRING`"
-                                    },
-                                    {
-                                        "example": 1,
-                                        "kind": "query",
-                                        "name": "page",
-                                        "orig": "page",
-                                        "type": "`$INTEGER`"
-                                    },
-                                    {
-                                        "example": 20,
-                                        "kind": "query",
-                                        "name": "per_page",
-                                        "orig": "per_page",
-                                        "type": "`$INTEGER`"
-                                    }
-                                ]
-                            },
                             "kind": "http",
                             "method": "GET",
                             "orig": "/articles",
@@ -237,33 +207,48 @@ class Config {
                                     "lit": "articles"
                                 }
                             ],
+                            "parts": [
+                                "articles"
+                            ],
+                            "rename": {},
+                            "transform": {
+                                "req": "`reqdata`",
+                                "res": "`body`"
+                            },
+                            "args": {
+                                "query": [
+                                    {
+                                        "name": "order",
+                                        "orig": "order",
+                                        "type": "`$STRING`",
+                                        "kind": "query",
+                                        "example": "desc"
+                                    },
+                                    {
+                                        "name": "page",
+                                        "orig": "page",
+                                        "type": "`$INTEGER`",
+                                        "kind": "query",
+                                        "example": 1
+                                    },
+                                    {
+                                        "name": "per_page",
+                                        "orig": "per_page",
+                                        "type": "`$INTEGER`",
+                                        "kind": "query",
+                                        "example": 20
+                                    }
+                                ]
+                            },
                             "select": {
                                 "exist": [
                                     "order",
                                     "page",
                                     "per_page"
                                 ]
-                            },
-                            "transform": {
-                                "req": "`reqdata`",
-                                "res": "`body`"
-                            },
-                            "parts": [
-                                "articles"
-                            ]
+                            }
                         },
                         {
-                            "args": {
-                                "params": [
-                                    {
-                                        "kind": "param",
-                                        "name": "id",
-                                        "orig": "id",
-                                        "reqd": true,
-                                        "type": "`$STRING`"
-                                    }
-                                ]
-                            },
                             "kind": "http",
                             "method": "GET",
                             "orig": "/articles/{id}",
@@ -275,19 +260,31 @@ class Config {
                                     "var": "id"
                                 }
                             ],
-                            "select": {
-                                "exist": [
-                                    "id"
-                                ]
-                            },
+                            "parts": [
+                                "articles",
+                                "{id}"
+                            ],
+                            "rename": {},
                             "transform": {
                                 "req": "`reqdata`",
                                 "res": "`body`"
                             },
-                            "parts": [
-                                "articles",
-                                "{id}"
-                            ]
+                            "args": {
+                                "params": [
+                                    {
+                                        "name": "id",
+                                        "orig": "id",
+                                        "type": "`$STRING`",
+                                        "kind": "param",
+                                        "reqd": true
+                                    }
+                                ]
+                            },
+                            "select": {
+                                "exist": [
+                                    "id"
+                                ]
+                            }
                         }
                     ]
                 }
@@ -300,6 +297,7 @@ class Config {
             "fields": [
                 {
                     "name": "id",
+                    "title": "Id",
                     "type": "`$STRING`"
                 }
             ],
@@ -314,31 +312,6 @@ class Config {
                     "name": "load",
                     "points": [
                         {
-                            "args": {
-                                "query": [
-                                    {
-                                        "example": "desc",
-                                        "kind": "query",
-                                        "name": "order",
-                                        "orig": "order",
-                                        "type": "`$STRING`"
-                                    },
-                                    {
-                                        "example": 1,
-                                        "kind": "query",
-                                        "name": "page",
-                                        "orig": "page",
-                                        "type": "`$INTEGER`"
-                                    },
-                                    {
-                                        "example": 20,
-                                        "kind": "query",
-                                        "name": "per_page",
-                                        "orig": "per_page",
-                                        "type": "`$INTEGER`"
-                                    }
-                                ]
-                            },
                             "kind": "http",
                             "method": "GET",
                             "orig": "/collections",
@@ -347,33 +320,48 @@ class Config {
                                     "lit": "collections"
                                 }
                             ],
+                            "parts": [
+                                "collections"
+                            ],
+                            "rename": {},
+                            "transform": {
+                                "req": "`reqdata`",
+                                "res": "`body`"
+                            },
+                            "args": {
+                                "query": [
+                                    {
+                                        "name": "order",
+                                        "orig": "order",
+                                        "type": "`$STRING`",
+                                        "kind": "query",
+                                        "example": "desc"
+                                    },
+                                    {
+                                        "name": "page",
+                                        "orig": "page",
+                                        "type": "`$INTEGER`",
+                                        "kind": "query",
+                                        "example": 1
+                                    },
+                                    {
+                                        "name": "per_page",
+                                        "orig": "per_page",
+                                        "type": "`$INTEGER`",
+                                        "kind": "query",
+                                        "example": 20
+                                    }
+                                ]
+                            },
                             "select": {
                                 "exist": [
                                     "order",
                                     "page",
                                     "per_page"
                                 ]
-                            },
-                            "transform": {
-                                "req": "`reqdata`",
-                                "res": "`body`"
-                            },
-                            "parts": [
-                                "collections"
-                            ]
+                            }
                         },
                         {
-                            "args": {
-                                "params": [
-                                    {
-                                        "kind": "param",
-                                        "name": "id",
-                                        "orig": "id",
-                                        "reqd": true,
-                                        "type": "`$STRING`"
-                                    }
-                                ]
-                            },
                             "kind": "http",
                             "method": "GET",
                             "orig": "/collections/{id}",
@@ -385,19 +373,31 @@ class Config {
                                     "var": "id"
                                 }
                             ],
-                            "select": {
-                                "exist": [
-                                    "id"
-                                ]
-                            },
+                            "parts": [
+                                "collections",
+                                "{id}"
+                            ],
+                            "rename": {},
                             "transform": {
                                 "req": "`reqdata`",
                                 "res": "`body`"
                             },
-                            "parts": [
-                                "collections",
-                                "{id}"
-                            ]
+                            "args": {
+                                "params": [
+                                    {
+                                        "name": "id",
+                                        "orig": "id",
+                                        "type": "`$STRING`",
+                                        "kind": "param",
+                                        "reqd": true
+                                    }
+                                ]
+                            },
+                            "select": {
+                                "exist": [
+                                    "id"
+                                ]
+                            }
                         }
                     ]
                 }
@@ -410,6 +410,7 @@ class Config {
             "fields": [
                 {
                     "name": "id",
+                    "title": "Id",
                     "type": "`$STRING`"
                 }
             ],
@@ -424,30 +425,6 @@ class Config {
                     "name": "load",
                     "points": [
                         {
-                            "args": {
-                                "query": [
-                                    {
-                                        "example": 1,
-                                        "kind": "query",
-                                        "name": "page",
-                                        "orig": "page",
-                                        "type": "`$INTEGER`"
-                                    },
-                                    {
-                                        "example": 20,
-                                        "kind": "query",
-                                        "name": "per_page",
-                                        "orig": "per_page",
-                                        "type": "`$INTEGER`"
-                                    },
-                                    {
-                                        "kind": "query",
-                                        "name": "type",
-                                        "orig": "type",
-                                        "type": "`$STRING`"
-                                    }
-                                ]
-                            },
                             "kind": "http",
                             "method": "GET",
                             "orig": "/people",
@@ -456,33 +433,47 @@ class Config {
                                     "lit": "people"
                                 }
                             ],
+                            "parts": [
+                                "people"
+                            ],
+                            "rename": {},
+                            "transform": {
+                                "req": "`reqdata`",
+                                "res": "`body`"
+                            },
+                            "args": {
+                                "query": [
+                                    {
+                                        "name": "page",
+                                        "orig": "page",
+                                        "type": "`$INTEGER`",
+                                        "kind": "query",
+                                        "example": 1
+                                    },
+                                    {
+                                        "name": "per_page",
+                                        "orig": "per_page",
+                                        "type": "`$INTEGER`",
+                                        "kind": "query",
+                                        "example": 20
+                                    },
+                                    {
+                                        "name": "type",
+                                        "orig": "type",
+                                        "type": "`$STRING`",
+                                        "kind": "query"
+                                    }
+                                ]
+                            },
                             "select": {
                                 "exist": [
                                     "page",
                                     "per_page",
                                     "type"
                                 ]
-                            },
-                            "transform": {
-                                "req": "`reqdata`",
-                                "res": "`body`"
-                            },
-                            "parts": [
-                                "people"
-                            ]
+                            }
                         },
                         {
-                            "args": {
-                                "params": [
-                                    {
-                                        "kind": "param",
-                                        "name": "id",
-                                        "orig": "id",
-                                        "reqd": true,
-                                        "type": "`$STRING`"
-                                    }
-                                ]
-                            },
                             "kind": "http",
                             "method": "GET",
                             "orig": "/people/{id}",
@@ -494,19 +485,31 @@ class Config {
                                     "var": "id"
                                 }
                             ],
-                            "select": {
-                                "exist": [
-                                    "id"
-                                ]
-                            },
+                            "parts": [
+                                "people",
+                                "{id}"
+                            ],
+                            "rename": {},
                             "transform": {
                                 "req": "`reqdata`",
                                 "res": "`body`"
                             },
-                            "parts": [
-                                "people",
-                                "{id}"
-                            ]
+                            "args": {
+                                "params": [
+                                    {
+                                        "name": "id",
+                                        "orig": "id",
+                                        "type": "`$STRING`",
+                                        "kind": "param",
+                                        "reqd": true
+                                    }
+                                ]
+                            },
+                            "select": {
+                                "exist": [
+                                    "id"
+                                ]
+                            }
                         }
                     ]
                 }
@@ -524,57 +527,6 @@ class Config {
                     "name": "load",
                     "points": [
                         {
-                            "args": {
-                                "query": [
-                                    {
-                                        "kind": "query",
-                                        "name": "for",
-                                        "orig": "for",
-                                        "reqd": true,
-                                        "type": "`$STRING`"
-                                    },
-                                    {
-                                        "example": "desc",
-                                        "kind": "query",
-                                        "name": "order",
-                                        "orig": "order",
-                                        "type": "`$STRING`"
-                                    },
-                                    {
-                                        "example": 1,
-                                        "kind": "query",
-                                        "name": "page",
-                                        "orig": "page",
-                                        "type": "`$INTEGER`"
-                                    },
-                                    {
-                                        "example": 10,
-                                        "kind": "query",
-                                        "name": "per_page",
-                                        "orig": "per_page",
-                                        "type": "`$INTEGER`"
-                                    },
-                                    {
-                                        "example": "relevance",
-                                        "kind": "query",
-                                        "name": "sort",
-                                        "orig": "sort",
-                                        "type": "`$STRING`"
-                                    },
-                                    {
-                                        "kind": "query",
-                                        "name": "subject",
-                                        "orig": "subject",
-                                        "type": "`$ARRAY`"
-                                    },
-                                    {
-                                        "kind": "query",
-                                        "name": "type",
-                                        "orig": "type",
-                                        "type": "`$ARRAY`"
-                                    }
-                                ]
-                            },
                             "kind": "http",
                             "method": "GET",
                             "orig": "/search",
@@ -583,6 +535,65 @@ class Config {
                                     "lit": "search"
                                 }
                             ],
+                            "parts": [
+                                "search"
+                            ],
+                            "rename": {},
+                            "transform": {
+                                "req": "`reqdata`",
+                                "res": "`body`"
+                            },
+                            "args": {
+                                "query": [
+                                    {
+                                        "name": "for",
+                                        "orig": "for",
+                                        "type": "`$STRING`",
+                                        "kind": "query",
+                                        "reqd": true
+                                    },
+                                    {
+                                        "name": "order",
+                                        "orig": "order",
+                                        "type": "`$STRING`",
+                                        "kind": "query",
+                                        "example": "desc"
+                                    },
+                                    {
+                                        "name": "page",
+                                        "orig": "page",
+                                        "type": "`$INTEGER`",
+                                        "kind": "query",
+                                        "example": 1
+                                    },
+                                    {
+                                        "name": "per_page",
+                                        "orig": "per_page",
+                                        "type": "`$INTEGER`",
+                                        "kind": "query",
+                                        "example": 10
+                                    },
+                                    {
+                                        "name": "sort",
+                                        "orig": "sort",
+                                        "type": "`$STRING`",
+                                        "kind": "query",
+                                        "example": "relevance"
+                                    },
+                                    {
+                                        "name": "subject",
+                                        "orig": "subject",
+                                        "type": "`$ARRAY`",
+                                        "kind": "query"
+                                    },
+                                    {
+                                        "name": "type",
+                                        "orig": "type",
+                                        "type": "`$ARRAY`",
+                                        "kind": "query"
+                                    }
+                                ]
+                            },
                             "select": {
                                 "exist": [
                                     "for",
@@ -593,14 +604,7 @@ class Config {
                                     "subject",
                                     "type"
                                 ]
-                            },
-                            "transform": {
-                                "req": "`reqdata`",
-                                "res": "`body`"
-                            },
-                            "parts": [
-                                "search"
-                            ]
+                            }
                         }
                     ]
                 }
@@ -613,6 +617,7 @@ class Config {
             "fields": [
                 {
                     "name": "id",
+                    "title": "Id",
                     "type": "`$STRING`"
                 }
             ],
@@ -627,24 +632,6 @@ class Config {
                     "name": "load",
                     "points": [
                         {
-                            "args": {
-                                "query": [
-                                    {
-                                        "example": 1,
-                                        "kind": "query",
-                                        "name": "page",
-                                        "orig": "page",
-                                        "type": "`$INTEGER`"
-                                    },
-                                    {
-                                        "example": 20,
-                                        "kind": "query",
-                                        "name": "per_page",
-                                        "orig": "per_page",
-                                        "type": "`$INTEGER`"
-                                    }
-                                ]
-                            },
                             "kind": "http",
                             "method": "GET",
                             "orig": "/subjects",
@@ -653,32 +640,40 @@ class Config {
                                     "lit": "subjects"
                                 }
                             ],
+                            "parts": [
+                                "subjects"
+                            ],
+                            "rename": {},
+                            "transform": {
+                                "req": "`reqdata`",
+                                "res": "`body`"
+                            },
+                            "args": {
+                                "query": [
+                                    {
+                                        "name": "page",
+                                        "orig": "page",
+                                        "type": "`$INTEGER`",
+                                        "kind": "query",
+                                        "example": 1
+                                    },
+                                    {
+                                        "name": "per_page",
+                                        "orig": "per_page",
+                                        "type": "`$INTEGER`",
+                                        "kind": "query",
+                                        "example": 20
+                                    }
+                                ]
+                            },
                             "select": {
                                 "exist": [
                                     "page",
                                     "per_page"
                                 ]
-                            },
-                            "transform": {
-                                "req": "`reqdata`",
-                                "res": "`body`"
-                            },
-                            "parts": [
-                                "subjects"
-                            ]
+                            }
                         },
                         {
-                            "args": {
-                                "params": [
-                                    {
-                                        "kind": "param",
-                                        "name": "id",
-                                        "orig": "id",
-                                        "reqd": true,
-                                        "type": "`$STRING`"
-                                    }
-                                ]
-                            },
                             "kind": "http",
                             "method": "GET",
                             "orig": "/subjects/{id}",
@@ -690,19 +685,31 @@ class Config {
                                     "var": "id"
                                 }
                             ],
-                            "select": {
-                                "exist": [
-                                    "id"
-                                ]
-                            },
+                            "parts": [
+                                "subjects",
+                                "{id}"
+                            ],
+                            "rename": {},
                             "transform": {
                                 "req": "`reqdata`",
                                 "res": "`body`"
                             },
-                            "parts": [
-                                "subjects",
-                                "{id}"
-                            ]
+                            "args": {
+                                "params": [
+                                    {
+                                        "name": "id",
+                                        "orig": "id",
+                                        "type": "`$STRING`",
+                                        "kind": "param",
+                                        "reqd": true
+                                    }
+                                ]
+                            },
+                            "select": {
+                                "exist": [
+                                    "id"
+                                ]
+                            }
                         }
                     ]
                 }

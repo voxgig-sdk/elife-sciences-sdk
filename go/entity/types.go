@@ -1,7 +1,7 @@
 // Typed models for the ElifeSciences SDK.
 //
-// GENERATED from the API model: main.kit.entity.<e>.fields[] and per-op
-// params (op.<name>.points[].args.params[]). Field/param types come from the
+// GENERATED from the API model: main.kit.entity.<e>.fields{} and per-op
+// params (op.<name>.points[].g.params[]). Field/param types come from the
 // canonical type sentinels via @voxgig/sdkgen canonToType (source of truth:
 // @voxgig/apidef VALID_CANON). Do not edit by hand.
 package entity
@@ -26,7 +26,6 @@ type AnnotationLoadMatch struct {
 
 // Article is the typed data model for the article entity.
 type Article struct {
-	Id *string `json:"id,omitempty"`
 }
 
 // ArticleLoadMatch is the typed request payload for Article.LoadTyped.
@@ -36,7 +35,6 @@ type ArticleLoadMatch struct {
 
 // Collection is the typed data model for the collection entity.
 type Collection struct {
-	Id *string `json:"id,omitempty"`
 }
 
 // CollectionLoadMatch is the typed request payload for Collection.LoadTyped.
@@ -46,7 +44,6 @@ type CollectionLoadMatch struct {
 
 // Person is the typed data model for the person entity.
 type Person struct {
-	Id *string `json:"id,omitempty"`
 }
 
 // PersonLoadMatch is the typed request payload for Person.LoadTyped.
@@ -71,7 +68,6 @@ type SearchLoadMatch struct {
 
 // Subject is the typed data model for the subject entity.
 type Subject struct {
-	Id *string `json:"id,omitempty"`
 }
 
 // SubjectLoadMatch is the typed request payload for Subject.LoadTyped.
